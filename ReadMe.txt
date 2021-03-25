@@ -9,7 +9,7 @@ $ git config --global user.email johndoe@example.com
 Cloning Repo:
 
 $ git clone https://github.com/0-7BrainCells/eRes
-(This will clone the repo to your current directory)
+(This will clone the repo to your current directory, if you already have the repo and just need to update it, just do git pull when in the repo directory)
 
 Initializing Repo to work on code easier:
 
