@@ -8,3 +8,17 @@ h1 {
     font-size: 300%;
     text-align: center;
 }
+
+h2 {
+    color: rgb(0, 0, 0);
+    font-family: arial;
+    font-size: 300%;
+    text-align: center;
+}
+
+p {
+    color: rgb(14, 14, 46);
+    font-family: arial;
+    font-size: 300%;
+    text-align: left;
+}
