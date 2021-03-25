@@ -18,4 +18,15 @@ $ git init
 $ git status (will show you the files in the repo and what files are ready to be committed etc.)
 
 
+To add a new file to commit: (if the file already exists on your computer in the directory)
+$ git add filename
+
+(if you want to make a new file then add it to commit instead do $ echo text > filename.txt)
+
+Commit changes/new files once added:
+
+$ git commit -am "Message describing the changes on the commit"
+$ git push (this will push the committed changes from your computer onto the online version)
+
+
 
