@@ -1,6 +1,6 @@
 # eRes
 
-Version Information:
+Version Information: Pre- Release v0.0.0
 
 Check out 'Setting up Git' to initialize the repo on your PC
 
