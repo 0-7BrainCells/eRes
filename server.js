@@ -8,13 +8,13 @@ app.use('/pages', pageRouter)
 
 app.get('/', (req, res) => {
     const pages = [{
-        title: 'eResto Registration', 
+        title: 'eRestaurant Registration', 
         createdAt: new Date()
         //createAt: Date.now()
         //decription: 'Test description'
 },
 {
-        title: 'eResto Staff Login', 
+        title: 'eRestaurant Login', 
         createdAt: new Date()
         //decription: 'Test description'
     }]
