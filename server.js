@@ -3,7 +3,7 @@ const pageRouter = require('./routes/pages')
 const app = express()
 
 const mongoose = require('mongoose')
-mongoose.connect('URL', () => {
+mongoose.connect('mongodb+srv://henry:<henzies11$>@eres.k9zxh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () => {
     console.log('Connected to MongoDB Successfully!')
 })
 
