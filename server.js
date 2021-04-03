@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
         //decription: 'Test description'
 },
 {
-        title: 'eRestaurant Login', 
+        title: 'eRestaurant Staff Login', 
         createdAt: new Date()
         //decription: 'Test description'
     }]
