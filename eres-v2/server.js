@@ -8,12 +8,19 @@ app.use('/pages', pageRouter)
 
 app.get('/', (req, res) => {
     const pages = [{
-        title: 'eResto Login', 
+        title: 'eResto Registration', 
+        createdAt: new Date()
         //createAt: Date.now()
         //decription: 'Test description'
+},
+{
+        title: 'eResto Staff Login', 
+        createdAt: new Date()
+        //decription: 'Test description'
     }]
-    res.render('index', { pages: pages}) //9:30 in video { pages: pages}, {text: 'Hello'}
+    res.render('pages/index', { pages: pages}) //9:30 in video { pages: pages}, {text: 'Hello'}
 })
+
 
 app.post("/login")
 
