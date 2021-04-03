@@ -2,6 +2,12 @@ const express = require('express')
 const pageRouter = require('./routes/pages')
 const app = express()
 
+const mongoose = require('mongoose')
+mongoose.connect('URL', () => {
+    console.log('Connected to MongoDB Successfully!')
+})
+
+
 app.set('view engine', 'ejs')
 
 app.use('/pages', pageRouter)
