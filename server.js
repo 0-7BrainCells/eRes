@@ -5,7 +5,7 @@ const app = express()
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://admin:<eres>@eres.k9zxh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () => {
     console.log('Connected to MongoDB Successfully!')
-})
+}) 
 
 
 app.set('view engine', 'ejs')
