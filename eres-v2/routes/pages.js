@@ -14,4 +14,10 @@ router.get('/CustomerRegistration', (req, res) => {
     res.render('pages/customer-rego')
 })
 
+router.post('/', (req, res) =>{
+    
+}
+
+)
+
 module.exports = router 
