@@ -20,12 +20,13 @@ router.get('/LunchMenu', (req, res) => {
     // res.send('In pages')
     res.render('pages/lunch-menu')      // EXMAPLE this will show in the url and the res.render(...) is the fucntion that allows this to happen
 })
-
-router.post('/', (req, res) =>{
-const page = new Page({
+router.get('/DinnerMenu', (req, res) => {
+    // res.send('In pages')
+    res.render('pages/dinner-menu')      // EXMAPLE this will show in the url and the res.render(...) is the fucntion that allows this to happen
 })
-}
-
-)
+router.post('/', (req, res) =>{
+        const page = new Page({
+    })
+})
 
 module.exports = router 
