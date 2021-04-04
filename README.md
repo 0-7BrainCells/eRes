@@ -5,6 +5,13 @@ Version Information: Pre- Release v0.0.0
 
 Using Express.js from Node.js with MongoDB
 
+Current functionality:
+
+Navigate a home page
+Fill out customer registration form, user saving to database
+Customer login, email validation against database
+
+
 History:
 
 4/4: Updated the rego form and merged Henry_Dev/Rups_Dev changes into the main repo. See discord for further details about this merge and what you will have to do :) *just try to push your own offline branch onto here and I (Henry) will take a look at the changes between it and main just to see if there are any major conflicts before adding)
