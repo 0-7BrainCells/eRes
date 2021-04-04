@@ -18,7 +18,10 @@ router.get('/LunchMenu', (req, res) => {
     // res.send('In pages')
     res.render('pages/lunch-menu')
 })
-
+router.get('/BookTable', (req, res) => {
+    // res.send('In pages')
+    res.render('pages/book-table')
+})
 router.post('/', (req, res) =>{
 const page = new Page({
 })
