@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt');
 const User = require('../model/User');
+const Staff = require('../model/Staff');
 
 router.get('/StaffLogin', (req, res) => {
     res.render('staff-login')
@@ -14,9 +15,17 @@ router.get('/CustomerRegistration', (req, res) => {
 }), 
 
 router.post('/staff-login-received', (req, res) => {
-	console.log(req.body.email);
-    console.log(req.body.password);
-    res.send("Post Request Received, check terminal to see stored info. Needs to be linked to DB for verification")
+	Staff.findOne({
+    ID: req.body.ID,
+    password: req.body.password
+  }, function(err, user) {
+    if (err) { return res.status(500).send(err); }
+
+    if (!user) { return res.status(200).send("Staff member not found, check username and password are correct"); } //The email or password dont exist in the DB
+
+    return res.status(200).send("You are logged in succesfully to staff. (TODO: actually make some sort of session thing with profiles");
+  }
+)
 }), 
 
 router.post('/customer-login-received', (req, res) => {  //Check if the email and password combo are in the DB to verify login
