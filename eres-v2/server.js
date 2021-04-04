@@ -10,6 +10,7 @@ mongoose.connect('mongodb://localhost/eRes', {
 app.set('view engine', 'ejs')
 
 app.use('/pages', pageRouter)
+app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
     const pages = [{

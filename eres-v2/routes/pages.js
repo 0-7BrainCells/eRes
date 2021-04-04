@@ -17,7 +17,7 @@ router.get('/CustomerRegistration', (req, res) => {
 
 router.post('/', (req, res) =>{
 const page = new Page({
-
+    // req.body.password
 })
 }
 
