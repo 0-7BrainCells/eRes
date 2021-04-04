@@ -14,7 +14,7 @@ router.get('/CustomerRegistration', (req, res) => {
 }), 
 
 router.post('/staff-login-received', (req, res) => {
-	console.log(req.body.id);
+	console.log(req.body.email);
     console.log(req.body.password);
     res.send("Post Request Received, check terminal to see stored info. Needs to be linked to DB for verification")
 }), 
