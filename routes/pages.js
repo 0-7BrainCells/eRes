@@ -1,4 +1,5 @@
 const express = require('express')
+const Page = require('../models/page')
 const router = express.Router()
 
 router.get('/StaffLogin', (req, res) => {
@@ -15,7 +16,9 @@ router.get('/CustomerRegistration', (req, res) => {
 })
 
 router.post('/', (req, res) =>{
-    
+const page = new Page({
+    // req.body.password
+})
 }
 
 )
