@@ -14,10 +14,13 @@ router.get('/CustomerRegistration', (req, res) => {
     // res.send('In pages')
     res.render('pages/customer-rego')
 })
+router.get('/LunchMenu', (req, res) => {
+    // res.send('In pages')
+    res.render('pages/lunch-menu')
+})
 
 router.post('/', (req, res) =>{
 const page = new Page({
-
 })
 }
 
