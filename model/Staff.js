@@ -21,4 +21,4 @@ const staffSchema = new Schema({
     }
   });
 
-module.exports = mongoose.model('User', staffSchema);
+module.exports = mongoose.model('Staff', staffSchema);
