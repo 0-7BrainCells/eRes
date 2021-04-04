@@ -12,6 +12,22 @@
     <title>eRestaurant</title>
 
     <style>
+.HSpace {
+  /* The image used */
+  background-image: url("food.jpg");
+
+  /* Set a specific height */
+  min-height: 100px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+   background-color: whitesmoke;
+   background-image: url("food.jpg");
+} /*This is to test what in the browser is responding*/
 
 * {
   box-sizing: border-box;
@@ -72,7 +88,9 @@
 
 </head>
 <body>
-    <h1 class= "mb-4" > eRes Lunch Menu</h1>
+  <div class="HSpace"></div>
+
+  <h1 class= "mb-4" > eRes Lunch Menu</h1>
 <!-- THIS <BELOW> IS JUST A MENU HTML TMEPLATE FOR NOW-->
   <ul class="menu">
     <li class="menu-item">
@@ -142,4 +160,5 @@
       </section>
     </li>
   </div>
+    
 </body>
