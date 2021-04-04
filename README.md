@@ -8,7 +8,9 @@ Using Express.js from Node.js with MongoDB
 Current functionality:
 
 Navigate a home page
+
 Fill out customer registration form, user saving to database
+
 Customer login, email validation against database
 
 
