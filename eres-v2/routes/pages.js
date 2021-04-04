@@ -15,12 +15,11 @@ router.get('/CustomerRegistration', (req, res) => {
     res.render('pages/customer-rego')
 })
 
-router.post('/', (req, res) =>{
-const page = new Page({
-    // req.body.password
+router.post('/register', (req, res) =>{
+// const page = new Page({
+     console.log(req.body.password)
 })
-}
 
-)
+
 
 module.exports = router 
