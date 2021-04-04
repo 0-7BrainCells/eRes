@@ -7,7 +7,7 @@ Using Express.js from Node.js with MongoDB
 
 History:
 
-4/4: Updated the rego form and merged Henry_Dev/Rups_Dev changes into the main repo. See discord for further details about this merge and what you will have to do :)
+4/4: Updated the rego form and merged Henry_Dev/Rups_Dev changes into the main repo. See discord for further details about this merge and what you will have to do :) *just try to push your own offline branch onto here and I (Henry) will take a look at the changes between it and main just to see if there are any major conflicts before adding)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
