@@ -1,3 +1,5 @@
+// THIS ALSO HOLDS ALL THE PAGES, THIS WILL ILLUSTRATE THE ROUTES SHOWN IN THE URL (2/3)
+
 const express = require('express')
 const Page = require('./../models/page')
 const router = express.Router()
@@ -16,7 +18,7 @@ router.get('/CustomerRegistration', (req, res) => {
 })
 router.get('/LunchMenu', (req, res) => {
     // res.send('In pages')
-    res.render('pages/lunch-menu')
+    res.render('pages/lunch-menu')      // EXMAPLE this will show in the url and the res.render(...) is the fucntion that allows this to happen
 })
 
 router.post('/', (req, res) =>{
