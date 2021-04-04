@@ -2,9 +2,7 @@
 
 Version Information: Pre- Release v0.0.0
 
-Check out 'Setting up Git' to initialize the repo on your PC
+Using Express.js from Node.js with MongoDB
 
-Type here what language/framework we are gonna use please :D
-
-
-Also highly recommend downloading Github desktop on your PC as it syncs your offline repo really easy and links to your editor too 
+To run the app, open bash terminal on VSCode and type npm run devStart, then app will be hosted on localhost:5000
+(provided youve followed the video using devStart in nodemon)
