@@ -46,7 +46,7 @@ router.post('/customer-register-received', (req, res) => { //This POST request w
                      res.send("User saved to database (TODO: direct to login page");
              })
              .catch(err => {
-                     res.status(400).send("Nnable to save to database");
+                     res.status(400).send("Unable to save to database");
              });  
         } else {  //If the email already exists then dont create the user, throw error. 
             return res.status(200).send("Email already exists (TODO: redirect this page to the registration again");
