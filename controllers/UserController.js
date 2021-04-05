@@ -1,4 +1,5 @@
 const User = require('../model/User');
+const Staff = require('../model/Staff');
 
 //This page contains all the business logic functions for user page routes. These functions get called in routes/users
 
