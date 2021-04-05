@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Document</title>
 </head>
 <body>
@@ -78,7 +79,7 @@
 		  </div>
 		</div>
 		<ul>
-		  <li><a href="#section00" class="fw-bold">Admin Menu</a></li>
+		  <li><a href="#section00"><span style="color:blue;font-weight:bold">Admin Menu</span></a></li>
 		  <li><a href="#section01">Lunch Menu</a></li>
 		  <li><a href="#section02">Dinner Menu</a></li>
 		  <li><a href="#section03">Table Menu</a></li>
@@ -90,17 +91,22 @@
 	</div>
   </header>
 
+  <!-- TO CHANGE THE FONT EXAMPLE GIVEN W FONT:
+  <p class="paragraphBottom">Above and below I've pictured my best work from school projects in 2017, 2018 and 2019:
+    <span class="italics">Layer Maze</span>, <span class="italics">Orbiter</span> and <span class="italics">Airline Tycoon</span>, respectively.</p> -->
+
+
   <section id="section00">
-	<div id="heading">Admin Menu</div>
+	<div id="heading"><span class="container">Admin Menu</span></div>
   </section>
   <section id="section01">
-	<div id="heading">Lunch Menu</div>
+	<div id="heading"><span class="container">Lunch Menu</span></div>
   </section>
   <section id="section02">
-	<div id="heading">Dinner Menu</div>
+	<div id="heading"><span class="container">Dinner Menu</span></div>
   </section>
   <section id="section03">
-	<div id="heading">Table Menu</div>
+	<div id="heading"><span class="container">Table Menu</span></div>
   </section><a href="https://youtu.be/m1IU7zjl1k4" id="youtube"><i class="fa fa-youtube-play"></i></a>
 
 
@@ -114,6 +120,17 @@
 
 
 </html>
+
+<style>
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+</style>
+
 
 <!-- css for codepen starts -->
 <style>
@@ -198,11 +215,12 @@ li {
   margin-left: 20px;
 }
 li a {
-  width: 80px;
+  width: 120px;
   height: 20px;
   background: #fff;
   display: block;
-  border-radius: 90px;
+  border-radius: 100px;
+  text-align: center;
 }
 
 #menu-toggle {
