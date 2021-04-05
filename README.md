@@ -15,7 +15,6 @@ SES Online Restaurant Web Application
   
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-**PLEASE UPDATE YOUR OWN BRANCHES ON HERE SO I CAN MERGE ANY NEW FUNCITONALITY/PAGES WITH MAIN, THEN YOU CAN PULL MAIN AND WORK ON IT FROM THERE**
 
 **History:**
 
