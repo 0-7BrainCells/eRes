@@ -14,6 +14,13 @@ router.get('/CustomerRegistration', (req, res) => {
     res.render('customer-rego')
 }), 
 
+router.get('/LunchMenu', (req, res) => {
+    res.render('lunch-menu')  
+}), 
+router.get('/DinnerMenu', (req, res) => {
+  res.render('dinner-menu')   
+}), 
+
 router.post('/staff-login-received', (req, res) => {
   Staff.findOne({
     ID: req.body.ID,

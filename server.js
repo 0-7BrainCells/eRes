@@ -28,4 +28,18 @@ app.get('/', (req, res) => {
     res.render('index', { pages: pages}) 
 })
 
+app.get('/', (req, res) => {
+    const pages = [{
+        title: 'Lunch Menu',
+    }]
+    res.render('pages/index', { pages: pages}) //links this page to the pages.js
+})
+
+app.get('/', (req, res) => {
+    const pages = [{
+        title: 'Dinner Menu',
+    }]
+    res.render('pages/index', { pages: pages}) //links this page to the pages.js
+})
+
 app.listen(5000)
