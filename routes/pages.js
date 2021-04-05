@@ -23,7 +23,8 @@ router.post('/staff-login-received', (req, res) => {
 
     if (!user) { return res.status(200).send("User not found, check username and password are correct"); } //The email or password dont exist in the DB
 
-    return res.status(200).send("You are logged in succesfully. (TODO: actually make some sort of session thing with profiles");
+    // return res.status(200).send("You are logged in succesfully. (TODO: actually make some sort of session thing with profiles");
+    return res.status(200).render('staff-successful');
   }
 )
 }), 
@@ -37,7 +38,7 @@ router.post('/customer-login-received', (req, res) => {  //Check if the email an
   
         if (!user) { return res.status(200).send("User not found, check username and password are correct"); } //The email or password dont exist in the DB
   
-        return res.status(200).send("You are logged in succesfully. (TODO: actually make some sort of session thing with profiles");
+        return res.status(200).send("You are logged in succesfully. (TODO: actually make some sort of session thing with profiles)");
       }
     )
 }),
