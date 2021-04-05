@@ -22,6 +22,10 @@ router.get('/BookTable', (req, res) => {
     // res.send('In pages')
     res.render('pages/book-table')
 })
+router.get('/BookConfirmation', (req, res) => {
+    // res.send('In pages')
+    res.render('pages/book-confirmation')
+})
 router.post('/', (req, res) =>{
 const page = new Page({
 })
