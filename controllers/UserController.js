@@ -1,7 +1,10 @@
 const User = require('../model/User');
 const Staff = require('../model/Staff');
 
-//This page contains all the business logic functions for user page routes. These functions get called in routes/users
+//This page contains all the business logic functions for user page routes. (login, register etc)
+
+
+//Function: takes user input and directs to successful login page if a valid login against db, try again if fail. 
 
 exports.customer_login_post = function(req, res) {
 	User.findOne({
@@ -16,6 +19,8 @@ exports.customer_login_post = function(req, res) {
       }
     )
 }
+
+//Function: takes user input and adds user to db if successful registration. Goes back if user already exists. 
 
 exports.customer_register_post = function(req, res) {
     User.findOne({   
@@ -38,6 +43,8 @@ exports.customer_register_post = function(req, res) {
       }
     )
 }
+
+//Function: takes staff input and logs into staff portal if staff is in db. 
 
 exports.staff_login_post = function(req, res) {
     Staff.findOne({
