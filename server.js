@@ -17,7 +17,7 @@ mongoose.connect('mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWri
 app.set('view engine', 'ejs') 
 
 app.use('/', indexRouter)
-app.use('/users', userRouter)
+app.use('/', userRouter)
 
 app.get('/', (req, res) => {
     const pages = [{
