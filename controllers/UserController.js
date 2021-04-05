@@ -15,7 +15,7 @@ exports.customer_login_post = function(req, res) {
   
         if (!user) { return res.status(200).send("User not found, check username and password are correct"); } 
   
-        return res.status(200).send("You are logged in succesfully. (TODO: actually make some sort of session thing with profiles)");
+        return res.status(200).render('customer-successful');
       }
     )
 }
