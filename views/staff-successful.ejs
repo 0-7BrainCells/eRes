@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
@@ -19,49 +19,6 @@
 		<span class="visually-hidden">Loading...</span>
 	  </div> -->
 
-
-
-
-<!-- js for codepen starts -->
-
-<!-- $( () => {
-	
-	//On Scroll Functionality
-	$(window).scroll( () => {
-		var windowTop = $(window).scrollTop();
-		windowTop > 100 ? $('nav').addClass('navShadow') : $('nav').removeClass('navShadow');
-		windowTop > 100 ? $('ul').css('top','100px') : $('ul').css('top','160px');
-	});
-	
-	//Click Logo To Scroll To Top
-	$('#logo').on('click', () => {
-		$('html,body').animate({
-			scrollTop: 0
-		},500);
-	});
-	
-	//Smooth Scrolling Using Navigation Menu
-	$('a[href*="#"]').on('click', function(e){
-		$('html,body').animate({
-			scrollTop: $($(this).attr('href')).offset().top - 100
-		},500);
-		e.preventDefault();
-	});
-	
-	//Toggle Menu
-	$('#menu-toggle').on('click', () => {
-		$('#menu-toggle').toggleClass('closeMenu');
-		$('ul').toggleClass('showMenu');
-		
-		$('li').on('click', () => {
-			$('ul').removeClass('showMenu');
-			$('#menu-toggle').removeClass('closeMenu');
-		});
-	});
-	
-}); -->
-
-<!-- js for codepen ends -->
 <!-- html component for codepen starts now  -->
 
 <header>
@@ -79,14 +36,15 @@
 		  </div>
 		</div>
 		<ul>
-		  <li><a href="#section00"><span style="color:blue;font-weight:bold">Admin Menu</span></a></li>
-		  <li><a href="#section00" class="fw-bold">Admin Menu</a></li>
+		  <li><a href="#section00">Admin Menu</a></li>
 		  <li><a href="#section01">Lunch Menu</a></li>
 		  <li><a href="#section02">Dinner Menu</a></li>
 		  <li><a href="#section03">Table Menu</a></li>
 		</ul>
 	  </div>
 	</nav>
+
+  
 	<div id="hero-section">
 	  <div id="head-line"></div>
 	</div>
@@ -98,28 +56,41 @@
 
 
   <section id="section00">
-	<div id="heading"><span class="container">Admin Menu</span></div>
+	  <div id="heading"><span class="container">Admin Menu</span></div>
   </section>
+
   <section id="section01">
-	<div id="heading"><span class="container">Lunch Menu</span></div>
+  	<div id="heading"><span class="container">Lunch Menu</span></div>
   </section>
+
   <section id="section02">
-	<div id="heading"><span class="container">Dinner Menu</span></div>
+	  <div id="heading"><span class="container">Dinner Menu</span></div>
   </section>
+
+
+
   <section id="section03">
-	<div id="heading"><span class="container">Table Menu</span></div>
+	  <div id="heading"><span class="container">Table Menu</span></div>
+
   <section id="section00">
-	<div id="heading">Admin Menu</div>
+	  <div id="heading">Admin Menu</div>
   </section>
+
+
   <section id="section01">
-	<div id="heading">Lunch Menu</div>
+  	<div id="heading">Lunch Menu</div>
   </section>
+
+
   <section id="section02">
-	<div id="heading">Dinner Menu</div>
+	  <div id="heading">Dinner Menu</div>
   </section>
+
   <section id="section03">
-	<div id="heading">Table Menu</div>
-  </section><a href="https://youtu.be/m1IU7zjl1k4" id="youtube"><i class="fa fa-youtube-play"></i></a>
+  	<div id="heading">Table Menu</div>
+  </section>
+  
+  <a href="https://youtu.be/m1IU7zjl1k4" id="youtube"><i class="fa fa-youtube-play"></i></a>
 
 
 <!-- html component for codepen ends now  -->
@@ -165,15 +136,16 @@ body {
 header {
   width: 100vw;
   height: 100vh;
-  background: #5661f2;
+  background: #b6c5b8;
   display: flex;
 }
 
 /*** Navigation Styles ***/
+
 nav {
   width: 100vw;
   height: 160px;
-  background: #46b2f0;
+  background: #eedac2;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: fixed;
@@ -193,6 +165,7 @@ nav.navShadow #word-mark {
 ul {
   display: flex;
   align-items: center;
+  list-style-type: none;
 }
 
 #brand {
@@ -223,22 +196,30 @@ ul {
   padding-right: 40px;
 }
 
+a {
+  display: block;
+  padding: 20px;
+}
+
 li {
   margin-left: 20px;
 }
 li a {
-  width: 120px;
-  height: 20px;
+  width: 100px;
+  height: 50px;
   background: #fff;
   display: block;
   border-radius: 100px;
   text-align: center;
-  width: 80px;
-  height: 20px;
-  background: #fff;
-  display: block;
-  border-radius: 90px;
+  color:black; 
+  padding-top: 20px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  text-decoration: none;
+  font-size: large;
 }
+
 
 #menu-toggle {
   width: 55px;
