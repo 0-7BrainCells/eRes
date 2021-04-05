@@ -5,6 +5,13 @@ SES Online Restaurant Web Application
 
 **Using Express.js from Node.js with MongoDB****
 
+**Dev dependancies:**
+- nodemon
+- bcrpyt
+- ejs
+- express
+- mongoose
+
 **Current functionality:**
 
   Navigate a home page
