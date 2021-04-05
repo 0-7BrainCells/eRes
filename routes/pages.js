@@ -15,7 +15,7 @@ router.get('/CustomerRegistration', (req, res) => {
 }), 
 
 router.get('/LunchMenu', (req, res) => {
-  res.render('views/lunch-menu')  // this is not working
+    res.render('lunch-menu')  // this is not working
 }), 
 router.get('/DinnerMenu', (req, res) => {
   res.render('dinner-menu')   // this is not working
