@@ -1,5 +1,6 @@
 const express = require('express')
-const routes = require('./routes/pages')
+const indexRouter = require('./routes/pages')
+const userRouter = require('./routes/users')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -15,7 +16,8 @@ mongoose.connect('mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWri
 
 app.set('view engine', 'ejs') 
 
-app.use(routes)
+app.use('/', indexRouter)
+app.use('/users', userRouter)
 
 app.get('/', (req, res) => {
     const pages = [{
