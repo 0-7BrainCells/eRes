@@ -1,5 +1,5 @@
 const express = require('express')
-const favicon = require('serve-favicon')
+const favicon = require('express-favicon')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
