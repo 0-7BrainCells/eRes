@@ -21,7 +21,6 @@ exports.customer_login_post = function(req, res) {
 }
 
 //Function: takes user input and adds user to db if successful registration. Goes back if user already exists. 
-
 exports.customer_register_post = function(req, res) {
     User.findOne({   
         email: req.body.email

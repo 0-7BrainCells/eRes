@@ -1,6 +1,7 @@
 const express = require('express')
 const indexRouter = require('./routes/pages')
 const userRouter = require('./routes/users')
+const bookingRouter = require('./routes/booking')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs')
 
 app.use('/', indexRouter)
 app.use('/', userRouter)
+app.use('/', bookingRoute)
 
 app.get('/', (req, res) => {
     const pages = [{
