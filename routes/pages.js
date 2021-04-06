@@ -23,6 +23,18 @@ router.get('/DinnerMenu', (req, res) => {
   res.render('dinner-menu')   
 }), 
 
+router.get('/StaffRegistration', (req, res) => {
+  res.render('staff-rego');
+}),
+
+router.get('/StaffManagement', (req, res) => {
+  res.render('staff-management');
+})
+
+router.get('/StaffLayout', (req, res) => {
+  res.render('staff-successful');
+}),
+
 router.post('/', (req, res) =>{
   res.render('/index')
 }) 
