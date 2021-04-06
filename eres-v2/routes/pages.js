@@ -24,7 +24,7 @@ router.get('/BookTable', (req, res) => {
 })
 router.get('/BookConfirmation', (req, res) => {
     // res.send('In pages')
-    res.render('pages/book-confirmation')
+    res.render('pages/booking-confirmation')
 })
 router.post('/', (req, res) =>{
 const page = new Page({
