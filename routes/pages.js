@@ -12,6 +12,10 @@ router.get('/StaffLogin', (req, res) => {
 router.get('/CustomerLogin', (req, res) => {
     res.render('customer-login')
 }), 
+router.get('/Customer', (req, res) => {
+  res.render('customer-login')
+}), 
+
 router.get('/CustomerRegistration', (req, res) => {
     res.render('customer-rego')
 }), 
