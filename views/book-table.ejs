@@ -21,16 +21,16 @@
     <div class="form-wrap">
       <h2 class="mob">Table Booking Form</h2>
      
-      <form action="">
+      <form action="/booking-received" method = "POST">
         <h6>Enter your details below to book a table:</h6>
         <div class="First Name">
           <label for="First Name">First Name</label><br/>
-          <input type="text" name="First" placeholder="Enter name"/><br/>
+          <input type="text" name="fname" placeholder="Enter name"/><br/>
         </div>
 
         <div class="Last Name">
           <label for="Last Name">Last Name</label><br/>
-          <input type="text" name="Last" placeholder="Enter name"/><br/>
+          <input type="text" name="lname" placeholder="Enter name"/><br/>
         </div>
         
         <div class="Time">
@@ -46,16 +46,13 @@
         <div class="guests">
           <label for="guests">Number of Guests</label><br/><br/>
           <button class="counter-btn" type="button" onclick="decrement()" id="cnt-down">-</button>
-          <input type="text" id="guestNo" name="guests" value="2"/>
+          <input type="text" id="guestNo" name="numGuests" value="2"/>
           <button class="counter-btn" type="button" onclick="increment()" id="cnt-up">+</button>
         </div>
         
+        <button class = "btn btn-light" type ="submit">Submit Booking</button>
       </form>
-      <!--
-      <button class="btn" type="button"><a href= "/pages/BookTable" class="btn btn-info"></a>Book for selected time and date</button>
-      <button class="btn" type="button"><a href= "/" class="btn btn-light"></a>Go Back</button>
-      -->
-      <a href= "/BookConfirmation" class="btn btn-info">Submit Booking</a>
+
       <a href= "../" class="btn btn-light">Go Back</a>
          
          
