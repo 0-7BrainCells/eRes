@@ -23,12 +23,21 @@ router.get('/CustomerRegistration', (req, res) => {
 router.get('/LunchMenu', (req, res) => {
     res.render('lunch-menu')  
 }), 
+
 router.get('/DinnerMenu', (req, res) => {
   res.render('dinner-menu')   
 }), 
 
+router.get('/BookTable', (req, res) => {
+  res.render('book-table')
+}),
+
+router.get('/BookConfirmation', (req, res) => {
+  res.render('booking-confirmation')
+}),
+
 router.post('/', (req, res) =>{
-  res.render('/index')
+  res.render('index')
 }) 
 
 
