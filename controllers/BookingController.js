@@ -25,3 +25,10 @@ exports.add_booking = function(req, res) {
       }
     )
 }
+
+exports.list_bookings = function() {
+  Booking.findOne({}, function(err, result) {
+    if (err) throw err;
+    console.log(result)
+  })
+}
