@@ -1,3 +1,5 @@
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority";
 const Booking = require('../model/Booking');
 
 //Function: adds a booking into the booking database using input fields of user name, table number and date string (DD/MM/YYYY)
@@ -24,11 +26,4 @@ exports.add_booking = function(req, res) {
         }
       }
     )
-}
-
-exports.list_bookings = function() {
-  Booking.findOne({}, function(err, result) {
-    if (err) throw err;
-    console.log(result)
-  })
 }
