@@ -5,7 +5,7 @@ const Booking = require('../model/Booking');
 exports.add_booking = function(req, res) {
     Booking.findOne({   
         fname: req.body.fname,
-        lname: req.body.date,
+        lname: req.body.lname,
         date: req.body.date
       }, function(err, booking) {
         if (err) { return res.status(500).send(err); }
@@ -14,7 +14,7 @@ exports.add_booking = function(req, res) {
             var myData = new Booking(req.body);
              myData.save()
                 .then(item => {
-                     res.send("Booking saved into database");
+                  return res.status(200).render('booking-confirmation');
              })
              .catch(err => {
                      res.status(400).send("Unable to save to database");
