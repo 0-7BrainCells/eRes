@@ -1,14 +1,14 @@
 const express = require('express')
-const indexRouter = require('./routes/pages')
-const userRouter = require('./routes/users')
-const bookingRouter = require('./routes/bookings')
-const app = express()
+const favicon = require('serve-favicon')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+
+const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/Public'));
+app.use(favicon(__dirname + '/Public/images/favicon.ico'));
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority', () => {
@@ -17,9 +17,13 @@ mongoose.connect('mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWri
 
 app.set('view engine', 'ejs') 
 
+const indexRouter = require('./routes/pages')
+const userRouter = require('./routes/users')
+const bookingRouter = require('./routes/bookings')
 app.use('/', indexRouter)
 app.use('/', userRouter)
 app.use('/', bookingRouter)
+
 
 app.get('/', (req, res) => {
     const pages = [{
