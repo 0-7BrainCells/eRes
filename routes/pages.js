@@ -12,6 +12,10 @@ router.get('/StaffLogin', (req, res) => {
 router.get('/CustomerLogin', (req, res) => {
     res.render('customer-login')
 }), 
+router.get('/Customer', (req, res) => {
+  res.render('customer-login')
+}), 
+
 router.get('/CustomerRegistration', (req, res) => {
     res.render('customer-rego')
 }), 
@@ -19,6 +23,7 @@ router.get('/CustomerRegistration', (req, res) => {
 router.get('/LunchMenu', (req, res) => {
     res.render('lunch-menu')  
 }), 
+
 router.get('/DinnerMenu', (req, res) => {
   res.render('dinner-menu')   
 }), 
@@ -36,7 +41,7 @@ router.get('/StaffLayout', (req, res) => {
 }),
 
 router.post('/', (req, res) =>{
-  res.render('/index')
+  res.render('index')
 }) 
 
 

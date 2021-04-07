@@ -20,6 +20,10 @@ SES Online Restaurant Web Application
 
   Customer login, email validation against database
   
+  Navigate between Lunch and Dinner Menu's to browse items
+  
+  Staff login with ID validation
+  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
