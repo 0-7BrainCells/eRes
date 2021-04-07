@@ -9,6 +9,6 @@ router.post('/customer-register-received', UserController.customer_register_post
 
 router.post('/staff-login-received', UserController.staff_login_post)
 
-router.post('/staff-register-recieved', UserController.staff_register_post)
+router.post('/staff-register-received', UserController.staff_register_post)
 
 module.exports = router;

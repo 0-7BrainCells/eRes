@@ -61,16 +61,16 @@ exports.staff_login_post = function(req, res) {
 }
 //not coded properly yet ;)
 exports.staff_register_post = function(req, res) {
-  User.findOne({   
+  Staff.findOne({   
       ID: req.body.ID
     }, function(err, user) {
       if (err) { return res.status(500).send(err); }
 
       if (!user) {  
-          var myData = new User(req.body);
+          var myData = new Staff(req.body);
            myData.save()
               .then(item => {
-                   res.send("User saved to database (TODO: direct to login page");
+                   res.send("Staff saved to database (TODO: direct to login page");
            })
            .catch(err => {
                    res.status(400).send("Unable to save to database");
