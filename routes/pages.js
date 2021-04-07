@@ -34,15 +34,27 @@ router.get('/StaffRegistration', (req, res) => {
 
 router.get('/StaffManagement', (req, res) => {
   res.render('staff-management');
-})
+}),
 
 router.get('/StaffLayout', (req, res) => {
   res.render('staff-successful');
 }),
 
+router.post('/EditCustomer', (req, res) => {
+  res.render('edit-customer');
+}),
+
+router.post('/RemoveStaff', (req, res) => {
+  res.render('remove-staff')
+}),
+
 router.post('/', (req, res) =>{
   res.render('index')
-}) 
+})
+
+
+
+
 
 
 module.exports = router 
