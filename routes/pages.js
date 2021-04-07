@@ -28,12 +28,16 @@ router.get('/DinnerMenu', (req, res) => {
   res.render('dinner-menu')   
 }), 
 
-router.get('/BookTable', (req, res) => {
-  res.render('book-table')
+router.get('/StaffRegistration', (req, res) => {
+  res.render('staff-rego');
 }),
 
-router.get('/BookConfirmation', (req, res) => {
-  res.render('booking-confirmation')
+router.get('/StaffManagement', (req, res) => {
+  res.render('staff-management');
+})
+
+router.get('/StaffLayout', (req, res) => {
+  res.render('staff-successful');
 }),
 
 router.post('/', (req, res) =>{
