@@ -40,11 +40,11 @@ router.get('/StaffLayout', (req, res) => {
   res.render('staff-successful');
 }),
 
-router.post('/EditCustomer', (req, res) => {
+router.get('/EditCustomer', (req, res) => {
   res.render('edit-customer');
 }),
 
-router.post('/RemoveStaff', (req, res) => {
+router.get('/RemoveStaff', (req, res) => {
   res.render('remove-staff')
 }),
 
