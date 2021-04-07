@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const bcrypt = require('bcrypt');
 const UserController = require('../controllers/UserController')
 
 router.post('/customer-login-received', UserController.customer_login_post)
