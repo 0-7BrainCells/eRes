@@ -8,3 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eRestaurant</title>
 </head>
+<body>
+    <div class= "container">
+       <h1 class= "mb-4">Edit Customer Account</h1>
+    <form action="/customer-register-received" method = "POST" >
+      
+        <div class="col-md-4">
+          <label for="validationDefaultUsername" class="form-label">Email</label>
+          <div class="input-group">
+            <span class="input-group-text" id="inputGroupPrepend2">@</span>
+            <input type="text" class="form-control" name = "email" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+          </div>
+        </div>
+
+        <label class="form-check-label" for="invalidCheck2">
+        </label>
+
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+          <a href="/StaffManagement" class= "btn btn-light">Back</a>
+        </div>
+
+    
+
+      </form>
