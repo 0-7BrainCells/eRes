@@ -1,6 +1,6 @@
 const LunchMenu = require('../model/LunchMenu');
 
-exports.add_lmenu_item = function (req, res) {
+exports.add_lunch_menu_item = function (req, res) {
     LunchMenu.findOne({
       name: req.body.name
     }, function (err, item) {
@@ -22,7 +22,7 @@ exports.add_lmenu_item = function (req, res) {
     ) 
 }
 
-exports.remove_dinner_menu_item = function (req, res) {
+exports.remove_lunch_menu_item = function (req, res) {
   LunchMenu.deleteOne({
     name: req.body.name
   }, function (err, item) {
