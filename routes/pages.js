@@ -22,6 +22,10 @@ router.get('/BookTable', (req, res) => {
   res.render('user/book-table')
 }), 
 
+router.get('/BookingRecord', (req, res) => {
+  res.render('user/booking-record')
+}), 
+
 
 router.get('/LunchMenu', (req, res) => {
     res.render('user/lunch-menu')  
