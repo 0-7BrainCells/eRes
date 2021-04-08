@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const bcrypt = require('bcrypt');
 const User = require('../model/User');
 const Staff = require('../model/Staff');
 
@@ -28,17 +27,33 @@ router.get('/DinnerMenu', (req, res) => {
   res.render('dinner-menu')   
 }), 
 
-router.get('/BookTable', (req, res) => {
-  res.render('book-table')
+router.get('/StaffRegistration', (req, res) => {
+  res.render('staff-rego');
 }),
 
-router.get('/BookConfirmation', (req, res) => {
-  res.render('booking-confirmation')
+router.get('/StaffManagement', (req, res) => {
+  res.render('staff-management');
+}),
+
+router.get('/StaffLayout', (req, res) => {
+  res.render('staff-successful');
+}),
+
+router.get('/EditCustomer', (req, res) => {
+  res.render('edit-customer');
+}),
+
+router.get('/RemoveStaff', (req, res) => {
+  res.render('remove-staff')
 }),
 
 router.post('/', (req, res) =>{
   res.render('index')
-}) 
+})
+
+
+
+
 
 
 module.exports = router 

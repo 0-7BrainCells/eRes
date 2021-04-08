@@ -3,7 +3,7 @@ SES Online Restaurant Web Application
 
 **Version Information: Pre- Release v0.0.0**
 
-**Using Express.js from Node.js with MongoDB****
+**Using Express -> Node.js with MongoDB****
 
 **Dev dependancies:**
 - nodemon

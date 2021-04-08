@@ -4,4 +4,5 @@ const BookingController = require('../controllers/BookingController')
 
 router.post('/booking-received', BookingController.add_booking) 
 
+
 module.exports = router;
