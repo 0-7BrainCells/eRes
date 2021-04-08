@@ -39,7 +39,7 @@
         </div>
         <div class="Date">
           <label for="Date">Select a Date:</label><br/>
-          <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
+          <input type="date" id="date" name="date" onfocus="(this.type='date')" placeholder="MM/DD/YYYY" onblur="(this.type='text')">
         </div>
         
 
@@ -69,7 +69,7 @@
      $(document).ready(function () {
     var guestAmount = $("#guestNo");
   $("#cnt-up").click(function () {
-    guestAmount.val(Math.min(parseInt($("#guestNo").val()) + 1, 20));
+    guestAmount.val(Math.min(parseInt($("#guestNo").val()) + 1, 10));
   });
   $("#cnt-down").click(function () {
     guestAmount.val(Math.max(parseInt($("#guestNo").val()) - 1, 1));
@@ -98,7 +98,7 @@
   box-sizing: border-box;
 }
 body {
-  background: #f3c19f;
+  background: #e5a88b;
   color: rgb(47, 47, 47);
   font: "Open Sans";
   font-size: 100%;
