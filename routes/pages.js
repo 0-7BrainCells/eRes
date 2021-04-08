@@ -32,7 +32,7 @@ router.get('/DinnerMenu', (req, res) => {
 }), 
 
 router.get('/StaffRegistration', (req, res) => {
-  res.render('staff/staff-rego');
+  res.render('staff/admin/manage-staff-customers/staff-rego');
 }),
 
 router.get('/StaffManagement', (req, res) => {
