@@ -19,6 +19,10 @@ router.get('/CustomerRegistration', (req, res) => {
     res.render('customer-rego')
 }), 
 
+router.get('/BookTable', (req, res) => {
+  res.render('book-table')
+}), 
+
 router.get('/LunchMenu', (req, res) => {
     res.render('lunch-menu')  
 }), 
