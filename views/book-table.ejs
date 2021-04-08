@@ -25,28 +25,28 @@
         <h6>Enter your details below to book a table:</h6>
         <div class="First Name">
           <label for="First Name">First Name</label><br/>
-          <input type="text" name="fname" placeholder="Enter name"/><br/>
+          <input required type="text" name="fname" placeholder="Enter name"/><br/>
         </div>
 
         <div class="Last Name">
           <label for="Last Name">Last Name</label><br/>
-          <input type="text" name="lname" placeholder="Enter name"/><br/>
+          <input required type="text" name="lname" placeholder="Enter name"/><br/>
         </div>
         
         <div class="Time">
           <label for="Time">Select a Time:</label><br/>
-          <input type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
+          <input required type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
         </div>
         <div class="Date">
           <label for="Date">Select a Date:</label><br/>
-          <input type="date" id="date" name="date" onfocus="(this.type='date')" placeholder="MM/DD/YYYY" onblur="(this.type='text')">
+          <input required type="date" id="date" name="date" onfocus="(this.type='date')" placeholder="MM/DD/YYYY" onblur="(this.type='text')">
         </div>
         
 
         <div class="guests">
           <label for="guests">Number of Guests</label><br/><br/>
           <button class="counter-btn" type="button" onclick="decrement()" id="cnt-down">-</button>
-          <input type="text" id="guestNo" name="numGuests" value="2"/>
+          <input required type="text" id="guestNo" name="numGuests" value="2"/>
           <button class="counter-btn" type="button" onclick="increment()" id="cnt-up">+</button>
         </div>
         
@@ -73,18 +73,6 @@
   });
   $("#cnt-down").click(function () {
     guestAmount.val(Math.max(parseInt($("#guestNo").val()) - 1, 1));
-  });
-  $(".btn").click(function () {
-    var $btn = $(".btn");
-    $btn.toggleClass("booked");
-    $(".rectangle").toggleClass("windup");
-    $("form").slideToggle(300);
-    $(".linkbox").toggle(200);
-    if ($btn.text() === "Submit Booking") {
-      $btn.text("BOOKED!");
-    } else {
-      $btn.text("Submit Booking");
-    }
   });
 });
    
