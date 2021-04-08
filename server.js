@@ -2,6 +2,7 @@ const express = require('express')
 const favicon = require('express-favicon')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const url = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority'
 
 const app = express()
 
@@ -11,7 +12,7 @@ app.use(express.static(__dirname + '/Public'));
 app.use(favicon(__dirname + '/Public/images/favicon.ico'));
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority', () => {
+mongoose.connect(url, () => {
     console.log('Connected to MongoDB Successfully!')
 })
 

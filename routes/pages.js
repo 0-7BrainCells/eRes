@@ -1,7 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../model/User');
-const Staff = require('../model/Staff');
 
 //Page redirect action handlers:
 
