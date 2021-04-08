@@ -14,7 +14,7 @@
     <div class= "container">
     
       
-    
+    <h3>Enter your details below to book a table:</h3>
     </div>
 
     <div class="rectangle"></div>
@@ -22,7 +22,7 @@
       <h2 class="mob">Table Booking Form</h2>
      
       <form action="/booking-received" method = "POST">
-        <h6>Enter your details below to book a table:</h6>
+        
         <div class="First Name">
           <label for="First Name">First Name</label><br/>
           <input required type="text" name="fname" placeholder="Enter name"/><br/>
@@ -39,14 +39,16 @@
         </div>
         <div class="Date">
           <label for="Date">Select a Date:</label><br/>
-          <input required type="date" id="date" name="date" onfocus="(this.type='date')" placeholder="MM/DD/YYYY" onblur="(this.type='text')">
+          <input required type="date" id="date" name="date" onfocus="(this.type='date')" placeholder="DD/MM/YYYY" onblur="(this.type='text')" 
+          class="disablePastDate">
+          
         </div>
         
 
         <div class="guests">
           <label for="guests">Number of Guests</label><br/><br/>
           <button class="counter-btn" type="button" onclick="decrement()" id="cnt-down">-</button>
-          <input required type="text" id="guestNo" name="numGuests" value="2"/>
+          <input  id="guestNo" name="numGuests" type="number" min="1" max="10"value="1"/>
           <button class="counter-btn" type="button" onclick="increment()" id="cnt-up">+</button>
         </div>
         
@@ -59,7 +61,25 @@
       </div>
     </div> <!--Javascript starts here:-->
     <script>
-    
+      /*
+    var dateToday = new Date();
+$('.disablePastDate').datepicker({
+  defaultDate: "+1w",
+  changeMonth: true,
+  numberOfMonths: 1,
+  minDate: dateToday,
+  onSelect: function (selectedDate) {
+    var option = this.id == "from" ? "minDate" : "maxDate",
+      instance = $(this).data("datepicker"),
+      date = $.datepicker.parseDate(
+        instance.settings.dateFormat || $.datepicker._defaults.dateFormat,
+        selectedDate,
+        instance.settings
+      );
+    dates.not(this).datepicker("option", option, date);
+  }
+});*/
+
       function decrement() {
       document.getElementById("guestNo").stepDown();
     }
