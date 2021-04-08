@@ -5,9 +5,8 @@ SES Online Restaurant Web Application
 
 **Using Express -> Node.js with MongoDB****
 
-**Dev dependancies:**
+**Dependancies:**
 - nodemon
-- bcrpyt
 - ejs
 - express
 - mongoose
@@ -23,6 +22,10 @@ SES Online Restaurant Web Application
   Navigate between Lunch and Dinner Menu's to browse items
   
   Staff login with ID validation
+  
+  Make a table booking
+  
+  Admin menu -> add/remove menu items, add/remove staff
   
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
