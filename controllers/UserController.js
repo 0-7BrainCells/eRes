@@ -102,3 +102,25 @@ exports.staff_remove_account = function (req, res) {
     }
   })
 }
+
+exports.edit_customer_post = function (req, res) {
+  User.updateOne({
+    email: req.body.email
+  }, function (err, user) {
+    if (err) { return res.status(500).send(err); }
+
+    if (user) {
+      var myData = new User(req.body);
+      myData.update()
+        .then(item => {
+          res.send("Customer Account Updated (TODO: direct to login page");
+        })
+        .catch(err => {
+          res.status(400).send("Unable to save to database");
+        });
+    } else {
+      return res.status(200).send("email does not exist (TODO: redirect this page to the registration again");
+    }
+  }
+  )
+}

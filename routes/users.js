@@ -12,4 +12,6 @@ router.post('/staff-register-received', UserController.staff_register_post)
 
 router.post('/staff-account-removed', UserController.staff_remove_account)
 
+router.post('/customer-account-edited', UserController.edit_customer_post)
+
 module.exports = router;
