@@ -32,29 +32,8 @@ app.use('/', lmenuRouter)
 
 
 app.get('/', (req, res) => {
-    const pages = [{
-        title: 'eResto Registration', 
-        createdAt: new Date()
-},
-{
-        title: 'eResto Staff Login', 
-        createdAt: new Date()
-    }]
-    res.render('index', { pages: pages}) 
+    res.render('index') 
 })
 
-app.get('/', (req, res) => {
-    const pages = [{
-        title: 'Lunch Menu',
-    }]
-    res.render('pages/index', { pages: pages}) //links this page to the pages.js
-})
-
-app.get('/', (req, res) => {
-    const pages = [{
-        title: 'Dinner Menu',
-    }]
-    res.render('pages/index', { pages: pages}) //links this page to the pages.js
-})
 
 app.listen(process.env.PORT || 5000)
