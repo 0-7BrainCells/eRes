@@ -2,7 +2,7 @@ const LunchMenu = require('../model/LunchMenu');
 
 exports.add_lmenu_item = function (req, res) {
     LunchMenu.findOne({
-      name = req.body.name
+      name: req.body.name
     }, function (err, item) {
       if (err) { return res.status(500).send(err); }
   
