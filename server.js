@@ -56,4 +56,4 @@ app.get('/', (req, res) => {
     res.render('pages/index', { pages: pages}) //links this page to the pages.js
 })
 
-app.listen(5000)
+app.listen(process.env.PORT || 5000)
