@@ -4,54 +4,54 @@ const router = express.Router()
 //Page redirect action handlers:
 
 router.get('/StaffLogin', (req, res) => {
-    res.render('staff-login')
+    res.render('staff/staff-login')
 }), 
 router.get('/CustomerLogin', (req, res) => {
-    res.render('customer-login')
+    res.render('index/customer-login')
 }), 
 router.get('/Customer', (req, res) => {
-  res.render('customer-login')
+  res.render('index/customer-login')
 }), 
 
 router.get('/CustomerRegistration', (req, res) => {
-    res.render('customer-rego')
+    res.render('index/customer-rego')
 }), 
 
 router.get('/CustomerHomePage', (req, res) => {
-  res.render('customer-successful')
+  res.render('user/customer-successful')
 }), 
 
 router.get('/BookTable', (req, res) => {
-  res.render('book-table')
+  res.render('user/book-table')
 }), 
 
 
 router.get('/LunchMenu', (req, res) => {
-    res.render('lunch-menu')  
+    res.render('user/lunch-menu')  
 }), 
 
 router.get('/DinnerMenu', (req, res) => {
-  res.render('dinner-menu')   
+  res.render('user/dinner-menu')   
 }), 
 
 router.get('/StaffRegistration', (req, res) => {
-  res.render('staff-rego');
+  res.render('staff/staff-rego');
 }),
 
 router.get('/StaffManagement', (req, res) => {
-  res.render('staff-management');
+  res.render('staff/admin/staff-management');
 }),
 
 router.get('/StaffLayout', (req, res) => {
-  res.render('staff-successful');
+  res.render('staff/staff-successful');
 }),
 
 router.get('/EditCustomer', (req, res) => {
-  res.render('edit-customer');
+  res.render('staff/admin/edit-customer');
 }),
 
 router.get('/RemoveStaff', (req, res) => {
-  res.render('remove-staff')
+  res.render('staff/admin/remove-staff')
 }),
 
 router.post('/', (req, res) =>{

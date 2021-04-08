@@ -15,7 +15,7 @@ exports.customer_login_post = function (req, res) {
 
     if (!user) { return res.status(200).send("User not found, check username and password are correct"); }
 
-    return res.status(200).render('customer-successful');
+    return res.status(200).render('user/customer-successful');
   }
   )
 }
@@ -55,7 +55,7 @@ exports.staff_login_post = function (req, res) {
     if (!user) { return res.status(200).send("User not found, check username and password are correct"); } //The email or password dont exist in the DB
 
     // return res.status(200).send("You are logged in succesfully. (TODO: actually make some sort of session thing with profiles");
-    return res.status(200).render('staff-successful');
+    return res.status(200).render('staff/staff-successful');
   }
   )
 }
