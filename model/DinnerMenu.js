@@ -16,5 +16,5 @@ const dinnerMenuSchema = new Schema({
         required: true
     }
   });
-taff
+
 module.exports = mongoose.model('DinnerMenu', dinnerMenuSchema);

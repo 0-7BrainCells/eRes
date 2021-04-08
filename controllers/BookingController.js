@@ -16,7 +16,7 @@ exports.add_booking = function(req, res) {
             var myData = new Booking(req.body);
              myData.save()
                 .then(item => {
-                  return res.status(200).render('booking-confirmation');
+                  return res.status(200).render('user/booking/booking-confirmation');
              })
              .catch(err => {
                      res.status(400).send("Unable to save to database");

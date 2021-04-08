@@ -21,9 +21,13 @@ app.set('view engine', 'ejs')
 const indexRouter = require('./routes/pages')
 const userRouter = require('./routes/users')
 const bookingRouter = require('./routes/bookings')
+const dmenuRouter = require('./routes/dmenus')
+const lmenuRouter = require('./routes/lmenus')
 app.use('/', indexRouter)
 app.use('/', userRouter)
 app.use('/', bookingRouter)
+app.use('/', dmenuRouter)
+app.use('/', lmenuRouter)
 
 
 app.get('/', (req, res) => {
