@@ -1,36 +1,68 @@
 const express = require('express')
-const Page = require('./../models/page')
 const router = express.Router()
+const User = require('../model/User');
+const Staff = require('../model/Staff');
+
+//Page redirect action handlers:
 
 router.get('/StaffLogin', (req, res) => {
-    // res.send('In pages')
-    res.render('pages/staff-login')
+    res.render('staff-login')
 }), 
 router.get('/CustomerLogin', (req, res) => {
-    // res.send('In pages')
-    res.render('pages/customer-login')
+    res.render('customer-login')
 }), 
-router.get('/CustomerRegistration', (req, res) => {
-    // res.send('In pages')
-    res.render('pages/customer-rego')
-})
-router.get('/LunchMenu', (req, res) => {
-    // res.send('In pages')
-    res.render('pages/lunch-menu')
-})
-router.get('/BookTable', (req, res) => {
-    // res.send('In pages')
-    res.render('pages/book-table')
-})
-router.get('/BookConfirmation', (req, res) => {
-    // res.send('In pages')
-    res.render('pages/booking-confirmation')
-})
-router.post('/', (req, res) =>{
-const page = new Page({
-})
-}
+router.get('/Customer', (req, res) => {
+  res.render('customer-login')
+}), 
 
-)
+router.get('/CustomerRegistration', (req, res) => {
+    res.render('customer-rego')
+}), 
+
+router.get('/CustomerHomePage', (req, res) => {
+  res.render('customer-successful')
+}), 
+
+router.get('/BookTable', (req, res) => {
+  res.render('book-table')
+}), 
+
+
+router.get('/LunchMenu', (req, res) => {
+    res.render('lunch-menu')  
+}), 
+
+router.get('/DinnerMenu', (req, res) => {
+  res.render('dinner-menu')   
+}), 
+
+router.get('/StaffRegistration', (req, res) => {
+  res.render('staff-rego');
+}),
+
+router.get('/StaffManagement', (req, res) => {
+  res.render('staff-management');
+}),
+
+router.get('/StaffLayout', (req, res) => {
+  res.render('staff-successful');
+}),
+
+router.get('/EditCustomer', (req, res) => {
+  res.render('edit-customer');
+}),
+
+router.get('/RemoveStaff', (req, res) => {
+  res.render('remove-staff')
+}),
+
+router.post('/', (req, res) =>{
+  res.render('index')
+})
+
+
+
+
+
 
 module.exports = router 

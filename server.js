@@ -1,33 +1,54 @@
 const express = require('express')
+const favicon = require('express-favicon')
 const mongoose = require('mongoose')
-const pageRouter = require('./routes/pages')
+const bodyParser = require('body-parser')
+
 const app = express()
 
-mongoose.connect('mongodb://localhost/eRes', {
-    useNewUrlParser: true, useUnifiedTopology: true
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(express.static(__dirname + '/Public'));
+app.use(favicon(__dirname + '/Public/images/favicon.ico'));
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority', () => {
+    console.log('Connected to MongoDB Successfully!')
 })
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs') 
 
-app.use('/pages', pageRouter)
+const indexRouter = require('./routes/pages')
+const userRouter = require('./routes/users')
+const bookingRouter = require('./routes/bookings')
+app.use('/', indexRouter)
+app.use('/', userRouter)
+app.use('/', bookingRouter)
+
 
 app.get('/', (req, res) => {
     const pages = [{
         title: 'eResto Registration', 
         createdAt: new Date()
-        //createAt: Date.now()
-        //decription: 'Test description'
 },
 {
         title: 'eResto Staff Login', 
         createdAt: new Date()
-        //decription: 'Test description'
     }]
-    res.render('pages/index', { pages: pages}) //9:30 in video { pages: pages}, {text: 'Hello'}
+    res.render('index', { pages: pages}) 
 })
 
+app.get('/', (req, res) => {
+    const pages = [{
+        title: 'Lunch Menu',
+    }]
+    res.render('pages/index', { pages: pages}) //links this page to the pages.js
+})
 
-app.post("/login")
-
+app.get('/', (req, res) => {
+    const pages = [{
+        title: 'Dinner Menu',
+    }]
+    res.render('pages/index', { pages: pages}) //links this page to the pages.js
+})
 
 app.listen(5000)
