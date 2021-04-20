@@ -9,12 +9,168 @@
     <title>eRestaurant</title>
 </head>
 <body>
+    <ul>
+        <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "75" height = "75"/>
+      </ul>
+
     <div class= "container">
         <h1 class= "mb-4">eResto Login<h1>
         <a href= "/StaffLogin" class="btn btn-primary">Staff</a>
         <a href= "/CustomerLogin" class="btn btn-primary">Customer</a>
-        
 
     </div>
+  
+      <section id="section01">
+      </section>
+    
+      <section id="section02">
+          
+      </section>
+    
+      <section id="section03">
+      </section>
+
+
+
 </body>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+  }
+  a {
+    display: block;
+    padding: 20px;
+    
+  }
+  li {
+    float: right;
+    display: inline
+  }
+  li a {
+    color:black; 
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    text-decoration: none;
+    font-size: large;
+  
+  }
+
+
+
+
+
+  /*** Mixins & Default Styles ***/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/*** Color Variables ***/
+/*** Centering Hack ***/
+/*** Header Styles ***/
+header {
+  width: 100vw;
+  height: 100vh;
+  background: #b6c5b8;
+  display: flex;
+}
+
+
+/*** Menu Styles ***/
+#menu {
+  justify-content: flex-end;
+  padding-right: 40px;
+}
+
+/* a {
+  display: block;
+  padding: 20px;
+} */
+
+li {
+  margin-left: 20px;
+}
+li a {
+  width: 160px;
+  height: 30px;
+  background: #fff;
+  display: block;
+  border-radius: 90px;
+
+
+  text-align: center;
+  align-items: center;
+  color:black; 
+  /* padding-top: 0px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 25px; */
+  text-decoration: none;
+  font-size: large;
+}
+
+
+#menu-toggle {
+  width: 55px;
+  height: 55px;
+  background: #eedac2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+}
+
+
+.bar {
+  width: 25px;
+  height: 2px;
+  background: #fff;
+  transition: 0.3s ease-in-out;
+}
+.bar:nth-child(2) {
+  width: 20px;
+  margin: 5px 0;
+}
+.bar:last-child {
+  width: 15px;
+}
+
+/*** Section Styles ***/
+section {
+  width: 100vw;
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+}
+section:nth-child(odd) {
+  background:#b6c5b8;
+}
+section:nth-child(even) {
+  background: #cf9683;
+}
+
+#heading {
+  width: 120px;
+  height: 20px;
+  background: #fff;
+  border-radius: 90px;
+  margin-top: 40px;
+}
+
+</style>
 </html>

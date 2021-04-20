@@ -26,7 +26,12 @@
   <p>                                         </p>
   <ul class="menu">
     <li class="menu-item">
-      <section>
+     <ul>
+       <% LunchMenuTest.forEach(function(LunchMenu) {%>
+        <li><%= LunchMenuTest.name %></li>
+       <% }); %> 
+     </ul>
+      <!-- <section>
         <header>
           <h1>Item Name</h1>
           <span class="spacer"></span>
@@ -35,13 +40,13 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt deserunt minima praesentium blanditiis, ipsum dicta quam laborum esse magnam nemo unde consequatur autem mollitia consequuntur quaerat vel quis quos error.</p>
         <div class="quan_addBtn">
           <div class= "addToOrderBtn">
-            <a href= "LunchMenu" class="btn btn-info">Add To Order</a> <!-- links page to button-->
+            <a href= "LunchMenu" class="btn btn-info">Add To Order</a> 
           </div>
           <div class="quantity">
             <input type="number" id="quantity" name="quantity" class="form-control input-number" min="1" max="10">
           </div>
         </div>
-        </section>
+        </section> -->
     </li>
     <li class="menu-item">
       <section>
