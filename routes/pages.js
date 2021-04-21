@@ -28,7 +28,7 @@ router.get('/LunchMenu', (req, res) => {
     let LunchTestData = [{'name': 'onion'},{'name': 'carrot'}]
     res.render('user/lunch-menu', {
       //user: 'JasmineTest' ,
-      'LunchMenuTest': LunchTestData.name
+      'LunchMenuTest': LunchTestData
     })  
 }), 
 
