@@ -4,6 +4,28 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const url = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority'
 
+//
+if (process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+const flash = require('express-flash')
+const session = require('express-session')
+const passport = require('passport')
+const initializePassport = require('./passport-config')
+initializePassport(
+    passport, 
+    email => userd.find(user => user.email === email)
+)
+
+app.use(flash())
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false, 
+    saveUnintialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+//
 
 const app = express()
 
@@ -24,6 +46,7 @@ const userRouter = require('./routes/users')
 const bookingRouter = require('./routes/bookings')
 const dmenuRouter = require('./routes/dmenus')
 const lmenuRouter = require('./routes/lmenus')
+//const passport = require('passport')
 app.use('/', indexRouter)
 app.use('/', userRouter)
 app.use('/', bookingRouter)
