@@ -23,19 +23,6 @@ router.get('/BookTable', (req, res) => {
   res.render('user/book-table')
 }), 
 
-
-router.get('/LunchMenu', (req, res) => {
-    let LunchTestData = [{'name': 'onion'},{'name': 'carrot'}]
-    res.render('user/lunch-menu', {
-      //user: 'JasmineTest' ,
-      'LunchMenuTest': LunchTestData
-    })  
-}), 
-
-router.get('/DinnerMenu', (req, res) => {
-  res.render('user/dinner-menu')   
-}), 
-
 router.get('/StaffRegistration', (req, res) => {
   res.render('staff/admin/manage-staff-customers/staff-rego');
 }),
