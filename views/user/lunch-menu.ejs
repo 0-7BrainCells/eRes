@@ -23,10 +23,11 @@
   </ul>
   <!---->
 
+
   <div class="HSpace"></div> 
     <ul class="menu">
-      <% for (var i = 0; i < items.length; i++) {%>
-        <li class="menu-item">
+      <% for (var i = 0; i < items.length; i++) {%>  <!-- This is EJS, using the % to use js within HTML, it uses a variable "items" passed to it when the page is loaded via the route "/LunchMenu", look at the lunch menu route to see that when this page is rendered, it also sends this "items" variable. -->
+        <li class="menu-item">                       <!-- Essentially we are looping over all the items in the Lunch Menu database and outputting them in individual divs with their respective fields (for loop is best for this) -->
           <section>
             <header>
               <h1><%=items[i].name %></h1>

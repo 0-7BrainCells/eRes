@@ -9,6 +9,8 @@ const collname = 'dinnermenus';
 router.post('/add-dinner-menu-item', DinnerMenuController.add_dinner_menu_item) 
 router.post('/remove-dinner-menu-item', DinnerMenuController.remove_dinner_menu_item) 
 
+//Check lmenu route page for exact same function description as this one
+
 router.get('/DinnerMenu', function(req, res) {
     // connect to DB
     MongoClient.connect(dburl, function(err, client) {
