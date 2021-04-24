@@ -4,8 +4,6 @@ const UserController = require('../controllers/UserController')
 
 router.post('/customer-login-received', UserController.customer_login_post)
 
-// router.post('/LoginUnsuccessful', UserController.customer_login_post)
-
 router.post('/customer-register-received', UserController.customer_register_post)
 
 router.post('/staff-login-received', UserController.staff_login_post)
@@ -16,4 +14,9 @@ router.post('/staff-account-removed', UserController.staff_remove_account)
 
 router.post('/customer-account-removed', UserController.customer_remove_account)
 
+// // 
+// router.get('/CustomerCheckout', (req, res) => {
+//     res.render('user/customer-total-checkout')
+//   })
+// // 
 module.exports = router;
