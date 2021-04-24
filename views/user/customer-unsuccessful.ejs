@@ -14,7 +14,7 @@
           <div class="shadow move"></div>
           <div class="message"><h1 class="alert">ERROR: User Not Found!</h1><p>Please try again. Login email or password are incorrect.</div>
           <!-- <button class="button-box"><h1 class="red">try again</h1></button> -->
-          <a href="/CustomerLogin" class="button-box"><h1 class="red">try again</h1></a>
+          <a href="/CustomerLogin" class="button-box"><h1 class="red"><b>try again</b></h1></a>
         </div>
       </div>
 </body>
@@ -39,7 +39,33 @@ a {
   text-decoration: none;
   font-size: large;
 }
-
+    b {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #d16644;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: -10px;
+  letter-spacing: 4px
+  }
+    b:hover {
+  background:  #d16644;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #d16644
+            0 0 25px #d16644,
+            0 0 50px #d16644,
+            0 0 100px #d16644;
+  }
+  
+    b span {
+  position: absolute;
+  display: block;
+  }
 
 
     @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
