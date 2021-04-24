@@ -1,6 +1,5 @@
 const LunchMenu = require('../model/LunchMenu');
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority'
 
 exports.add_lunch_menu_item = function (req, res) {
     LunchMenu.findOne({
@@ -43,8 +42,4 @@ exports.remove_lunch_menu_item = function (req, res) {
       return res.status(200).send("Item doesnt exist in database with this name");
     }
   })
-}
-
-exports.list_lunch_menu_items = function (req, res) {
-  
 }

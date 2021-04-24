@@ -9,12 +9,155 @@
     <title>eRestaurant</title>
 </head>
 <body>
-    <div class= "container">
-        <h1 class= "mb-4">eResto Login<h1>
-        <a href= "/StaffLogin" class="btn btn-primary">Staff</a>
-        <a href= "/CustomerLogin" class="btn btn-primary">Customer</a>
-        
+  <!--- NAV PAN  -->
+  <ul>
+    <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "75" height = "75"/>
+    <li><a href= "/StaffLogin" >Staff </a></li>
+    <li><a href= "/CustomerLogin">Customer </a></li>
+  </ul>
 
+  <img src="images/LandingPageGIF.gif" width = "100%" alt="description of gif" /> 
+  
+  <section id="section01">
+    <div class="row">
+      <div class="column">
+        <img class="container__image" src="images/Food.jpg"  alt="food"   width = "100%" height = "100%">
+      </div>
+      <div class="column">
+        <div class="infosec">
+          <h1 style="font-family: Belleza">Le Bistrot d'Andre</h1>
+          <h2> Presented by Gabrielle Anderson</h2>
+          <p>      </p>
+          <p>      </p>
+          <h4> Le Bistrot d'Andre is Gabrielle Anderson's flagship restaurant.</h4>
+          <p>      </p>
+          <h4> Located in the north of Sydey, the classical french restaurant offers a curated lunch and dinner menu and can seat a maximum of 150 people.</h4>
+          <p>      </p>
+          <h4> Most nights Le Bistrot d'Andre reaches maximum capacity so <bold>reservations are a must.</bold></h4>
+          
+          <div class= "btnGroup">
+            <p>            </p>
+            <a href= "/CustomerLogin" class="btn btn-info" style="padding: 15px ;">Make A Table Reservation</a> <!-- links page to button-->
+            <p>            </p>
+            <p>            </p>
+            <a href= "/CustomerLogin" class="btn btn-info" style="padding: 15px ;">View Lunch Menu</a>
+           
+        </div>
+      </div>
+      </div>
     </div>
+  </section>
+
+
 </body>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+  }
+  a {
+    display: block;
+    padding: 20px;
+    
+  }
+  li {
+    float: right;
+    display: inline
+  }
+  li a {
+    color:black; 
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    text-decoration: none;
+    font-size: large;
+  
+  }
+li {
+  margin-left: 20px;
+}
+li a {
+  width: 160px;
+  height: 30px;
+  /* background-image:  */
+  display: block;
+  border-radius: 90px;
+
+
+  text-align: center;
+  align-items: center;
+  color:black; 
+  /* padding-top: 0px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 25px; */
+  text-decoration: none;
+  font-size: large;
+}
+
+/*** Section Styles ***/
+section {
+  width: 100vw;
+  height: 30%;
+  /* display: flex; */
+  justify-content: left;
+}
+section:nth-child(odd) {
+  background:#C4A484
+;
+}
+
+
+#heading {
+  width: 120px;
+  height: 20px;
+  background: #fff;
+  border-radius: 90px;
+  margin-top: 40px;
+}
+
+.column {
+  vertical-align: middle;
+  float: left;
+  width: 40%;
+  padding-top: 20px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 25px; 
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: bold;
+  color:whitesmoke;
+}
+
+h4 {
+  text-align: left;
+}
+
+.btnGroup {
+    padding: 10px 24px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 85%;
+}
+
+infosec{
+  vertical-align: middle;
+}
+</style>
 </html>
