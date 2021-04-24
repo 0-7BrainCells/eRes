@@ -4,23 +4,43 @@
 
 </head>
 <body>
-    <div id="container">
+    <div id="container" class= "center">
         <div id="error-box">
-          <div class="dot"></div>
-          <div class="dot two"></div>
           <div class="face2">
             <div class="eye"></div>
             <div class="eye right"></div>
             <div class="mouth sad"></div>
           </div>
           <div class="shadow move"></div>
-          <div class="message"><h1 class="alert">Error!</h1><p>oh no, something went wrong.</div>
-          <button class="button-box"><h1 class="red">try again</h1></button>
+          <div class="message"><h1 class="alert">ERROR: User Not Found!</h1><p>Please try again. Login email or password are incorrect.</div>
+          <!-- <button class="button-box"><h1 class="red">try again</h1></button> -->
+          <a href="/CustomerLogin" class="button-box"><h1 class="red">try again</h1></a>
         </div>
       </div>
 </body>
 </html>
 <style>
+
+a {
+  width: 160px;
+  height: 30px;
+  background: #fff;
+  display: block;
+  border-radius: 90px;
+
+
+  text-align: center;
+  align-items: center;
+  color:black; 
+  /* padding-top: 0px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 25px; */
+  text-decoration: none;
+  font-size: large;
+}
+
+
 
     @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
     html {
@@ -34,14 +54,17 @@
       font-family: "Lato", sans-serif;
       text-transform: uppercase;
       text-align: center;
+      background: linear-gradient( to bottom right, #eedac2,#e5a88b);
     }
     
     #container {
       position: relative;
+      align-items: center;
       margin: auto;
       overflow: hidden;
-      width: 700px;
-      height: 250px;
+      width: 2000px;
+      height: 500px;
+      /* height: 320px; */
     }
     
     h1 {
@@ -68,11 +91,11 @@
     }
     
     p {
-      margin-top: -5px;
-      font-size: 0.5em;
-      font-weight: 100;
+      /* margin-top: 15px; */
+      font-size: 1em;
+      font-weight: 300;
       color: #5e5e5e;
-      letter-spacing: 1px;
+      letter-spacing: 5px;
     }
     
     button,
@@ -82,10 +105,11 @@
     
     #error-box {
       position: absolute;
-      width: 35%;
-      height: 100%;
-      right: 12%;
-      background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
+      width: 35%;/*35%; */
+      height: 100%;/*100%;*/
+      right: 50%;
+      align-items: center;
+      background: linear-gradient(to bottom left,#eedac2,#e5a88b);
       border-radius: 20px;
       box-shadow: 5px 5px 20px rgba(203, 205, 211, 0.1);
     }
@@ -106,19 +130,6 @@
     .two {
       right: 12%;
       opacity: 0.5;
-    }
-    
-    .face {
-      position: absolute;
-      width: 22%;
-      height: 22%;
-      background: #fcfcfc;
-      border-radius: 50%;
-      border: 1px solid #777777;
-      top: 21%;
-      left: 37.5%;
-      z-index: 2;
-      animation: bounce 1s ease-in infinite;
     }
     
     .face2 {
@@ -156,13 +167,6 @@
       height: 7px;
       border-radius: 50%;
     }
-    
-    .happy {
-      border: 2px solid;
-      border-color: transparent #777777 #777777 transparent;
-      transform: rotate(45deg);
-    }
-    
     .sad {
       top: 49%;
       border: 2px solid;
@@ -202,7 +206,7 @@
       position: absolute;
       background: #fcfcfc;
       width: 50%;
-      height: 15%;
+      height: 10%;
       border-radius: 20px;
       top: 73%;
       left: 25%;

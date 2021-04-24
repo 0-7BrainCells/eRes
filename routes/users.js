@@ -4,7 +4,7 @@ const UserController = require('../controllers/UserController')
 
 router.post('/customer-login-received', UserController.customer_login_post)
 
-router.post('/customer-login-unsuccessful', UserController.customer_login_post)
+// router.post('/LoginUnsuccessful', UserController.customer_login_post)
 
 router.post('/customer-register-received', UserController.customer_register_post)
 
