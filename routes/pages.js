@@ -1,4 +1,5 @@
 const express = require('express')
+const LunchMenu = require('../model/LunchMenu')
 const router = express.Router()
 
 //Page redirect action handlers:
@@ -20,19 +21,6 @@ router.get('/CustomerHomePage', (req, res) => {
 
 router.get('/BookTable', (req, res) => {
   res.render('user/book-table')
-}), 
-
-router.get('/BookingRecord', (req, res) => {
-  res.render('user/booking-record')
-}), 
-
-
-router.get('/LunchMenu', (req, res) => {
-    res.render('user/lunch-menu')  
-}), 
-
-router.get('/DinnerMenu', (req, res) => {
-  res.render('user/dinner-menu')   
 }), 
 
 router.get('/StaffRegistration', (req, res) => {
