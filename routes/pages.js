@@ -54,6 +54,9 @@ router.get('/EditCustomer', (req, res) => {
 router.get('/RemoveStaff', (req, res) => {
   res.render('staff/admin/manage-staff-customers/remove-staff')
 }),
+router.get('/DisplayCustomer', (req, res) => {
+  res.render('staff/admin/manage-staff-customers/display-customer')
+}),
 
 router.get('/EditMenu', (req, res) => {
   res.render('staff/admin/edit-menu')
