@@ -13,12 +13,13 @@ router.get('/CustomerLogin', (req, res) => {
 
 router.get('/CustomerRegistration', (req, res) => {
     res.render('index/customer-rego')
+}),  
+router.get('/LoginUnsuccessful', (req, res) => {
+  res.render('user/customer-login-unsuccessful')
 }), 
-
 router.get('/CustomerHomePage', (req, res) => {
   res.render('user/customer-successful')
-}), 
-
+}),
 router.get('/BookTable', (req, res) => {
   res.render('user/book-table')
 }), 
