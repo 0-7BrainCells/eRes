@@ -24,7 +24,7 @@ exports.add_discount = function (req, res) {
 
 exports.remove_discount = function (req, res) {
   Discount.deleteOne({
-    name: req.body.name
+    ID: req.body.ID
   }, function (err, item) {
     if (err) { return res.status(500).send(err); }
 
