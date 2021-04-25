@@ -22,26 +22,36 @@ exports.customer_login_post = function (req, res) {
 }
 
 //Function: takes user input and adds user to db if successful registration. Goes back if user already exists. 
-exports.customer_register_post = function (req, res) {
-  User.findOne({
-    email: req.body.email
-  }, function (err, user) {
-    if (err) { return res.status(500).send(err); }
-
-    if (!user) {
-      var myData = new User(req.body);
-      myData.save()
-        .then(item => {
-          res.send("User saved to database (TODO: direct to login page");
-        })
-        .catch(err => {
-          res.status(400).send("Unable to save to database");
-        });
-    } else {
-      return res.status(200).send("Email already exists (TODO: redirect this page to the registration again");
+exports.customer_register_post = async function (req, res) {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    User.findOne({
+      email: req.body.email
+    }, function (err, user) {
+      if (err) { return res.status(500).send(err); }
+  
+      if (!user) {
+        var myData = new User({email: req.body.email,
+                               password: hashedPassword,
+                               fname: req.body.fname,
+                               lname: req.body.lname,
+                               city: req.body.city,
+                               zip: req.body.zip});
+        myData.save()
+          .then(item => {
+            res.send("User saved to database (TODO: direct to login page");
+          })
+          .catch(err => {
+            res.status(400).send("Unable to save to database");
+          });
+      } else {
+        return res.status(200).send("Email already exists (TODO: redirect this page to the registration again");
+      }
     }
+    )
+  } catch {
+    res.redirect('/CustomerRegistration')
   }
-  )
 }
 
 //Function: takes staff input and logs into staff portal if staff is in db. 
