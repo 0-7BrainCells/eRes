@@ -35,6 +35,10 @@ router.get('/StaffLayout', (req, res) => {
   res.render('staff/staff-successful');
 }),
 
+router.get('/EditDiscount', (req, res) => {
+  res.render('staff/admin/edit-menu/edit-discount');
+}),
+
 router.get('/EditCustomer', (req, res) => {
   res.render('staff/admin/manage-staff-customers/edit-customer');
 }),

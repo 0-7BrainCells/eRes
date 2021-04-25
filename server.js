@@ -47,12 +47,14 @@ const userRouter = require('./routes/users')
 const bookingRouter = require('./routes/bookings')
 const dmenuRouter = require('./routes/dmenus')
 const lmenuRouter = require('./routes/lmenus')
+const discountRouter = require('./routes/discounts')
 const passport = require('passport')
 app.use('/', indexRouter)
 app.use('/', userRouter)
 app.use('/', bookingRouter)
 app.use('/', dmenuRouter)
 app.use('/', lmenuRouter)
+app.use('/', discountRouter)
 
 
 app.get('/', (req, res) => {
