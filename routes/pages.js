@@ -17,13 +17,13 @@ router.get('/CustomerRegistration', (req, res) => {
 router.get('/LoginUnsuccessful', (req, res) => {
   res.render('user/customer-login-unsuccessful')
 }), 
-router.get('/CustomerHomePage', (req, res) => {
+router.get('/CustomerHomePage', checkAuthenticated, (req, res) => {
   res.render('user/customer-successful', {user: req.user})
 }),
-router.get('/CustomerCheckout', (req, res) => {
+router.get('/CustomerCheckout', checkAuthenticated, (req, res) => {
   res.render('user/total-checkout', {user: req.user})
 }),
-router.get('/BookTable', (req, res) => {
+router.get('/BookTable', checkAuthenticated, (req, res) => {
   res.render('user/book-table', {user: req.user})
 }), 
 
@@ -75,7 +75,12 @@ router.post('/', (req, res) =>{
   res.render('index')
 })
 
-
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  res.redirect('/CustomerLogin')
+}
 
 
 
