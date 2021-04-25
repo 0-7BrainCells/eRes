@@ -13,12 +13,16 @@ router.get('/CustomerLogin', (req, res) => {
 
 router.get('/CustomerRegistration', (req, res) => {
     res.render('index/customer-rego')
+}),  
+router.get('/LoginUnsuccessful', (req, res) => {
+  res.render('user/customer-login-unsuccessful')
 }), 
-
 router.get('/CustomerHomePage', (req, res) => {
   res.render('user/customer-successful')
-}), 
-
+}),
+router.get('/CustomerCheckout', (req, res) => {
+  res.render('user/total-checkout')
+}),
 router.get('/BookTable', (req, res) => {
   res.render('user/book-table')
 }), 
@@ -33,6 +37,10 @@ router.get('/StaffManagement', (req, res) => {
 
 router.get('/StaffLayout', (req, res) => {
   res.render('staff/staff-successful');
+}),
+
+router.get('/EditDiscount', (req, res) => {
+  res.render('staff/admin/edit-menu/edit-discount');
 }),
 
 router.get('/EditCustomer', (req, res) => {

@@ -37,23 +37,59 @@
       </div>
 		 <ul>
 		  <li><a href="#section00">Admin Menu</a></li>
-		  <li><a href="#section01">Lunch Menu</a></li>
-		  <li><a href="#section02">Dinner Menu</a></li>
-		  <li><a href="#section03">Table Menu</a></li>
+		  <li><a href="/LunchMenu">Lunch Menu</a></li>
+		  <li><a href="/DinnerMenu">Dinner Menu</a></li>
+		  <li><a href="/BookTable">Book Table</a></li>
 		 </ul>
 	  </div>
 	</nav>
-	<div id="hero-section">
+	<!-- <div id="hero-section">
 	  <div id="head-line"></div>
-	</div>
+	</div> -->
   </header>
+  <body>
+    <section id="section00">
+    <div class="container" >
+      <div class="row justify-content-center">
+        <div class="col-md-20">
+          <div class="card">
+            <div class="card-header">Admin Menu</div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-20">
+                    <div class="card">
+                        <a href = "/EditMenu" class="btn btn-secondary btn-lg">Edit Menu Item</a>
+                    </div>
+                  </div>
+                  <div class="col-sm-20">
+                    <div class="card">
+                        <button type="button" class="btn btn-secondary btn-lg">Edit Discounts</button>
+                    </div>
+                  </div>
+                  <div class="col-sm-20">
+                    <div class="card">
+                      <a href= "/StaffManagement" class="btn btn-secondary btn-lg">Manage Staff and Customers</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  </body>
+
+
+
+
 
   <!-- TO CHANGE THE FONT EXAMPLE GIVEN W FONT:
   <p class="paragraphBottom">Above and below I've pictured my best work from school projects in 2017, 2018 and 2019:
     <span class="italics">Layer Maze</span>, <span class="italics">Orbiter</span> and <span class="italics">Airline Tycoon</span>, respectively.</p> -->
 
 
-  <section id="section00">
+  <!-- <section id="section00">
 	  <div id="heading"><span class="container"></span><span class="italics">Admin Menu</span>
     </div>
 
@@ -71,7 +107,7 @@
                     </div>
                     <div class="col-sm-20">
                       <div class="card">
-                          <button type="button" class="btn btn-secondary btn-lg">Edit Discounts</button>
+                          <a href = "/EditDiscount" class="btn btn-secondary btn-lg">Edit Discounts</a>
                       </div>
                     </div>
                     <div class="col-sm-20">
@@ -97,7 +133,7 @@
 
   <section id="section03">
 	  <div id="heading"><span class="container">Table Menu</span></div>
-  </section><a href="https://youtu.be/m1IU7zjl1k4" id="youtube"><i class="fa fa-youtube-play"></i></a>
+  </section><a href="https://youtu.be/m1IU7zjl1k4" id="youtube"><i class="fa fa-youtube-play"></i></a> -->
 <!-- html component for codepen ends now  -->
 
 </body>
@@ -133,7 +169,7 @@ body {
 /*** Header Styles ***/
 header {
   width: 100vw;
-  height: 100vh;
+  height: 10.5vh;
   background: #b6c5b8;
   display: flex;
 }
@@ -306,7 +342,7 @@ li a {
 /*** Section Styles ***/
 section {
   width: 100vw;
-  height: calc(100vh - 100px);
+  height: calc(103.7vh - 100px);
   display: flex;
   justify-content: center;
 }
@@ -319,7 +355,7 @@ section:nth-child(even) {
 
 #heading {
   width: 120px;
-  height: 20px;
+  height: 40px;
   background: #fff;
   border-radius: 90px;
   margin-top: 40px;
