@@ -5,9 +5,9 @@ const passport = require('passport')
 const initializePassport = require('../passport-config')
 
 
-get_user_by_email = function (email) {
+get_user_by_email = function (input) {
   User.findOne({
-    email: email,
+    email: input,
     }, function (err, user) {
       if (err) { return null; }
       return user;
@@ -17,7 +17,7 @@ get_user_by_email = function (email) {
 
 initializePassport(
   passport, 
-  email => get_user_by_email(email)
+  get_user_by_email
 )
 //This page contains all the business logic functions for user page routes. (login, register etc)
 
