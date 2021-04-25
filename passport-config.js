@@ -50,7 +50,7 @@ const authenticateUser = async (email, password, done) => {
             }
         })
         .catch(err => {
-            return done(null, false, { message: "Email doesnt exist" });
+            return done(null, false, { message: err });
         });
 }
     

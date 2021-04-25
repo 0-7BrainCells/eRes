@@ -18,7 +18,7 @@ router.get('/LoginUnsuccessful', (req, res) => {
   res.render('user/customer-login-unsuccessful')
 }), 
 router.get('/CustomerHomePage', (req, res) => {
-  res.render('user/customer-successful')
+  res.render('user/customer-successful', {user: req.user})
 }),
 router.get('/CustomerCheckout', (req, res) => {
   res.render('user/total-checkout')
