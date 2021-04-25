@@ -1,5 +1,6 @@
 const User = require('../model/User');
 const Staff = require('../model/Staff');
+const bcrypt = require('bcrypt');
 
 //This page contains all the business logic functions for user page routes. (login, register etc)
 
