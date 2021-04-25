@@ -2,7 +2,8 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority";
 const Booking = require('../model/Booking');
 //Function: adds a booking into the booking database using input fields of user name, table number and date string (DD/MM/YYYY)
-//Only allows future dates 
+//Only allows future dates
+ 
 exports.add_booking = function(req, res) {
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
