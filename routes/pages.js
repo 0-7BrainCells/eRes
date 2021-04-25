@@ -21,7 +21,7 @@ router.get('/CustomerHomePage', (req, res) => {
   res.render('user/customer-successful', {user: req.user})
 }),
 router.get('/CustomerCheckout', (req, res) => {
-  res.render('user/total-checkout')
+  res.render('user/total-checkout', {user: req.user})
 }),
 router.get('/BookTable', (req, res) => {
   res.render('user/book-table', {user: req.user})
