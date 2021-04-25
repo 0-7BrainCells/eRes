@@ -13,6 +13,8 @@ SES Online Restaurant Web Application
 
 **Current functionality:**
 
+(THINKING ABOUT ORDERS, use session, store an order as an item, price and userID. to view orders, get all items matching a userID for a list of all items ordered by a user. this only works for one booking isntance per user atm. find a way to link a specific booking maybe???)
+
   Navigate a home page
 
   Fill out customer registration form, user saving to database
