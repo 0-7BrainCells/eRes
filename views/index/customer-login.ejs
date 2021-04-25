@@ -11,8 +11,10 @@
 <body>
   
     <div class="login-box">
+        <% if (messages.error) { %>
+            <%= messages.error %>
+        <% } %> 
         <h2>Customer Login</h2>
-      
         <form action="/customer-login-received" method= "POST" class= "mb-2"> 
             <%- include('_form_fields') %>
         </form>
