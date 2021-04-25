@@ -1,24 +1,7 @@
 const User = require('../model/User');
 const Staff = require('../model/Staff');
-const bcrypt = require('bcrypt');
-const passport = require('passport')
-const initializePassport = require('../passport-config')
+const bcrypt = require('bcrypt')
 
-
-get_user_by_email = function (input) {
-  User.findOne({
-    email: input,
-    }, function (err, user) {
-      if (err) { return null; }
-      return user;
-    }
-  )
-}
-
-initializePassport(
-  passport, 
-  get_user_by_email
-)
 //This page contains all the business logic functions for user page routes. (login, register etc)
 
 
