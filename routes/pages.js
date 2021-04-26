@@ -1,5 +1,4 @@
 const express = require('express')
-const LunchMenu = require('../model/LunchMenu')
 const router = express.Router()
 
 //Page redirect action handlers:
@@ -81,6 +80,7 @@ router.delete('/customer-logout', (req, res) => {
 })
 
 function checkAuthenticated(req, res, next) {
+  console.log("hi")
   if (req.isAuthenticated()) {
     return next()
   }
@@ -93,8 +93,5 @@ function checkNotAuthenticated(req, res, next) {
   }
   next()
 }
-
-
-
 
 module.exports = router 
