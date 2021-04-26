@@ -7,11 +7,11 @@ const router = express.Router()
 router.get('/StaffLogin', (req, res) => {
     res.render('staff/staff-login')
 }), 
-router.get('/CustomerLogin', (req, res) => {
+router.get('/CustomerLogin', checkNotAuthenticated, (req, res) => {
     res.render('index/customer-login')
 }), 
 
-router.get('/CustomerRegistration', (req, res) => {
+router.get('/CustomerRegistration', checkNotAuthenticated, (req, res) => {
     res.render('index/customer-rego')
 }),  
 router.get('/LoginUnsuccessful', (req, res) => {
@@ -71,8 +71,13 @@ router.get('/RemoveDinnerMenuItem', (req, res) => {
   res.render('staff/admin/edit-menu/remove-dinner-menu-item')
 }),
 
-router.post('/', (req, res) =>{
+router.get('/', checkNotAuthenticated, (req, res) =>{
   res.render('index')
+})
+
+router.delete('/customer-logout', (req, res) => {
+  req.logOut()
+  res.redirect('/')
 })
 
 function checkAuthenticated(req, res, next) {
@@ -80,6 +85,13 @@ function checkAuthenticated(req, res, next) {
     return next()
   }
   res.redirect('/CustomerLogin')
+}
+
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect('/CustomerHomePage')
+  }
+  next()
 }
 
 

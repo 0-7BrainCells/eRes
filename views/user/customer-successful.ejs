@@ -11,6 +11,7 @@
 </head>
 <body>
 <p>Current User Info (devTool, delete for production) Name: <%=user.fname%> <%=user.lname%></p>
+
     <div class="image">
         <div class="content">
           <img src="images/Le Bistrot d'Andre.png" alt="logo here" width="30%" height="30%"><!--h1>Le Bistrot d'Andre</h1>-->
@@ -26,6 +27,11 @@
             <p>            </p>
             <p>            </p>
             <a href= "/CustomerCheckout" class="btn btn-info" style="padding: 15px ;">View Total Checkout</a>
+            <p>            </p>
+            <p>            </p>
+              <form action="/customer-logout?_method=DELETE" method="POST">
+              <a><button class="btn btn-info" style="padding: 15px ;" type = "submit">Log Out</button></a> <!-- LOGOUT BUTTON -->
+            </form>
         </div>
         </div>
       </div>

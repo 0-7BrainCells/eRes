@@ -10,6 +10,7 @@ const app = express()
 
 const passport = require('passport')
 const passportconfig = require('./passport-config')
+const methodOverride = require('method-override')
 const flash = require('express-flash')
 const session = require('express-session')
 
@@ -31,6 +32,7 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(methodOverride('_method'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
