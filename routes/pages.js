@@ -80,7 +80,6 @@ router.delete('/customer-logout', (req, res) => {
 })
 
 function checkAuthenticated(req, res, next) {
-  console.log("hi")
   if (req.isAuthenticated()) {
     return next()
   }
