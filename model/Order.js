@@ -2,23 +2,23 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const bookingSchema = new Schema({
+const orderSchema = new Schema({   
     email: {
+        type: String,
+        required: true
+      },
+    name: {
       type: String,
       required: true
     },
-    time: {
-        type: String,
-        required: true
-    },
-    date: {
-      type: Date,
+    price: {
+      type: String,
       required: true
     },
-    numGuests: {
+    quantity: {
         type: String,
         required: true
-    }
+      },
   });
-
-module.exports = mongoose.model('Booking', bookingSchema);
+  
+module.exports = mongoose.model('Order', orderSchema);
