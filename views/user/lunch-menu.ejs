@@ -26,25 +26,27 @@
 
   <div class="HSpace"></div> 
     <ul class="menu">
-      <% for (var i = 0; i < items.length; i++) {%>  <!-- This is EJS, using the % to use js within HTML, it uses a variable "items" passed to it when the page is loaded via the route "/LunchMenu", look at the lunch menu route to see that when this page is rendered, it also sends this "items" variable. -->
+      <% for (var i = 0; i < items.length; i++) {%>  <!-- This is EJS, using the % to use js within HTML, it uses a variable "items" passed to it when the page is loaded via the route "/LunchMenu", look at the LunchMenuController to see that when this page is rendered, it also sends this "items" variable. -->
         <li class="menu-item">                       <!-- Essentially we are looping over all the items in the Lunch Menu database and outputting them in individual divs with their respective fields (for loop is best for this) -->
           <section>
-            <header>
+            <form action="/add-order" method="POST">
               <h1><%=items[i].name %></h1>
               <span class="spacer"></span>
-              <span class="price"><%=items[i].price %></span>
-            </header>
-            <p><%=items[i].description %></p>
+              <p><%=items[i].description %></p>
+              <span><%=items[i].price %></span>
             <div class="quan_addBtn">
               <div class= "addToOrderBtn">
-                <a href= "LunchMenu" class="btn btn-info">Add To Order</a> 
+                <button class="btn btn-info" type="submit" >Add To Order</button>
               </div>
               <div class="quantity">
-                <input type="number" id="quantity" name="quantity" class="form-control input-number" min="1" max="10">
+                <input type="number" name="quantity" class="form-control input-number" min="1" max="10">
               </div>
             </div>
             </section> 
         </li>
+      <input type ="hidden" name="name" value="<%=items[i].name %>">
+      <input type ="hidden" name="price" value="<%=items[i].price %>">
+      </form>
        <%}%>
     <ul>
   </div>

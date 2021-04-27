@@ -3,13 +3,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema({
-    fname: {
+    email: {
       type: String,
       required: true
-    },
-    lname: {
-        type: String,
-        required: true
     },
     time: {
         type: String,

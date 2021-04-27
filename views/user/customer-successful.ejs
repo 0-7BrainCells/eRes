@@ -10,25 +10,31 @@
     <title>eRestaurant</title>
 </head>
 <body>
-  <div class="login-box">
-    <img src="images/Le Bistrot d'Andre.png" alt="logo here" width="30%" height="30%"><!--h1>Le Bistrot d'Andre</h1>-->
-    <p style="font-family:Courier;" font-size= "20%">
-    
-    </p>
+<p>Current User Info (devTool, delete for production) Name: <%=user.fname%> <%=user.lname%></p>
 
-    <div class= "btnGroup">
-      <p>            </p>
-      <a href= "/BookTable" class="btn" style="padding: 15px ;">Make A Table Reservation</a> <!-- links page to button-->
-      <p>            </p>
-      <p>            </p>
-      <a href= "/LunchMenu" class="btn" style="padding: 15px ;">View Lunch Menu</a>
-      <p>            </p>
-      <p>            </p>
-      <a href= "/DinnerMenu" class="btn" style="padding: 15px ;">View Dinner Menu</a>
-      <p>            </p>
-      <p>            </p>
-      <a href= "/CustomerCheckout" class="btn" style="padding: 15px ;">View Total Checkout</a>
-</div>
+    <div class="image">
+        <div class="content">
+          <img src="images/Le Bistrot d'Andre.png" alt="logo here" width="30%" height="30%"><!--h1>Le Bistrot d'Andre</h1>-->
+          <p style="font-family:Courier;" font-size= "20%">Nous vous souhaitons la bienvenue</p>
+          <div class= "btnGroup">
+            <a href= "/BookTable" class="btn btn-info" style="padding: 15px ;">Make A Table Reservation</a> <!-- links page to button-->
+            <p>            </p>
+            <p>            </p>
+            <a href= "/LunchMenu" class="btn btn-info" style="padding: 15px ;">View Lunch Menu</a>
+            <p>            </p>
+            <p>            </p>
+            <a href= "/DinnerMenu" class="btn btn-info" style="padding: 15px ;">View Dinner Menu</a>
+            <p>            </p>
+            <p>            </p>
+            <a href= "/CustomerCheckout" class="btn btn-info" style="padding: 15px ;">View Total Checkout</a>
+            <p>            </p>
+            <p>            </p>
+              <form action="/customer-logout?_method=DELETE" method="POST">
+              <a><button class="btn btn-info" style="padding: 15px ;" type = "submit">Log Out</button></a> <!-- LOGOUT BUTTON -->
+            </form>
+        </div>
+        </div>
+      </div>
 </body>
 
 </html>

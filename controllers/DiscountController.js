@@ -32,7 +32,7 @@ exports.remove_discount = function (req, res) {
       var myData = new Discount(req.body);
       myData.remove()
         .then(item => {
-          res.send("Item removed from database");
+          res.send("Item removed from database (if it exists)");
         })
         .catch(err => {
           res.status(400).send("Unable to remove from database");
