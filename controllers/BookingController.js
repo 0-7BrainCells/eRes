@@ -13,9 +13,9 @@ const maxSeats = 150;
 //Initialize the seats at each table. 
 
 for (i = 1; i <= numTables; i++) {
-  if (i <= 6) { seatCount[i-1] = 6}
-  else if (i <= 17) { seatCount[i-1] = 2}
-  else if (i <= 37) { seatCount[i-1] = 4}
+  if (i <= 6) { seatCount[i-1] = 6}          //Tables 1-6 seat 6
+  else if (i <= 17) { seatCount[i-1] = 2}    //Tables 6-17 seat 2
+  else if (i <= 37) { seatCount[i-1] = 4}    //Tables 18-37 seat 4
 }
 
 //Get the amount of seats still available on a given date. 
