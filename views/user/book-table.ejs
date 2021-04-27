@@ -21,26 +21,17 @@
      
       <form action="/booking-received" method = "POST">
         <h6>Enter your details below to book a table:</h6>
-        <div class="First Name">
-          <label for="First Name">First Name</label><br/>
-          <input required type="text" name="fname" placeholder="Enter name"/><br/>
-        </div>
 
-        <div class="Last Name">
-          <label for="Last Name">Last Name</label><br/>
-          <input required type="text" name="lname" placeholder="Enter name"/><br/>
-        </div>
-        
-        <div class="Time">
-          <label for="Time">Select a Time:</label><br/>
-          <input required type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
-        </div>
         <div class="Date">
           <label for="Date">Select a Date:</label><br/>
           <input required type="date" id="date" name="date" onfocus="(this.type='date')" placeholder="MM/DD/YYYY" onblur="(this.type='text')">
         </div>
-        
-
+    
+        <div class="Time">
+          <label for="Time">Select a Time:</label><br/>
+          <input required type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
+        </div>
+      =
         <div class="guests">
           <label for="guests">Number of Guests</label><br/><br/>
           <button class="counter-btn" type="button" onclick="decrement()" id="cnt-down">-</button>

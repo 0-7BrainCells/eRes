@@ -13,13 +13,17 @@ exports.add_booking = function(req, res) {
   if (now > bookdate) { return res.status(400).send("Please select future date (click back to return to previous page)"); }
     Booking.findOne({   
         fname: req.body.fname,
-        lname: req.body.lname,
-        date: req.body.date
+        lname: req.body.lname
+
       }, function(err, booking) {
-        if (err) { return res.status(500).send(err); }
+        if (err) { return res.status(500).send("Error. Go back."); }
   
         if (!booking) {  
-            var myData = new Booking(req.body);
+            var myData = new Booking({fname: req.user.fname, 
+                                      lname: req.user.fname,
+                                      date: req.body.date,
+                                      time: req.body.time,
+                                      numGuests: req.body.numGuests});
              myData.save()
                 .then(item => {
                   return res.status(200).render('user/booking/booking-confirmation');
@@ -28,7 +32,7 @@ exports.add_booking = function(req, res) {
                      res.status(400).send("Unable to save to database");
              });  
         } else {  
-            return res.status(200).send("Duplicate booking (same user same date");
+            return res.status(200).send("You may only have one booking. (Cancel/Edit current booking?)");
         }
       }
     )
