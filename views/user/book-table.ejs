@@ -15,6 +15,54 @@
 * {
   box-sizing: border-box;
 }
+.container {
+  margin-top: 10px;
+}
+.container ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+  }
+  .container a {
+    display: block;
+    padding: 20px;
+    
+  }
+  .container li {
+    float: right;
+    display: inline
+  }
+  .container li a {
+    color:black; 
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    text-decoration: none;
+    font-size: large;
+  
+  }
+.container li {
+  margin-left: 20px;
+}
+.container li a {
+  width: 160px;
+  height: 30px;
+  display: block;
+  border-radius: 90px;
+  text-align: center;
+  align-items: center;
+  color:black; 
+  /* padding-top: 0px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 25px; */
+  text-decoration: none;
+  font-size: large;
+}
 
 body {
   /*background: #e5a88b;
@@ -23,32 +71,42 @@ body {
   font-size: 100%;
   overflow: hidden;*/
 
-  margin:0;
+  margin-top: 10px;
   padding:0;
   font-family: sans-serif;
-  background-image: url("images/tablebackground.jpg");
+  background-image:   url("images/tablebackground.jpg");
+  background-position: top 20px;
   
-  background-size: cover;
+  background-size:100%;
   background-position: center top;
   background-repeat: no-repeat;
   padding: 30px;
 
 }
+.logo {
+  position: absolute;
+  right:5%;
+  top: 10%;
+
+}
 
 .container h1{
+  margin-top: 10px;
   position:absolute;
   top:3.5%;
-  right: 17.5%;
+  right: 15%;
   color: whitesmoke;
   font-size: 100px;
   text-shadow: 2px 2px 5px gray;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family:sans-serif;
   
 }
 
 .rectangle {
+  margin-top: 10px;
   position: absolute;
   max-width: 90%;
+  
   top: 50%;
   left: 20%;
   transform: translate(-50%, -50%)
@@ -70,6 +128,7 @@ body {
   }
 }
   .form-wrap {
+    margin-top: 10px;
   position: absolute;
   max-width: 90%;
   text-align: center;
@@ -162,14 +221,19 @@ label {
 }
 
 div.seatingplan{
-
  
+ max-width: 100%;
   height: auto;
   width: 800px;
   position: absolute;
   right: 4%;
   top: 20%;
-  box-shadow: 0 15px 25px rgba(47, 47, 47, 0.6);
+  border: 80px solid rgba(224, 224, 224, 0.7);
+  
+  border-radius: 8px;
+
+  
+  
 }
 
 </style>
@@ -179,7 +243,7 @@ div.seatingplan{
   
   <div class= "container">
     
-    <h1>Book a Table</h1>
+      <h1>Book a Table:</h1> 
     
 
     <div class="rectangle">  </div>
@@ -189,6 +253,7 @@ div.seatingplan{
       <form action="/booking-received" method = "POST">
         
         <div class="First Name">
+          <h1>Book a Table:</h1>
           <label for="First Name">First Name:</label>
           <input required type="text" name="fname" placeholder="Enter name"/><br/>
         </div>
