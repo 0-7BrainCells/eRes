@@ -13,7 +13,7 @@ exports.add_booking = function(req, res) {
   var bookdate = Date.parse(req.body.date)
   if (now > bookdate) { return res.status(400).send("Please select future date (click back to return to previous page)"); }
     Booking.findOne({   
-        emnail: req.user.email
+        email: req.user.email
       }, function(err, booking) {
         if (err) { return res.status(500).send("Error. Go back."); }
   
@@ -21,7 +21,8 @@ exports.add_booking = function(req, res) {
             var myData = new Booking({email: req.user.email,
                                       date: req.body.date,
                                       time: req.body.time,
-                                      numGuests: req.body.numGuests});
+                                      numGuests: req.body.numGuests,
+                                      sessionID: req.sessionID});
              myData.save()
                 .then(item => {
                   return res.status(200).render('user/booking/booking-confirmation');
@@ -60,7 +61,7 @@ exports.display_checkout = function(req, res) {
       collection = db.collection("orders");
 
       // Find all documents in the collection
-      collection.find({email: req.user.email}).toArray(function(err, items) {
+      collection.find({email: req.user.email, sessionID: req.sessionID}).toArray(function(err, items) {
         if (!err) { //Declare the array which we will populate then return
           items.forEach(function(item){
               ordersArray.push(item); //Add items to the array

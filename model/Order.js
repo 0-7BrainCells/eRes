@@ -19,7 +19,7 @@ const orderSchema = new Schema({
         type: String,
         required: true
       },
-    quantity: {
+    sessionID: {
       type: String,
       required: true
     }

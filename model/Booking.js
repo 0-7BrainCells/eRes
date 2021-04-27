@@ -18,7 +18,11 @@ const bookingSchema = new Schema({
     numGuests: {
         type: String,
         required: true
-    }
+    },
+    sessionID: {
+      type: String,
+      required: true
+  }
   });
 
 module.exports = mongoose.model('Booking', bookingSchema);
