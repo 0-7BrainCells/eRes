@@ -41,12 +41,40 @@
 
 
 <Style>
-.btnGroup {
-    padding: 10px 24px;
-    display: flex;
+
+.btn {
+  background-color: #014421; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background:rgba(255, 255, 255, 0.801);
+  color: whitesmoke;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  text-align: center;
+  }
+
+  .btnGroup {
+    display: flex; 
     flex-direction: column;
     align-content: center;
-    width: 85%;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
 }
 
 * {
@@ -54,12 +82,19 @@
 }
 
 body {
-  margin: 0;
-}
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  font-family: sans-serif;
+  background-size: cover;
+  background-position: absolute;
+  background-repeat: no-repeat;
+  padding: 30px;
+  background-image: url("images/Homepage.jpg");
+  }
 
 .image {
   min-height: 100vh;
-  background-image: url("images/res3bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   padding: 30px;
@@ -73,11 +108,10 @@ body {
   right: 0;
   width: 50%;
     flex-direction: column;
-    align-content: center;
+    align-content: center; 
 }
 .menu .menu-item section header h1 {
             margin: 1;
             font-size: 1rem;
           }
-
 </Style>
