@@ -9,39 +9,66 @@
     <title>eRestaurant</title>
 </head>
 
-<div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-20">
-        <div class="card">
-          <div class="card-header">Staff Management Panel</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-20">
-                  <div class="card">
-                    <a href= "/StaffRegistration" class="btn btn-secondary btn-lg">Add New Staff Account</a>
-                  </div>
-                </div>
-                <div class="col-sm-20">
-                  <div class="card">
-                    <a href= "/RemoveStaff" class="btn btn-secondary btn-lg">Remove Staff Account</a>
-                  </div>
-                </div>
-                <div class="col-sm-20">
-                  <div class="card">
-                      <a href="/EditCustomer" class="btn btn-secondary btn-lg">Edit Customer Account</a>
-                  </div>
-                </div>
-                <div class="col-sm-20">
-                  <div class="card">
-                    <a href= "/DisplayCustomer" class="btn btn-secondary btn-lg">Display Customer</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <a href="/StaffLayout" class= "btn btn-light">Back</a>
-      </div>
-  </div>
+<body>
+  <div class= "login-box">
+    <h1 style="color: black;"> Account Management</h1>
+    <div class = btnGroup>
+      <a href= "/StaffRegistration" class="btn btn-secondary btn-lg">Add New Staff Account</a>
+      <p>      </p>
+      <a href= "/RemoveStaff" class="btn btn-secondary btn-lg">Remove Staff Account</a>
+      <p>      </p>
+      <a href="/EditCustomer" class="btn btn-secondary btn-lg">Edit Customer Account</a>
+      <p>      </p>
+      <a href="/StaffLayout" class= "btn ">Back</a>
+    </div>
+</div>
+</body>
+
+
+  <style>
+    body {
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background-image: url("images/outside.jpg");
+    background-size: cover;
+    background-position: absolute;
+    background-repeat: no-repeat;
+    padding: 30px;
+    }
+    
+    .login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background:rgba(255,255,255, 0.6);
+    color: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    text-align: center;
+    }
+  
+    .btnGroup {
+      display: flex; 
+      flex-direction: column;
+      align-content: center;
+      width: 80%;
+      margin: auto;
+      padding: 10px;
+    }
+  
+    .btn {
+    background-color: #014421; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+    </style>
