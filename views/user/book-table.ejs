@@ -9,103 +9,13 @@
     <title>eRestaurant</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-</head>
-<body>
-    <div class= "container">
-    
-      
-    <h3>Enter your details below to book a table:</h3>
-    </div>
-
-    <div class="rectangle"></div>
-    <div class="form-wrap">
-      <h2 class="mob">Table Booking Form</h2>
-     
-      <form action="/booking-received" method = "POST">
-        
-        <div class="First Name">
-          <label for="First Name">First Name</label><br/>
-          <input required type="text" name="fname" placeholder="Enter name"/><br/>
-        </div>
-
-        <div class="Last Name">
-          <label for="Last Name">Last Name</label><br/>
-          <input required type="text" name="lname" placeholder="Enter name"/><br/>
-        </div>
-        
-        <div class="Time">
-          <label for="Time">Select a Time:</label><br/>
-          <input required type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
-        </div>
-        <div class="Date">
-          <label for="Date">Select a Date:</label><br/>
-          <input required type="date" id="date" name="date" onfocus="(this.type='date')" placeholder="DD/MM/YYYY" onblur="(this.type='text')" 
-          class="disablePastDate">
-          
-        </div>
-        
-
-        <div class="guests">
-          <label for="guests">Number of Guests</label><br/><br/>
-          <button class="counter-btn" type="button" onclick="decrement()" id="cnt-down">-</button>
-          <input  id="guestNo" name="numGuests" type="number" min="1" max="10"value="1"/>
-          <button class="counter-btn" type="button" onclick="increment()" id="cnt-up">+</button>
-        </div>
-        
-        <!-- <button class = "btn btn-light" type ="submit" >Submit Booking</button> -->
-        <a href="/SelectTable" class="btn btn-light">Proceed to Table Selection</a>
-      </form>
-
-      <a href= "/CustomerHomePage" class="btn btn-light">Go Back</a>
-         
-         
-      </div>
-    </div> <!--Javascript starts here:-->
-    <script>
-      /*
-    var dateToday = new Date();
-$('.disablePastDate').datepicker({
-  defaultDate: "+1w",
-  changeMonth: true,
-  numberOfMonths: 1,
-  minDate: dateToday,
-  onSelect: function (selectedDate) {
-    var option = this.id == "from" ? "minDate" : "maxDate",
-      instance = $(this).data("datepicker"),
-      date = $.datepicker.parseDate(
-        instance.settings.dateFormat || $.datepicker._defaults.dateFormat,
-        selectedDate,
-        instance.settings
-      );
-    dates.not(this).datepicker("option", option, date);
-  }
-});*/
-
-      function decrement() {
-      document.getElementById("guestNo").stepDown();
-    }
-    function increment() {
-      document.getElementById("guestNo").stepUp();
-    }
-     $(document).ready(function () {
-    var guestAmount = $("#guestNo");
-  $("#cnt-up").click(function () {
-    guestAmount.val(Math.min(parseInt($("#guestNo").val()) + 1, 10));
-  });
-  $("#cnt-down").click(function () {
-    guestAmount.val(Math.max(parseInt($("#guestNo").val()) - 1, 1));
-  });
-});
-   
-    </script>
-  </body>
-</html>
 
 <style>
   @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 * {
   box-sizing: border-box;
 }
+
 body {
   background: #e5a88b;
   color: rgb(47, 47, 47);
@@ -119,23 +29,22 @@ body {
     overflow: scroll;
   }
 }
+
 .rectangle {
   position: absolute;
+  max-width: 90%;
   top: 50%;
-  left: 50%;
+  left: 20%;
   transform: translate(-50%, -50%)
              rotate(0deg);
-  height: 700px;
-  width: 650px;
-  float: left;
+  height: 770px;
+  width: 550px;
   background: #ffffff;
   border-radius: 8px;
-  box-shadow: 0px 0px 20px 3px rgba(#111, .2);
-  transition: all .5s ease-in-out;
-  @media(max-width: 450px) {
-    display: none;
-  }
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+    
+
 .mob {
   display: none;
   @media(max-width: 450px) {
@@ -144,23 +53,24 @@ body {
 }
   .form-wrap {
   position: absolute;
+  max-width: 90%;
   text-align: center;
   top: 50%;
-  left: 50%;
+  left: 20%;
   transform: translate(-50%, -50%);
   font-size: 1em;
   width: 350px;
 }
-@media (max-width: 450px) {
+/*@media (max-width: 450px) {
   .form-wrap {
     width: 80%;
-  }
-}
+  }*/
+
 .form-wrap form {
   margin-bottom: 10px;
 }
 input {
-  padding: 15px 10px;
+  padding: 10px 10px;
   border: none;
   margin-bottom: 20px;
   border-radius: 3px;
@@ -230,5 +140,127 @@ label {
 .btn:hover {
   background: #e9e9e9;
 }
+
+div.seatingplan{
+
+ 
+  height: auto;
+  width: 800px;
+  position: absolute;
+  right: 1%;
+  top: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 </style>
+
+</head>
+<body>
+  
+  <div class= "container">
+    
+    <div class="heading">
+    <h3>Enter your details below to book a table:</h3>
+    </div>  
+    
+
+    <div class="rectangle"></div>
+    <div class="form-wrap">
+      <h2 class="mob">Table Booking Form</h2>
+     
+      <form action="/booking-received" method = "POST">
+        
+        <div class="First Name">
+          <label for="First Name">First Name</label><br/>
+          <input required type="text" name="fname" placeholder="Enter name"/><br/>
+        </div>
+
+        <div class="Last Name">
+          <label for="Last Name">Last Name</label><br/>
+          <input required type="text" name="lname" placeholder="Enter name"/><br/>
+        </div>
+        
+        <div class="Time">
+          <label for="Time">Select a Time:</label><br/>
+          <input required type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
+        </div>
+        <div class="Date">
+          <label for="Date">Select a Date:</label><br/>
+          <input required type="date" id="date" name="date" onfocus="(this.type='date')" placeholder="DD/MM/YYYY" onblur="(this.type='text')" 
+          class="disablePastDate">
+          
+        </div>
+        
+        <div class="TableNo">
+          <label for="tableno">Enter a Table No:</label><br/>
+          <input required type="number" min="1" max="34" id="table" name="table" placeholder="Enter a Number:">
+        </div>
+        <div class="guests">
+          <label for="guests">Number of Guests</label><br/><br/>
+          <button class="counter-btn" type="button" onclick="decrement()" id="cnt-down">-</button>
+          <input  id="guestNo" name="numGuests" type="number" min="1" max="37"value="1"/>
+          <button class="counter-btn" type="button" onclick="increment()" id="cnt-up">+</button>
+        </div>
+        
+        <!-- <button class = "btn btn-light" type ="submit" >Submit Booking</button> -->
+        <button class = "btn btn-light" type ="submit" >Submit Booking</button>
+      </form>
+
+      <a href= "/CustomerHomePage" class="btn btn-light">Go Back</a>
+         
+         
+      </div>
+      <div class="seatingplan">
+      <img src="/images/seatingplan.png" style="width:100%">
+    </div>
+  
+  </div>
+   <!--Javascript starts here:-->
+    <script>
+      /*
+    var dateToday = new Date();
+  $('.disablePastDate').datepicker({
+  defaultDate: "+1w",
+  changeMonth: true,
+  numberOfMonths: 1,
+  minDate: dateToday,
+  onSelect: function (selectedDate) {
+    var option = this.id == "from" ? "minDate" : "maxDate",
+      instance = $(this).data("datepicker"),
+      date = $.datepicker.parseDate(
+        instance.settings.dateFormat || $.datepicker._defaults.dateFormat,
+        selectedDate,
+        instance.settings
+      );
+    dates.not(this).datepicker("option", option, date);
+  }
+});*/
+
+      function decrement() {
+      document.getElementById("guestNo").stepDown();
+    }
+    function increment() {
+      document.getElementById("guestNo").stepUp();
+    }
+     $(document).ready(function () {
+    var guestAmount = $("#guestNo");
+  $("#cnt-up").click(function () {
+    guestAmount.val(Math.min(parseInt($("#guestNo").val()) + 1, 10));
+  });
+  $("#cnt-down").click(function () {
+    guestAmount.val(Math.max(parseInt($("#guestNo").val()) - 1, 1));
+  });
+});
+
+$("#table").attr({
+  "max" : 37,
+  "min" : 1
+});
+   
+    </script>
+    
+  </body>
+</html>
+
+
 
