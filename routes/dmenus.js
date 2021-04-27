@@ -9,7 +9,6 @@ router.post('/remove-dinner-menu-item', DinnerMenuController.remove_dinner_menu_
 router.get('/DinnerMenu', checkAuthenticated, DinnerMenuController.display_dinner_menu)
 
 function checkAuthenticated(req, res, next) {
-    console.log("hi")
     if (req.isAuthenticated()) {
       return next()
     }

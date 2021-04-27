@@ -10,12 +10,11 @@ router.post('/remove-lunch-menu-item', LunchMenuController.remove_lunch_menu_ite
 router.get('/LunchMenu', checkAuthenticated, LunchMenuController.display_lunch_menu)
 
 function checkAuthenticated(req, res, next) {
-    console.log("hi")
     if (req.isAuthenticated()) {
-      return next()
+        return next()
     }
-    res.redirect('/CustomerLogin')
-  }
+        res.redirect('/CustomerLogin')
+}
   
 
 module.exports = router

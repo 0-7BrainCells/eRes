@@ -19,9 +19,7 @@ router.get('/LoginUnsuccessful', (req, res) => {
 router.get('/CustomerHomePage', checkAuthenticated, (req, res) => {
   res.render('user/customer-successful', {user: req.user})
 }),
-router.get('/CustomerCheckout', checkAuthenticated, (req, res) => {
-  res.render('user/total-checkout', {user: req.user})
-}),
+
 router.get('/BookTable', checkAuthenticated, (req, res) => {
   res.render('user/book-table', {user: req.user})
 }), 

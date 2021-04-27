@@ -5,7 +5,19 @@
 </head>
 <body>
 <p>Current User Info (devTool, delete for production) Name: <%=user.fname%> <%=user.lname%></p>
-<p> "hello luvs x" </p>
+<% if (!booking) { %>
+    <p>You have no upcoming booking</p>
+<% } else { %>
+    <p> Booking Info: </p>
+    <% for (i = 0; i < booking.length; i++) { %>
+        <li>Name: <%=booking[i].fname%> <%=booking[i].lname%></li>
+        <li>Date: <%=booking[i].date%></li>
+        <li>Time: <%=booking[i].time%></li>
+        <li>Guests: <%=booking[i].numGuests%></li>
+        <p></p> <p></p>
+
+    <% } %>
+<% } %>
 </body>
 </html>
 <style>
