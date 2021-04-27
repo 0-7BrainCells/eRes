@@ -26,6 +26,9 @@ router.get('/CustomerCheckout', (req, res) => {
 router.get('/BookTable', (req, res) => {
   res.render('user/book-table')
 }), 
+router.get('/SelectTable', (req, res) => {
+  res.render('user/select-table')
+}), 
 
 router.get('/StaffRegistration', (req, res) => {
   res.render('staff/admin/manage-staff-customers/staff-rego');
@@ -49,6 +52,9 @@ router.get('/EditCustomer', (req, res) => {
 
 router.get('/RemoveStaff', (req, res) => {
   res.render('staff/admin/manage-staff-customers/remove-staff')
+}),
+router.get('/DisplayCustomer', (req, res) => {
+  res.render('staff/admin/manage-staff-customers/display-customer')
 }),
 
 router.get('/EditMenu', (req, res) => {
