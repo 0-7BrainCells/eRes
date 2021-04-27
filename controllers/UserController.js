@@ -13,7 +13,7 @@ exports.customer_login_post = function (req, res) {
   }, function (err, user) {
     if (err) { return res.status(500).send(err); }
 
-    if (!user) { return res.status(200).send("User not found, check username and password are correct"); }
+    if (!user) { return res.status(200).render('user/customer-unsuccessful'); }
 
     return res.status(200).render('user/customer-successful');
   }
