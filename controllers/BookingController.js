@@ -1,8 +1,9 @@
 const Booking = require('../model/Booking');
+const Order = require('../model/Order');
+
 var MongoClient = require('mongodb').MongoClient;
 const dburl = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority';
 const dbname = 'eRes';
-const collname = 'bookings';
 
 //Function: adds a booking into the booking database using input fields of user name, table number and date string (DD/MM/YYYY)
 //Only allows future dates
@@ -35,7 +36,9 @@ exports.add_booking = function(req, res) {
     )
 }
 
-exports.display_booking = function(req, res) {
+exports.display_checkout = function(req, res) {
+  var bookingArray = [];
+  var ordersArray = [];
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
 
@@ -43,21 +46,31 @@ exports.display_booking = function(req, res) {
       const db = client.db(dbname);
 
       // Get collection
-      const collection = db.collection(collname);
+      var collection = db.collection("bookings");
 
       // Find all documents in the collection
-      collection.find({fname: req.user.fname, lname: req.user.lname}).toArray(function(err, items) {
-        if (!err) {
-          var resultArray = []; //Declare the array which we will populate then return
+      collection.find({email: req.user.email}).toArray(function(err, items) {
+        if (!err) { //Declare the array which we will populate then return
           items.forEach(function(item){
-              resultArray.push(item); //Add items to the array
+              bookingArray.push(item); //Add items to the array
           });
-          res.render('user/total-checkout', {booking: resultArray, user: req.user}); //Render the page and pass the results in the array as variable item
+        }
+      });
+      // Get collection
+      collection = db.collection("orders");
+
+      // Find all documents in the collection
+      collection.find({email: req.user.email}).toArray(function(err, items) {
+        if (!err) { //Declare the array which we will populate then return
+          items.forEach(function(item){
+              ordersArray.push(item); //Add items to the array
+          });
+          res.render('user/total-checkout', {user: req.user, orders: ordersArray, booking: bookingArray}) //Render the page and pass the results in the array as variable item
         }
       });
 
       // close db client
       client.close();
     }
-  });
+  })
 }

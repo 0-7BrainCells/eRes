@@ -18,6 +18,21 @@
 
     <% } %>
 <% } %>
+<% if (!orders) { %>
+    <p>You have no upcoming order</p>
+<% } else { %>
+    <p> Order Info: </p>
+    <% var totalPrice = 0 %>
+    <% for (i = 0; i < orders.length; i++) { %>
+        <li>Name: <%=orders[i].name%></li>
+        <li>Price: <%=orders[i].price%></li>
+        <li>Quantity: <%=orders[i].quantity%></li>
+        <% totalPrice = "to be implemented" %>
+        <p></p> <p></p>
+
+    <% } %>
+    <p>Total price: <%=totalPrice%></p>
+<% } %>
 </body>
 </html>
 <style>

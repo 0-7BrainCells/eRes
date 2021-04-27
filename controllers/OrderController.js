@@ -18,7 +18,7 @@ exports.add_order = function(req, res) {
                                  quantity: req.body.quantity});
           myData.save()
             .then(item => {
-              res.redirect("/LunchMenu");
+              res.send("Item added to order, please return to a menu.");
             })
             .catch(err => {
               res.status(400).send("Unable to save to database");
@@ -27,29 +27,3 @@ exports.add_order = function(req, res) {
       ) 
 }
 
-exports.display_order= function(req, res) {
-  MongoClient.connect(dburl, function(err, client) {
-    if (!err) {
-
-      // Get db
-      const db = client.db(dbname);
-
-      // Get collection
-      const collection = db.collection(collname);
-
-      // Find all documents in the collection
-      collection.find({email: req.user.email}).toArray(function(err, items) {
-        if (!err) {
-          var resultArray = []; //Declare the array which we will populate then return
-          items.forEach(function(item){
-              resultArray.push(item); //Add items to the array
-          });
-          res.render('user/total-checkout', {order: resultArray, user: req.user}); //Render the page and pass the results in the array as variable item
-        }
-      });
-
-      // close db client
-      client.close();
-    }
-  });
-}
