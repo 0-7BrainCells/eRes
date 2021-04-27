@@ -90,17 +90,7 @@ body {
 
 }
 
-.container h1{
-  margin-top: 10px;
-  position:absolute;
-  top:3.5%;
-  right: 15%;
-  color: whitesmoke;
-  font-size: 100px;
-  text-shadow: 2px 2px 5px gray;
-  font-family:sans-serif;
-  
-}
+
 
 .rectangle {
   margin-top: 10px;
@@ -116,7 +106,7 @@ body {
   opacity: 0.7;
   background: whitesmoke;
   border-radius: 8px;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  box-shadow: 0 15px 25px rgba(0,0,0,.4);
 
 }
     
@@ -137,6 +127,9 @@ body {
   transform: translate(-50%, -50%);
   font-size: 1em;
   width: 350px;
+}
+.form-wrap h1{
+  color: whitesmoke;
 }
 
 /*@media (max-width: 450px) {
@@ -243,8 +236,7 @@ div.seatingplan{
   
   <div class= "container">
     
-      <h1>Book a Table:</h1> 
-    
+     
 
     <div class="rectangle">  </div>
     <div class="form-wrap">
@@ -263,6 +255,10 @@ div.seatingplan{
           <input required type="text" name="lname" placeholder="Enter name"/><br/>
         </div> -->
         
+        <div class = "image">
+          <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
+      </div>
+      <h1>Book a Table</h1>
         <div class="Time">
           <label for="Time">Select a Time:</label>
           <input required type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
