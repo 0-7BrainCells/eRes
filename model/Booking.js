@@ -15,8 +15,12 @@ const bookingSchema = new Schema({
       type: Date,
       required: true
     },
+    table: {
+      type: Number,
+      required: true
+    },
     numGuests: {
-        type: String,
+        type: Number,
         required: true
     },
     sessionID: {

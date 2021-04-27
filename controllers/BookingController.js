@@ -5,14 +5,59 @@ var MongoClient = require('mongodb').MongoClient;
 const dburl = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority';
 const dbname = 'eRes';
 
-//Function: adds a booking into the booking database using input fields of user name, table number and date string (DD/MM/YYYY)
-//Only allows future dates
- 
+//This stores the number of seats at each table from 1 - 34.
+const seatCount = []
+const numTables = 37;
+const maxSeats = 150;
+
+//Initialize the seats at each table. 
+
+for (i = 1; i <= numTables; i++) {
+  if (i <= 6) { seatCount[i-1] = 6}
+  else if (i <= 17) { seatCount[i-1] = 2}
+  else if (i <= 37) { seatCount[i-1] = 4}
+}
+
+//Get the amount of seats still available on a given date. 
+
+getSeatsLeft = function(date) {
+  var resultArray;
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      // Get db
+      const db = client.db(dbname);
+
+      // Get collection
+      var collection = db.collection("bookings");
+
+      // Find all documents in the collection
+      collection.find({date: date}).toArray(function(err, items) {
+        if (!err) { //Declare the array which we will populate then return
+          items.forEach(function(item){
+              resultArray.push(item); //Add items to the array
+          });
+        }
+      });
+      client.close();
+    }
+  })
+  var count = 0;
+  if (!resultArray) {return maxSeats}
+  for (i = 0; i < resultArray.length; i++) {
+    count += resultArray.numGuests
+  }
+  return (maxSeats - count);
+}
 exports.add_booking = function(req, res) {
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
-  if (now > bookdate) { return res.status(400).send("Please select future date (click back to return to previous page)"); }
-    Booking.findOne({   
+
+  //Error handling
+  if (now > bookdate)                                   { return res.status(400).send("Please select future date (click back to return to previous page)"); }
+  if (seatCount[req.body.table-1] < req.body.numGuests) { return res.status(400).send("Table " + req.body.table + " can only seat " + seatCount[req.body.table-1] + " people."); }
+  if (getSeatsLeft(req.body.date) < req.body.numGuests) { return res.status(400).send("We only have " + getSeatsLeft(req.body.date) + " seats left on this day.");}
+    
+  Booking.findOne({   
         email: req.user.email
       }, function(err, booking) {
         if (err) { return res.status(500).send("Error. Go back."); }
@@ -21,6 +66,7 @@ exports.add_booking = function(req, res) {
             var myData = new Booking({email: req.user.email,
                                       date: req.body.date,
                                       time: req.body.time,
+                                      table: req.body.table,
                                       numGuests: req.body.numGuests,
                                       sessionID: req.sessionID});
              myData.save()

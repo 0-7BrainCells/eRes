@@ -42,7 +42,7 @@
         <div class="guests">
           <label for="guests">Number of Guests</label><br/><br/>
           <button class="counter-btn" type="button" onclick="decrement()" id="cnt-down">-</button>
-          <input  id="guestNo" name="numGuests" type="number" min="1" max="37"value="1"/>
+          <input  id="guestNo" name="numGuests" type="number" min="1" max="6" value="1"/>
           <button class="counter-btn" type="button" onclick="increment()" id="cnt-up">+</button>
         </div>
         
@@ -59,26 +59,8 @@
     </div>
   
   </div>
-   <!--Javascript starts here:-->
+
     <script>
-      /*
-    var dateToday = new Date();
-  $('.disablePastDate').datepicker({
-  defaultDate: "+1w",
-  changeMonth: true,
-  numberOfMonths: 1,
-  minDate: dateToday,
-  onSelect: function (selectedDate) {
-    var option = this.id == "from" ? "minDate" : "maxDate",
-      instance = $(this).data("datepicker"),
-      date = $.datepicker.parseDate(
-        instance.settings.dateFormat || $.datepicker._defaults.dateFormat,
-        selectedDate,
-        instance.settings
-      );
-    dates.not(this).datepicker("option", option, date);
-  }
-});*/
 
       function decrement() {
       document.getElementById("guestNo").stepDown();
@@ -89,10 +71,10 @@
      $(document).ready(function () {
     var guestAmount = $("#guestNo");
   $("#cnt-up").click(function () {
-    guestAmount.val(Math.min(parseInt($("#guestNo").val()) + 1, 10));
+    guestAmount.val(Math.min(parseInt($("#guestNo").val()), 6));
   });
   $("#cnt-down").click(function () {
-    guestAmount.val(Math.max(parseInt($("#guestNo").val()) - 1, 1));
+    guestAmount.val(Math.max(parseInt($("#guestNo").val()), 1));
   });
 });
 
@@ -103,9 +85,6 @@ $("#table").attr({
    
     </script>
     
-  </body>
-   
-    </script>
   </body>
 </html>
 
