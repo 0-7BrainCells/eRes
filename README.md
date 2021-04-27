@@ -6,10 +6,12 @@ SES Online Restaurant Web Application
 **Using Express -> Node.js with MongoDB****
 
 **Dependancies:**
-- nodemon
 - ejs
 - express
 - mongoose
+- passport
+- bcrypt
+- favicon (most important)
 
 **Current functionality:**
 
@@ -28,6 +30,12 @@ SES Online Restaurant Web Application
   Make a table booking
   
   Admin menu -> add/remove menu items, add/remove staff
+  
+  Menu's show items directly from database
+  
+  Login authentication with passport
+  
+  Express sessions to track user details while logged in
   
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
