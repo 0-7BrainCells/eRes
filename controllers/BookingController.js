@@ -12,15 +12,14 @@ exports.add_booking = function(req, res) {
   var bookdate = Date.parse(req.body.date)
   if (now > bookdate) { return res.status(400).send("Please select future date (click back to return to previous page)"); }
     Booking.findOne({   
-        fname: req.body.fname,
-        lname: req.body.lname
-
+        fname: req.user.fname,
+        lname: req.user.lname
       }, function(err, booking) {
         if (err) { return res.status(500).send("Error. Go back."); }
   
         if (!booking) {  
             var myData = new Booking({fname: req.user.fname, 
-                                      lname: req.user.fname,
+                                      lname: req.user.lname,
                                       date: req.body.date,
                                       time: req.body.time,
                                       numGuests: req.body.numGuests});
