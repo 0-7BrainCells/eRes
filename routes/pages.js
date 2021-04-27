@@ -26,6 +26,9 @@ router.get('/CustomerCheckout', (req, res) => {
 router.get('/BookTable', (req, res) => {
   res.render('user/book-table')
 }), 
+router.get('/BookingRecord', (req, res) => {
+  res.render('user/booking-record')
+}), 
 router.get('/SelectTable', (req, res) => {
   res.render('user/select-table')
 }), 
