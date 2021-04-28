@@ -68,6 +68,8 @@ exports.add_booking = function(req, res) {
                                       time: req.body.time,
                                       table: req.body.table,
                                       numGuests: req.body.numGuests,
+                                      isConfirmed: false, 
+                                      hasExpired: false,
                                       sessionID: req.sessionID});
              myData.save()
                 .then(item => {
