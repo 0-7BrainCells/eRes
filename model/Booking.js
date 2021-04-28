@@ -23,10 +23,20 @@ const bookingSchema = new Schema({
         type: Number,
         required: true
     },
+    isConfirmed: {
+      type: Boolean,
+      value: false,
+      required: true
+    },
+    hasExpired: {
+      type: Boolean,
+      value: false,
+      required: true
+    },
     sessionID: {
       type: String,
       required: true
-  }
+    }
   });
 
 module.exports = mongoose.model('Booking', bookingSchema);
