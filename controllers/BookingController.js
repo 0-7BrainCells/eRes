@@ -51,6 +51,8 @@ getSeatsLeft = function(date) {
 
 //This updates booking form will just update details same way as making a new booking. 
 exports.update_booking = function (req, res) {
+  console.log(req.body.date)
+  console.log(typeof req.body.date)
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
 
@@ -63,8 +65,9 @@ exports.update_booking = function (req, res) {
     if (!err) {
       const db = client.db(dbname);
       var collection = db.collection("bookings");
+      var date = Date(req.body.date).toString()
       collection.findOneAndUpdate( {email: req.user.email}, {
-        $set: {date: req.body.date,
+        $set: {date: date,
                time: req.body.time,
                table: (Number)(req.body.table),
                numGuests: (Number)(req.body.numGuests)
@@ -103,6 +106,8 @@ exports.delete_unconfirmed_booking = function (req, res, next) {
 }
 
 exports.add_booking = function(req, res) {
+  console.log(req.body.date)
+  console.log(typeof req.body.date)
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
 
@@ -133,7 +138,7 @@ exports.add_booking = function(req, res) {
                      res.status(400).send("Unable to save to database");
              });  
         } else {  
-            return res.render('user/booking/update-booking');
+            return res.redirect('/CustomerCheckout');
         }
       }
     )
