@@ -9,44 +9,67 @@
     <title>eRestaurant</title>
 </head>
 
-<div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-20">
-        <div class="card">
-          <div class="card-header">Menu Management Panel</div>
-            <div class="card-body">
-              <div class="row">
+<body>
+  <div class= "login-box">
+    <h1 style="color: black;"> Menu Management</h1>
+    <div class = btnGroup>
+      <a href= "/AddLunchMenuItem" class="btn ">Add Lunch Menu Item</a>
+      <p>      </p>
+      <a href= "/RemoveLunchMenuItem" class="btn ">Remove Lunch Menu Item</a>
+      <p>      </p>
+      <a href= "/AddDinnerMenuItem" class="btn ">Add Dinner Menu Item</a>
+      <p>      </p>
+      <a href= "/RemoveDinnerMenuItem" class="btn ">Remove Dinner Menu Item</a>
+      <p>      </p>
+      <a href="/StaffLayout" class= "btn ">Back</a>
+    </div>
+</div>
+</body>
 
-                <div class="col-sm-20">
-                  <div class="card">
-                    <a href= "/AddLunchMenuItem" class="btn btn-secondary btn-lg">Add Lunch Menu Item</a>
-                  </div>
-                </div>
+  <style>
+  body {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  background-image: url("images/countertop.jpg");
+  background-size: cover;
+  background-position: absolute;
+  background-repeat: no-repeat;
+  padding: 30px;
+  }
+  
+  .login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background:rgba(255,255,255, 0.3);
+  color: whitesmoke;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  text-align: center;
+  }
 
-                <div class="col-sm-20">
-                  <div class="card">
-                    <a href= "/RemoveLunchMenuItem" class="btn btn-secondary btn-lg">Remove Lunch Menu Item</a>
-                  </div>
-                </div>
+  .btnGroup {
+    display: flex; 
+    flex-direction: column;
+    align-content: center;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+  }
 
-                <div class="col-sm-20">
-                  <div class="card">
-                    <a href= "/AddDinnerMenuItem" class="btn btn-secondary btn-lg">Add Dinner Menu Item</a>
-                  </div>
-                </div>
-
-                <div class="col-sm-20">
-                  <div class="card">
-                    <a href= "/RemoveDinnerMenuItem" class="btn btn-secondary btn-lg">Remove Dinner Menu Item</a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <a href="/StaffLayout" class= "btn btn-light">Back</a>
-      </div>
-  </div>
+  .btn {
+  background-color: #014421; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+  </style>

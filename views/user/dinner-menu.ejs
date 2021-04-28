@@ -25,25 +25,27 @@
   
   <div class="HSpace"></div>
   <ul class="menu">
-      <% for (var i = 0; i < items.length; i++) { %>
+      <% for (var i = 0; i < items.length; i++) { %> <!-- Check my lunch menu item version of this for description of the ejs -->
         <li class="menu-item">
           <section>
-            <header>
+            <form action="/add-order" method="POST">
               <h1><%=items[i].name %></h1>
               <span class="spacer"></span>
-              <span class="price"><%=items[i].price %></span>
-            </header>
-            <p><%=items[i].description %></p>
+              <p><%=items[i].description %></p>
+              <span><%=items[i].price %></span>
             <div class="quan_addBtn">
               <div class= "addToOrderBtn">
-                <a href= "LunchMenu" class="btn btn-info">Add To Order</a> 
+                <button type="submit" class="btn btn-info">Add To Order</button>
               </div>
               <div class="quantity">
-                <input type="number" id="quantity" name="quantity" class="form-control input-number" min="1" max="10">
+                <input type="number" name="quantity" class="form-control input-number" min="1" max="10">
               </div>
             </div>
             </section> 
         </li>
+      <input type ="hidden" name="name" value="<%=items[i].name %>">
+      <input type ="hidden" name="price" value="<%=items[i].price %>">
+      </form>
       <% } %>
     <ul>
   </div>

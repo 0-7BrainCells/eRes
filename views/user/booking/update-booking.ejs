@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJ1SAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eRestaurant</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+  
+  <div class= "container">
+    
+     
+
+    <div class="rectangle">  </div>
+    <div class="form-wrap">
+      
+     
+      <form action="/update-booking" method = "POST">
+        
+        <!--<div class="First Name">
+         
+          <label for="First Name">First Name:</label>
+          <input required type="text" name="fname" placeholder="Enter name"/><br/>
+        </div>
+
+        <div class="Last Name">
+          <label for="Last Name">Last Name:</label>
+          <input required type="text" name="lname" placeholder="Enter name"/><br/>
+        </div> -->
+        
+        <div class = "image">
+          <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
+      </div>
+      <h1>Update your booking</h1>
+        <div class="Time">
+          <label for="Time">Select a Time:</label>
+          <input required type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
+        </div>
+        <div class="Date">
+          <label for="Date">Select a Date:</label>
+          <input required type="Date" id="date" name="date" onfocus="(this.type='date')" placeholder="DD/MM/YYYY" onblur="(this.type='text')" 
+          class="disablePastDate">
+          
+        </div>
+        
+        <div class="TableNo">
+          <label for="tableno">Enter a Table No:</label>
+          <input required type="number" min="1" max="37" id="table" name="table" placeholder="Enter a Number:">
+        </div>
+        <div class="guests">
+          <label for="guests">Number of Guests</label><br/><br/>
+          <button class="counter-btn" type="button" onclick="decrement()" id="cnt-down">-</button>
+          <input  id="guestNo" name="numGuests" type="number" min="1" max="6" value="1"/>
+          <button class="counter-btn" type="button" onclick="increment()" id="cnt-up">+</button>
+        </div>
+        
+        <!-- <button class = "btn btn-light" type ="submit" >Submit Booking</button> -->
+        <button class = "btn btn-light" type ="submit" >Submit Booking</button>
+      </form>
+
+      <a href= "/CustomerCheckout" class="btn btn-light">Go Back</a>
+         
+         
+      </div>
+      <div class="seatingplan">
+      <img src="/images/seatingplan.png" style="width:100%">
+    </div>
+  
+  </div>
+
+    <script>
+
+      function decrement() {
+      document.getElementById("guestNo").stepDown();
+    }
+    function increment() {
+      document.getElementById("guestNo").stepUp();
+    }
+     $(document).ready(function () {
+    var guestAmount = $("#guestNo");
+  $("#cnt-up").click(function () {
+    guestAmount.val(Math.min(parseInt($("#guestNo").val()), 6));
+  });
+  $("#cnt-down").click(function () {
+    guestAmount.val(Math.max(parseInt($("#guestNo").val()), 1));
+  });
+});
+
+$("#table").attr({
+  "max" : 37,
+  "min" : 1
+});
+   
+    </script>
+    
+  </body>
+</html>
+
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+* {
+  box-sizing: border-box;
+}
+.container {
+  margin-top: 10px;
+}
+.container ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+  }
+  .container a {
+    display: block;
+    padding: 20px;
+    
+  }
+  .container li {
+    float: right;
+    display: inline
+  }
+  .container li a {
+    color:black; 
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    text-decoration: none;
+    font-size: large;
+  
+  }
+.container li {
+  margin-left: 20px;
+}
+.container li a {
+  width: 160px;
+  height: 30px;
+  display: block;
+  border-radius: 90px;
+  text-align: center;
+  align-items: center;
+  color:black; 
+  /* padding-top: 0px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 25px; */
+  text-decoration: none;
+  font-size: large;
+}
+
+body {
+  /*background: #e5a88b;
+  color: rgb(47, 47, 47);
+  font: "Open Sans";
+  font-size: 100%;
+  overflow: hidden;*/
+
+  margin-top: 10px;
+  padding:0;
+  font-family: sans-serif;
+  background-image:   url("images/tablebackground.jpg");
+  background-position: top 20px;
+  
+  background-size:100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  padding: 30px;
+
+}
+.logo {
+  position: absolute;
+  right:5%;
+  top: 10%;
+
+}
+
+
+
+.rectangle {
+  margin-top: 10px;
+  position: absolute;
+  max-width: 90%;
+  
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%)
+             rotate(0deg);
+  height: 800px;
+  width: 550px;
+  opacity: 0.7;
+  background: whitesmoke;
+  border-radius: 8px;
+  box-shadow: 0 15px 25px rgba(0,0,0,.4);
+
+}
+    
+
+.mob {
+  display: none;
+  @media(max-width: 450px) {
+    display: inline-block;
+  }
+}
+  .form-wrap {
+    margin-top: 10px;
+  position: absolute;
+  max-width: 90%;
+  text-align: center;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  width: 350px;
+}
+.form-wrap h1{
+  color: whitesmoke;
+}
+
+.form-wrap form {
+  margin-bottom: 10px;
+}
+input {
+  padding: 5px 5px;
+  border: none;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  box-shadow: 1px 3px 20px rgba(17, 17, 17, 0.1);
+  width: 100%;
+  height: 45px;
+  outline: #8DFEE1;
+}
+input[type=date]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+#guestNo {
+  width: 80px;
+  margin: 0 20px;
+  text-align: center;
+}
+input[type=date]:webkit-inner-spin-button {
+  display: none;
+}
+label {
+  padding-bottom: 10px;
+  display: inline;
+  float: left;
+}
+.counter-btn {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  text-align: top;
+  vertical-align: top;
+  font-size: 1.5em;
+  font-weight: 300;
+  width: 40px;
+  background: whitesmoke;
+  border: none;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+;
+  cursor: pointer;
+  outline: none;
+}
+.counter-btn:nth-child(2) {
+  float: right;
+}
+.counter-btn:hover {
+  background: #f3c19f;;
+}
+.guests {
+  margin: 10px;
+}
+.btn {
+  border: none;
+  padding: 10px;
+  margin: 20px auto;
+  width: 100%;
+  height: 45px;
+  display: block;
+  background: #797979;
+  color: whitesmoke;
+  font-size: 1.3em;
+  letter-spacing: 0.1em;
+  box-shadow: 1px 3px 20px rgba(17, 17, 17, 0.1);
+  border-radius: 3px;
+  outline: none;
+}
+.btn:hover {
+  background: whitesmoke;
+}
+
+div.seatingplan{
+ 
+ max-width: 100%;
+  height: auto;
+  width: 800px;
+  position: absolute;
+  right: 4%;
+  top: 20%;
+  border: 80px solid rgba(224, 224, 224, 0.7);
+  
+  border-radius: 8px;
+
+  
+  
+}
+</style>
+</html>
+

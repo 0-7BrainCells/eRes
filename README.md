@@ -6,12 +6,16 @@ SES Online Restaurant Web Application
 **Using Express -> Node.js with MongoDB****
 
 **Dependancies:**
-- nodemon
 - ejs
 - express
 - mongoose
+- passport
+- bcrypt
+- favicon (most important)
 
 **Current functionality:**
+
+(THINKING ABOUT ORDERS, use session, store an order as an item, price and userID. to view orders, get all items matching a userID for a list of all items ordered by a user. this only works for one booking isntance per user atm. find a way to link a specific booking maybe???)
 
   Navigate a home page
 
@@ -26,6 +30,12 @@ SES Online Restaurant Web Application
   Make a table booking
   
   Admin menu -> add/remove menu items, add/remove staff
+  
+  Menu's show items directly from database
+  
+  Login authentication with passport
+  
+  Express sessions to track user details while logged in
   
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

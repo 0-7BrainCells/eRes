@@ -1,11 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>eRestaurant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<p> "hello luvs x" </p>
+    <div class="login-box">
+        <div class = "image">
+            <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
+        </div>
+        <h1>Total Checkout</h1>
+        <div class="row">
+            <div class="column">
+                <h2>Booking</h2>
+          
+                <div class="card">
+                  <address>
+                    <% if (booking[0]) { %>
+                    <%=user.fname%> <%=user.lname%><br />
+                    <%=booking[0].date.toString().split(" ")[0]%> <%=booking[0].date.toString().split(" ")[1]%> <%=booking[0].date.toString().split(" ")[2]%>, <%=booking[0].date.toString().split(" ")[3]%> at <%=booking[0].time%><br />
+                    Seating <%=booking[0].numGuests%> guests at Table <%=booking[0].table%>
+                    <%} else { %>
+                    <p>No current booking</p> 
+                    <%} %>
+                  </address>
+                </div>
+                <p></p>
+                <p></p>
+                <div>
+                <a class="card" style="text-decoration:none" href='/edit-booking'>Edit Booking</a>
+                </div>
+                <p></p>
+              <!-- </div> -->
+              <!-- <div class="col-md-6""> -->
+              <fieldset>
+                <legend>Apply Discount</legend>
+        
+                <div class="form__radios">
+                  <div class="form__radio">
+                    <label for="visa">Add discount code input here</label>
+                    <input id="myform" checked id="visa" name="payment-method" type="text">
+                  </div>
+              </fieldset>
+            </div>
+            
+
+            <div class="column">
+              <div>
+                <h2>Order</h2>
+                <div class= "card">
+                <table>
+                  <tbody>
+                    <% var totalPrice = 0 %>
+                    <% for (i = 0; i < orders.length; i++) { %>
+                    <% totalPrice += (Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%>
+                        <tr>
+                          <td align="left"><%=orders[i].name%></td><td align="left"><%=orders[i].quantity%></td><td align ="left">$</td><td align="left"><%=(Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%></td>
+                        </tr> 
+                    <% } %>                 
+                  </tbody>
+                  <tfoot>
+                    
+                    <tr>
+                      <td align ="left">Total</td><td></td>
+                      <td align ="left">$</td><td align="left"><%=totalPrice%></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+            </div>
+        </div>          
+               
+        </div>
+
+        <div>
+            <p>   </p>
+        </div> 
+        
+        <div>
+          <form id ="myform" action='/confirm-booking' method="POST">
+            <button class="button button--full" type="submit">Confirm Booking</button>
+          </form>
+            <p></p>
+            <a class="button button--full" href="/CustomerHomepage">Back to homepage</a>
+        </div>
+         
+
+
+    </div>
 </body>
 </html>
 <style>
+<<<<<<< HEAD
+=======
+
+
+
+.column {
+    float: left;
+    width: 50%;
+    }
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+:root {
+  --color-background: #fae3ea;
+  --color-primary: #fc8080;
+  --font-family-base: Poppin, sans-serif;
+  --font-size-h1: 1.25rem;
+  --font-size-h2: 1rem;
+}
+
+
+* {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* body {
+  background-color: #fae3ea;
+  background-color: var(--color-background);
+  display: grid;
+  font-family: Poppin, sans-serif;
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  margin: 0;
+  min-height: 100vh;
+  padding: 5vmin;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  place-items: center;
+} */
+
+address {
+  font-style: normal;
+}
+
+button {
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 1.25rem;
+  font-size: var(--font-size-h1);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5em;
+}
+
+h2 {
+  font-size: 1rem;
+  font-size: var(--font-size-h2);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+legend {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  padding: 0;
+}
+
+input {
+  border: 0;
+  color: inherit;
+  font: inherit;
+}
+
+/* input[type="radio"] {
+  accent-color: #fc8080;
+  accent-color: var(--color-primary);
+} */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tbody {
+  color: #fff;
+}
+
+td {
+  padding-top: 0.125em;
+  padding-bottom: 0.125em;
+}
+
+tfoot {
+  border-top: 1px solid #b4b4b4;
+  font-weight: 600;
+}
+
+.align {
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  place-items: center;
+}
+
+.button {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #01442156;
+  /* background-color: var(--color-primary); */
+  border-radius: 999em;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 0.5em;
+  gap: 0.5em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  padding-left: 1em;
+  padding-right: 1em;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.button:focus,
+.button:hover {
+  background-color: #014421;
+}
+
+.button--full {
+  width: 100%;
+}
+
+.card {
+  border-radius: 1em;
+  background-color: #01442156;
+  /* background-color: var(--color-primary); */
+  color: #fff;
+  padding: 1em;
+}
+
+.form {
+  display: grid;
+  grid-gap: 2em;
+  gap: 2em;
+}
+
+.form__radios {
+  display: grid;
+  grid-gap: 1em;
+  gap: 1em;
+}
+
+.form__radio {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color:#01442156;
+  border-radius: 1em;
+  -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+          box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+}
+
+.form__radio label {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  grid-gap: 1em;
+  gap: 1em;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.icon {
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  width: 1em;
+  vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+    body {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  background-image: url("images/seating-checkout.jpg");
+  background-size: cover;
+  background-position: absolute;
+  background-repeat: no-repeat;
+  padding: 30px;
+   }
+
+  .login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background:rgba(0,0,0, 0.9);
+  color: whitesmoke;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  text-align: center;
+  }
+  
+  .login-box h1 {
+  margin: 0 0 30px;
+  padding: 0;
+  color:  	whitesmoke;
+  text-align: center; 
+  border-radius: 10px;  
+  } 
+  
+>>>>>>> main
 </style>

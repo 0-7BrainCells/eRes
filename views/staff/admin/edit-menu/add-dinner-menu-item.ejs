@@ -9,44 +9,80 @@
     <title>eRestaurant</title>
 </head>
 
-<div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-20">
-        <div class="card">
-          <div class="card-header">Add Dinner Menu Item</div>
-
-          <form action="/add-dinner-menu-item" method = "POST" >
-            <div class="row g-3">
-              
-              <div class="col-md-4">
-                <label for="validationDefaultUsername" class="form-label">Name</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" name = "name" aria-describedby="inputGroupPrepend2" required>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <label for="validationDefaultPass" class="form-label">Price</label>
-                <input type="text" class="form-control" name = "price" required>
-              </div>
-
-              <div class="col-md-4">
-                <label for="validationDefaultPass" class="form-label">Description</label>
-                <input type="text" class="form-control" name = "description" required>
-              </div>
-
-              <div class="col-12">
-                <button class="btn btn-primary" type="submit">Add Dinner Menu Item</button>
-              </div>
-
-             </div>
-
-          </form>
-            
-          </div>
-        </div>
+<body>
+  <div class= "login-box">
+    <h1 style="color: black;"> Add Dinner Menu Item </h1>
+    <div class = btnGroup>
+      <form id="myform" action="/add-dinner-menu-item" method = "POST" >
+        
+      <div class = "textClass" >
+        <label for="validationDefaultUsername" class="form-label">Name</label>
+        <input type="text" class="form-control" name = "name" aria-describedby="inputGroupPrepend2" required>
+        <label for="validationDefaultPass" class="form-label">Price</label>
+        <input type="text" class="form-control" name = "price" required>
+        <label for="validationDefaultPass" class="form-label">Description</label>
+        <input type="text" class="form-control" name = "description" required>
+        <label for="validationDefaultPass" class="form-label">Category (V/GF)</label>
+        <input type="text" class="form-control" name = "category">
       </div>
-      <div class="col-12">
-        <a href="/EditMenu" class= "btn btn-light">Back</a>
-      </div>
-  </div>
+      </form>
+            <p>    </p>
+            <button form="myform" class="btn " type="submit">Add Dinner Menu Item</button>
+            <p>  </p>
+            <a href="/StaffLayout" class= "btn ">Back</a>
+    </div>
+</div>
+</body>
+
+  <style>
+    body {
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background-color:  #C4A484;
+    background-size: cover;
+    background-position: absolute;
+    background-repeat: no-repeat;
+    padding: 30px;
+    }
+    
+    .login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background:rgba(255,255,255, 0.6);
+    color: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    text-align: center;
+    }
+  
+    .btnGroup {
+      display: flex; 
+      flex-direction: column;
+      align-content: center;
+      width: 80%;
+      margin: auto;
+      padding: 10px;
+    }
+  
+    .btn {
+    background-color: #014421; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .textClass {
+    color: black;
+    padding: 10px;
+  }
+    </style>
