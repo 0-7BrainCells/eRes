@@ -22,8 +22,9 @@
     <li><a href="/DinnerMenu">Dinner Menu</a></li>
   </ul>
   <!---->
-
-
+  <% if (!booking) { %>
+    <p style="color:red">Make a table reservation to order items.</p>
+  <%}%>
   <div class="HSpace"></div> 
     <ul class="menu">
       <% for (var i = 0; i < items.length; i++) {%>  <!-- This is EJS, using the % to use js within HTML, it uses a variable "items" passed to it when the page is loaded via the route "/LunchMenu", look at the LunchMenuController to see that when this page is rendered, it also sends this "items" variable. -->
@@ -34,6 +35,7 @@
               <span class="spacer"></span>
               <p><%=items[i].description %></p>
               <span><%=items[i].price %></span>
+            <% if (booking) { %>
             <div class="quan_addBtn">
               <div class= "addToOrderBtn">
                 <button class="btn btn-info" type="submit" >Add To Order</button>
@@ -42,6 +44,7 @@
                 <input type="number" name="quantity" class="form-control input-number" min="1" max="10">
               </div>
             </div>
+            <%}%>
             </section> 
         </li>
       <input type ="hidden" name="name" value="<%=items[i].name %>">

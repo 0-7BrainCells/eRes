@@ -107,7 +107,6 @@ exports.delete_unconfirmed_booking = function (req, res, next) {
 
 exports.add_booking = function(req, res) {
   var bookingID = mongo.ObjectId()
-  req.session.bookingID = bookingID
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
 
@@ -131,6 +130,7 @@ exports.add_booking = function(req, res) {
                                       isConfirmed: false, 
                                       hasExpired: false,
                                       sessionID: req.sessionID});
+             req.session.booking = myData;
              myData.save()
                 .then(item => {
                   return res.status(200).render('user/booking/booking-confirmation');

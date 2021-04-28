@@ -23,7 +23,7 @@ exports.display_dinner_menu = function (req, res) {
           items.forEach(function(item){
               resultArray.push(item);
           });
-          res.render('user/dinner-menu', {items: resultArray});
+          res.render('user/dinner-menu', {items: resultArray, booking: req.session.booking});
         }
       });
 
