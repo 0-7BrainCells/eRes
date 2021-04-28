@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const BookingController = require('../controllers/BookingController')
+const OrderController = require('../controllers/OrderController')
 
 //Page redirect action handlers:
 
@@ -82,7 +83,7 @@ router.get('/', checkNotAuthenticated, (req, res) =>{
   res.render('index')
 })
 
-router.delete('/customer-logout', BookingController.delete_unconfirmed_booking, (req, res) => {
+router.delete('/customer-logout', OrderController.delete_unconfirmed_orders, BookingController.delete_unconfirmed_booking, (req, res) => {
   req.logOut()
   res.redirect('/')
 })
