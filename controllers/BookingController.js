@@ -21,7 +21,7 @@ for (i = 1; i <= numTables; i++) {
 //Get the amount of seats still available on a given date. 
 
 getSeatsLeft = function(date) {
-  var resultArray;
+  var resultArray = [];
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
       // Get db
@@ -44,11 +44,70 @@ getSeatsLeft = function(date) {
   var count = 0;
   if (!resultArray) {return maxSeats}
   for (i = 0; i < resultArray.length; i++) {
-    count += resultArray.numGuests
+    count += resultArray[i].numGuests
   }
   return (maxSeats - count);
 }
+
+//This updates booking form will just update details same way as making a new booking. 
+exports.update_booking = function (req, res) {
+  console.log(req.body.date)
+  console.log(typeof req.body.date)
+  var now = Date.parse(new Date())
+  var bookdate = Date.parse(req.body.date)
+
+  //Error handling
+  if (now > bookdate)                                   { return res.status(400).send("Please select future date (click back to return to previous page)"); }
+  if (seatCount[req.body.table-1] < req.body.numGuests) { return res.status(400).send("Table " + req.body.table + " can only seat " + seatCount[req.body.table-1] + " people."); }
+  if (getSeatsLeft(req.body.date) < req.body.numGuests) { return res.status(400).send("We only have " + getSeatsLeft(req.body.date) + " seats left on this day.");}
+  
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("bookings");
+      var date = Date(req.body.date).toString()
+      collection.findOneAndUpdate( {email: req.user.email}, {
+        $set: {date: date,
+               time: req.body.time,
+               table: (Number)(req.body.table),
+               numGuests: (Number)(req.body.numGuests)
+        }
+      }).then(res.render('user/booking/booking-confirmation'));
+    }
+    client.close();
+    })
+}
+
+exports.confirm_booking = function (req, res, next) {
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("bookings");
+      collection.updateMany( {sessionID: req.sessionID}, {
+        $set: {isConfirmed: true
+        }
+      })
+      next()
+    }
+    client.close();
+    })
+}
+
+exports.delete_unconfirmed_booking = function (req, res, next) {
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("bookings");
+      collection.deleteOne( {email: req.user.email, isConfirmed: false})
+      next()
+    }
+    client.close();
+    })
+}
+
 exports.add_booking = function(req, res) {
+  console.log(req.body.date)
+  console.log(typeof req.body.date)
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
 
@@ -68,6 +127,8 @@ exports.add_booking = function(req, res) {
                                       time: req.body.time,
                                       table: req.body.table,
                                       numGuests: req.body.numGuests,
+                                      isConfirmed: false, 
+                                      hasExpired: false,
                                       sessionID: req.sessionID});
              myData.save()
                 .then(item => {
@@ -77,7 +138,7 @@ exports.add_booking = function(req, res) {
                      res.status(400).send("Unable to save to database");
              });  
         } else {  
-            return res.status(200).send("You may only have one booking. (Cancel/Edit current booking?)");
+            return res.redirect('/CustomerCheckout');
         }
       }
     )
@@ -107,7 +168,7 @@ exports.display_checkout = function(req, res) {
       collection = db.collection("orders");
 
       // Find all documents in the collection
-      collection.find({email: req.user.email, sessionID: req.sessionID}).toArray(function(err, items) {
+      collection.find({email: req.user.email}).toArray(function(err, items) {
         if (!err) { //Declare the array which we will populate then return
           items.forEach(function(item){
               ordersArray.push(item); //Add items to the array

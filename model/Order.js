@@ -19,6 +19,11 @@ const orderSchema = new Schema({
         type: Number,
         required: true
       },
+    isConfirmed: {
+      type: Boolean,
+      value: false,
+      required: true
+    },
     sessionID: {
       type: String,
       required: true
