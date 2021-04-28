@@ -24,7 +24,7 @@ exports.display_lunch_menu = function(req, res) {
           items.forEach(function(item){
               resultArray.push(item); //Add items to the array
           });
-          res.render('user/lunch-menu', {items: resultArray}); //Render the page and pass the results in the array as variable item
+          res.render('user/lunch-menu', {items: resultArray, booking: req.session.booking}); //Render the page and pass the results in the array as variable item
         }
       });
 
