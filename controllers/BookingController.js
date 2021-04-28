@@ -2,6 +2,7 @@ const Booking = require('../model/Booking');
 const Order = require('../model/Order');
 
 var MongoClient = require('mongodb').MongoClient;
+var mongo = require('mongodb')
 const dburl = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority';
 const dbname = 'eRes';
 
@@ -51,8 +52,7 @@ getSeatsLeft = function(date) {
 
 //This updates booking form will just update details same way as making a new booking. 
 exports.update_booking = function (req, res) {
-  console.log(req.body.date)
-  console.log(typeof req.body.date)
+  
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
 
@@ -106,8 +106,8 @@ exports.delete_unconfirmed_booking = function (req, res, next) {
 }
 
 exports.add_booking = function(req, res) {
-  console.log(req.body.date)
-  console.log(typeof req.body.date)
+  var bookingID = mongo.ObjectId()
+  req.session.bookingID = bookingID
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
 
@@ -122,7 +122,8 @@ exports.add_booking = function(req, res) {
         if (err) { return res.status(500).send("Error. Go back."); }
   
         if (!booking) {  
-            var myData = new Booking({email: req.user.email,
+            var myData = new Booking({bookingID: bookingID,
+                                      email: req.user.email,
                                       date: req.body.date,
                                       time: req.body.time,
                                       table: req.body.table,

@@ -18,7 +18,7 @@
         <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "90" height = "90"/>
     </div>
       
-      <h3>View record of all Bookings here: </h3> <br> <br> <br>
+    <h1>My Booking Record</h1>
      
       <div class="table">
       <table style="width: 150%">
@@ -42,7 +42,7 @@
       <br>
     </div>
       <a href= "/CustomerHomePage" class="btn btn-info" style="padding: 15px ;">Return Home</a> <!--Returns to customer home page-->
-      <a href= "/" class="btn btn-info" style="padding: 15px ;">Log Out</a>  <!--Returns to website homepage,( index.ejs)-->
+       <!--Returns to website homepage,( index.ejs)-->
     </div>
   </body>
 </html>
@@ -55,12 +55,25 @@
     box-sizing: border-box;
   }
   body {
-    background: #b6c5b8;
-    color: rgb(47, 47, 47);
-    font: "Open Sans";
-    font-size: 100%;
-    overflow: hidden;
-  }
+  /*background: #e5a88b;
+  color: rgb(47, 47, 47);
+  font: "Open Sans";
+  font-size: 100%;
+  overflow: hidden;*/
+
+  margin-top: 10px;
+  padding:0;
+  font-family: sans-serif;
+  background-image:   url("images/tablebackground.jpg");
+  background-position: top 20px;
+  
+  background-size:100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  padding: 30px;
+
+}
+/*
   .table{
     border: 1px solid #797979;
     text-align: center;
@@ -76,6 +89,7 @@
     border: 1px solid #797979;
     padding: 15px;
   }
+  */
   
   @media (max-width: 450px) {
     body {
@@ -84,6 +98,7 @@
     }
   }
   .rectangle {
+    margin-top: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -91,7 +106,8 @@
                rotate(0deg);
     height: 700px;
     width: 650px;
-    background: #ffffff;
+    background: whitesmoke;
+    opacity: 0.7;
     border-radius: 8px;
     box-shadow: 0px 0px 20px 3px rgba(#111, .2);
     transition: all .5s ease-in-out;
@@ -106,6 +122,7 @@
     }
   }
     .form-wrap {
+      margin-top: 10px;
     position: absolute;
     text-align: center;
     top: 50%;
@@ -119,6 +136,11 @@
       width: 80%;
     }
   }
+
+  .form-wrap h1{
+  color: #ffff;
+   
+}
   .form-wrap form {
     margin-bottom: 10px;
   }

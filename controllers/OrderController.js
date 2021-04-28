@@ -35,7 +35,8 @@ exports.add_order = function(req, res) {
         email: req.user.email
       }, function (err, item) {
         if (err) { return res.status(500).send(err); }
-          var myData = new Order({email: req.user.email, 
+          var myData = new Order({bookingID: req.session.bookingID,
+                                 email: req.user.email, 
                                  name: req.body.name, 
                                  price: req.body.price,
                                  quantity: req.body.quantity,
