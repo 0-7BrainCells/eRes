@@ -21,7 +21,7 @@ for (i = 1; i <= numTables; i++) {
 //Get the amount of seats still available on a given date. 
 
 getSeatsLeft = function(date) {
-  var resultArray;
+  var resultArray = [];
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
       // Get db
@@ -44,10 +44,57 @@ getSeatsLeft = function(date) {
   var count = 0;
   if (!resultArray) {return maxSeats}
   for (i = 0; i < resultArray.length; i++) {
-    count += resultArray.numGuests
+    count += resultArray[i].numGuests
   }
   return (maxSeats - count);
 }
+
+//This updates booking form will just update details same way as making a new booking. 
+exports.update_booking = function (req, res) {
+  console.log(req.body)
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("bookings");
+      collection.findOneAndUpdate( {email: req.user.email}, {
+        $set: {date: req.body.date,
+               time: req.body.time,
+               table: (Number)(req.body.table),
+               numGuests: (Number)(req.body.numGuests)
+        }
+      }).then(res.render('user/booking/booking-confirmation'));
+    }
+    client.close();
+    })
+}
+
+exports.confirm_booking = function (req, res) {
+  console.log(req.body)
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("bookings");
+      collection.findOneAndUpdate( {email: req.user.email}, {
+        $set: {isConfirmed: true
+        }
+      })
+    }
+    client.close();
+    })
+}
+
+exports.delete_unconfirmed_booking = function (req, res, next) {
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("bookings");
+      collection.deleteOne( {email: req.user.email, isConfirmed: false})
+      next()
+    }
+    client.close();
+    })
+}
+
 exports.add_booking = function(req, res) {
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
@@ -79,7 +126,7 @@ exports.add_booking = function(req, res) {
                      res.status(400).send("Unable to save to database");
              });  
         } else {  
-            return res.status(200).send("You may only have one booking. (Cancel/Edit current booking?)");
+            return res.render('user/booking/update-booking');
         }
       }
     )

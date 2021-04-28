@@ -5,7 +5,10 @@ const OrderController = require('../controllers/OrderController')
 
 router.post('/booking-received', BookingController.add_booking) 
 
+router.post('/update-booking', BookingController.update_booking)
+
 router.get('/CustomerCheckout', checkAuthenticated, BookingController.display_checkout)
+
 
 function checkAuthenticated(req, res, next) {
 if (req.isAuthenticated()) {
