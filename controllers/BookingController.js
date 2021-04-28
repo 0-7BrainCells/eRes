@@ -51,7 +51,14 @@ getSeatsLeft = function(date) {
 
 //This updates booking form will just update details same way as making a new booking. 
 exports.update_booking = function (req, res) {
-  console.log(req.body)
+  var now = Date.parse(new Date())
+  var bookdate = Date.parse(req.body.date)
+
+  //Error handling
+  if (now > bookdate)                                   { return res.status(400).send("Please select future date (click back to return to previous page)"); }
+  if (seatCount[req.body.table-1] < req.body.numGuests) { return res.status(400).send("Table " + req.body.table + " can only seat " + seatCount[req.body.table-1] + " people."); }
+  if (getSeatsLeft(req.body.date) < req.body.numGuests) { return res.status(400).send("We only have " + getSeatsLeft(req.body.date) + " seats left on this day.");}
+  
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
       const db = client.db(dbname);
@@ -69,14 +76,6 @@ exports.update_booking = function (req, res) {
 }
 
 exports.confirm_booking = function (req, res) {
-  var now = Date.parse(new Date())
-  var bookdate = Date.parse(req.body.date)
-
-  //Error handling
-  if (now > bookdate)                                   { return res.status(400).send("Please select future date (click back to return to previous page)"); }
-  if (seatCount[req.body.table-1] < req.body.numGuests) { return res.status(400).send("Table " + req.body.table + " can only seat " + seatCount[req.body.table-1] + " people."); }
-  if (getSeatsLeft(req.body.date) < req.body.numGuests) { return res.status(400).send("We only have " + getSeatsLeft(req.body.date) + " seats left on this day.");}
-
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
       const db = client.db(dbname);
