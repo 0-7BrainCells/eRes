@@ -23,6 +23,9 @@ router.get('/CustomerHomePage', checkAuthenticated, (req, res) => {
 router.get('/BookTable', checkAuthenticated, (req, res) => {
   res.render('user/book-table', {user: req.user})
 }), 
+router.get('/BookingRecord', (req, res) => {
+  res.render('user/booking-record')
+}), 
 router.get('/SelectTable', (req, res) => {
   res.render('user/select-table')
 }), 
