@@ -32,9 +32,8 @@
         
                 <div class="form__radios">
                   <div class="form__radio">
-                    <label for="visa"><svg class="icon">
-                      </svg>Add discount code input here</label>
-                    <input checked id="visa" name="payment-method" type="radio" />
+                    <label for="visa">Add discount code input here</label>
+                    <input id="myform" checked id="visa" name="payment-method" type="text">
                   </div>
               </fieldset>
             </div>
@@ -74,7 +73,9 @@
         </div> 
         
         <div>
-            <button class="button button--full" type="submit">Review Booking</button>
+          <form id ="myform" action='/confirm-booking' method="POST">
+            <button class="button button--full" type="submit">Confirm Booking</button>
+          </form>
             <p></p>
             <a class="button button--full" href="/CustomerHomepage">Back to homepage</a>
         </div>

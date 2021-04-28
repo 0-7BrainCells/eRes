@@ -75,15 +75,16 @@ exports.update_booking = function (req, res) {
     })
 }
 
-exports.confirm_booking = function (req, res) {
+exports.confirm_booking = function (req, res, next) {
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
       const db = client.db(dbname);
       var collection = db.collection("bookings");
-      collection.findOneAndUpdate( {email: req.user.email}, {
+      collection.updateMany( {sessionID: req.sessionID}, {
         $set: {isConfirmed: true
         }
       })
+      next()
     }
     client.close();
     })
@@ -162,7 +163,7 @@ exports.display_checkout = function(req, res) {
       collection = db.collection("orders");
 
       // Find all documents in the collection
-      collection.find({email: req.user.email, sessionID: req.sessionID}).toArray(function(err, items) {
+      collection.find({email: req.user.email}).toArray(function(err, items) {
         if (!err) { //Declare the array which we will populate then return
           items.forEach(function(item){
               ordersArray.push(item); //Add items to the array

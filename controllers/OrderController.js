@@ -3,7 +3,7 @@ var MongoClient = require('mongodb').MongoClient;
 const dburl = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority';
 const dbname = 'eRes';
 
-exports.confirm_orders = function (req, res) {
+exports.confirm_orders = function (req, res, next) {
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
       const db = client.db(dbname);
@@ -12,6 +12,7 @@ exports.confirm_orders = function (req, res) {
         $set: {isConfirmed: true
         }
       })
+      next()
     }
     client.close();
     })
