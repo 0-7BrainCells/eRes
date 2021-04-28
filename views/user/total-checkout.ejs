@@ -14,7 +14,7 @@
                 <h2>Booking</h2>
           
                 <div class="card">
-                  <address>\
+                  <address>
                     <% if (booking) { %>
                     <%=user.fname%> <%=user.lname%><br />
                     <%=booking[0].date.toString().split(" ")[0]%> <%=booking[0].date.toString().split(" ")[1]%> <%=booking[0].date.toString().split(" ")[2]%>, <%=booking[0].date.toString().split(" ")[3]%> at <%=booking[0].time%><br />
