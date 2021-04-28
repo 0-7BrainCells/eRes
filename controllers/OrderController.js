@@ -15,7 +15,8 @@ exports.add_order = function(req, res) {
           var myData = new Order({email: req.user.email, 
                                  name: req.body.name, 
                                  price: req.body.price,
-                                 quantity: req.body.quantity});
+                                 quantity: req.body.quantity,
+                                 sessionID: req.sessionID});
           myData.save()
             .then(item => {
               res.send("Item added to order, please return to a menu.");

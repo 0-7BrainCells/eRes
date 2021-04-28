@@ -16,9 +16,13 @@ const orderSchema = new Schema({
       required: true
     },
     quantity: {
-        type: String,
+        type: Number,
         required: true
       },
+    sessionID: {
+      type: String,
+      required: true
+    }
   });
   
 module.exports = mongoose.model('Order', orderSchema);
