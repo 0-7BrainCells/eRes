@@ -34,8 +34,19 @@
   </div>
   
   <div class="HSpace"></div>
+
+  <form action="/categorise-dinner-menu" method="POST">
+    <select onchange="this.form.submit()" name="category">
+      <option value="default">Select Category</option>
+      <option value="all">All</option>
+      <option value="V">Vegan</option>
+      <option value="G">Gluten Free</option>
+    </select>
+  </form>
+
   <ul class="menu">
       <% for (var i = 0; i < items.length; i++) { %> <!-- Check my lunch menu item version of this for description of the ejs -->
+       <%if(items[i].category == category || category == "all" || category == "default") { %>  
         <li class="menu-item">
           <section>
             <form action="/add-order-dinner" method="POST">
@@ -59,7 +70,7 @@
       <input type ="hidden" name="name" value="<%=items[i].name %>">
       <input type ="hidden" name="price" value="<%=items[i].price %>">
       </form>
-      <% } %>
+      <% }} %>
     <ul>
   </div>
     
