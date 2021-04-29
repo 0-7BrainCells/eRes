@@ -15,6 +15,7 @@ SES Online Restaurant Web Application
 
 **Current functionality:**
 
+
   Navigate a home page
 
   Fill out customer registration form, user saving to database
@@ -34,6 +35,10 @@ SES Online Restaurant Web Application
   Login authentication with passport
   
   Express sessions to track user details while logged in
+  
+  Add items to a current order
+  
+  Show menu items based on category
   
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

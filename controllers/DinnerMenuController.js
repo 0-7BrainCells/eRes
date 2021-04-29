@@ -1,4 +1,39 @@
 const DinnerMenu = require('../model/DinnerMenu');
+var MongoClient = require('mongodb').MongoClient;
+const dburl = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority';
+const dbname = 'eRes';
+const collname = 'dinnermenus';
+
+exports.display_dinner_menu = function (req, res) {
+  var category;
+  if (req.body.category) {category = req.body.category;} else {category = "default"}
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+
+      // Get db
+      const db = client.db(dbname);
+
+      // Get collection
+      const collection = db.collection(collname);
+
+      // Find all documents in the collection
+      collection.find({}).toArray(function(err, items) {
+        if (!err) {
+
+          // write HTML output
+          var resultArray = [];
+          items.forEach(function(item){
+              resultArray.push(item);
+          });
+          res.render('user/dinner-menu', {category: category, items: resultArray, booking: req.session.booking, orders : req.session.orders});
+        }
+      });
+
+      // close db client
+      client.close();
+    }
+  });
+}
 
 exports.add_dinner_menu_item = function (req, res) {
     DinnerMenu.findOne({

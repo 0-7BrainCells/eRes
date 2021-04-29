@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    
     <div class="login-box">
         <div class = "image">
             <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
@@ -12,96 +11,71 @@
         <h1>Total Checkout</h1>
         <div class="row">
             <div class="column">
-                <h2>Address</h2>
+                <h2>Booking</h2>
           
                 <div class="card">
                   <address>
-                    Steve Bob<br />
-                    403 Steve Street, Steventon, Bobbie, 32104,<br />
-                    Australises
+                    <% if (booking[0]) { %>
+                      <%=user.fname%> <%=user.lname%><br />
+                      <%=booking[0].date.toString().split(" ")[0]%> <%=booking[0].date.toString().split(" ")[1]%> <%=booking[0].date.toString().split(" ")[2]%>, <%=booking[0].date.toString().split(" ")[3]%> at <%=booking[0].time%><br />
+                      Seating <%=booking[0].numGuests%> guests at Table <%=booking[0].table%>
+                      <%} else { %>
+                      <p>No current booking</p> 
+                      <%} %>
                   </address>
                 </div>
+                <p></p>
+                <p></p>
+                <% if(req.session.booking) {%>
+                <div>
+                <a class="card" style="text-decoration:none" href='/edit-booking'>Edit Booking</a><a class="card" style="text-decoration:none" href='/cancel-booking'>Cancel Booking</a>
+                </div>
+                <%}%>
+                <p></p>
               <!-- </div> -->
               <!-- <div class="col-md-6""> -->
               <fieldset>
-                <legend>Payment Method</legend>
-          
+                <legend>Apply Discount</legend>
+        
                 <div class="form__radios">
                   <div class="form__radio">
-                    <label for="visa"><svg class="icon">
-                      </svg>Visa Payment</label>
-                    <input checked id="visa" name="payment-method" type="radio" />
+                    <label for="visa">Add discount code input here</label>
+                    <input id="myform" checked id="visa" name="payment-method" type="text">
                   </div>
-          
-                  <div class="form__radio">
-                    <label for="paypal"><svg class="icon">
-                      </svg>PayPal</label>
-                    <input id="paypal" name="payment-method" type="radio" />
-                  </div>
-          
-                  <div class="form__radio">
-                    <label for="mastercard"><svg class="icon">
-                      </svg>Master Card</label>
-                    <input id="mastercard" name="payment-method" type="radio" />
-                  </div>
-                </div>
               </fieldset>
-              <!-- </div> -->
             </div>
             
 
             <div class="column">
               <div>
-                <h2>Shopping Bill</h2>
+                <h2>Order</h2>
                 <div class= "card">
                 <table>
                   <tbody>
-                    
+                    <% var totalPrice = 0 %>
+                    <% for (i = 0; i < orders.length; i++) { %>
+                    <% totalPrice += (Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%>
                         <tr>
-                        <td>Item 1 fee</td>
-                        <td align="right">$5.43</td>
-                        </tr>
-                        <tr>
-                            <tr>
-                                <td>Item 2 fee</td>
-                                <td align="right">$5.43</td>
-                                </tr>
-                            <td>Item 3 fee</td>
-                            <td align="right">$5.43</td>
-                            </tr>
-                            <tr>
-                                <td>Item 4 fee</td>
-                                <td align="right">$5.43</td>
-                                </tr>
-                                <tr>
-                                    <td>Item 5 fee</td>
-                                    <td align="right">$5.43</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Item 6 fee</td>
-                                        <td align="right">$5.43</td>
-                                        </tr>
-
-                        <tr>
-                        <td>Discount 10%</td>
-                        <td align="right">-$1.89</td>
-                        </tr>
-                    
-                    <tr>
-                    <td>Price Total</td>
-                    <td align="right">$84.82</td>
-                    </tr>
-                    
+                          <td align="left"><%=orders[i].name%></td><td align="left"><%=orders[i].quantity%></td><td align ="left">$</td><td align="left"><%=(Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%></td>
+                        </tr> 
+                    <% } %>                 
                   </tbody>
                   <tfoot>
                     
                     <tr>
-                      <td>Total</td>
-                      <td align="right">$88.36</td>
+                      <td align ="left">Total</td><td></td>
+                      <td align ="left">$</td><td align="left"><%=totalPrice%></td>
                     </tr>
                   </tfoot>
                 </table>
               </div>
+              <p></p>
+              <p></p>
+              <% if (orders.length > 1) { %>
+              <div>
+                <a class="card" style="text-decoration:none">Restart Order</a>
+              </div>
+              <% } %>
 
             </div>
         </div>          
@@ -113,7 +87,13 @@
         </div> 
         
         <div>
-            <button class="button button--full" type="submit">Buy Now</button>
+         <% if (booking.length > 0) { %>
+          <form id ="myform" action='/confirm-booking' method="POST">
+            <button class="button button--full" type="submit">Confirm Booking</button>
+          </form>
+        <% } %>
+            <p></p>
+            <a class="button button--full" href="/CustomerHomepage" style="text-decoration:none">Back to homepage</a>
         </div>
          
 
@@ -380,7 +360,7 @@ tfoot {
   width: 700px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background:rgba(255,255,255, 0.3);
+  background:rgba(0,0,0, 0.9);
   color: whitesmoke;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);

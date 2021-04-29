@@ -17,6 +17,7 @@ const dinnerMenuSchema = new Schema({
     },
     category: {
       type: String,
+      value: "",
       required: false
     }
   });
