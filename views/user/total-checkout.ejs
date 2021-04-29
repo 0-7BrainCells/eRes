@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <div class="rectangle">  </div>
+  <div class="rectangle"> </div>
     <div class="login-box">
         <div class = "image">
             <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
@@ -12,7 +12,7 @@
         <h1>Total Checkout</h1>
         <div class="row">
             <div class="column">
-                <h2>Booking</h2>
+                <h2>Booking:</h2>
           
                 <div class="card">
                   <address>
@@ -29,13 +29,13 @@
                 <p></p>
                 <div>
                 <!--<a class="card" style="text-decoration:none" href='/edit-booking'>Edit Booking</a> -->
-                <a class="button button--full" href='/edit-booking'>Edit Booking</a>
+                <a  href='/edit-booking'class="button button--full">Edit Booking here:</a>
                 </div>
                 <p></p>
               <!-- </div> -->
               <!-- <div class="col-md-6""> -->
               <fieldset>
-                <legend>Apply Discount</legend>
+                <legend>Apply Discount:</legend>
         
                 <div class="form__radios">
                   <div class="form__radio">
@@ -48,13 +48,13 @@
 
             <div class="column">
               <div>
-                <h2>Order</h2>
+                <h2>Order:</h2>
                 <div class= "card">
                 <table>
                   <thead>
                   <tr>
                     
-                    <td></td><td align="left">Item:</td><td align="left">Qty:</td><td align="left"></td><td align="left">Price:</td>
+                    <td align="left">Item:</td><td align="left">Qty:</td><td align="left"></td><td align="left">Price:</td>
                  
                    </tr> 
                   </thead>
@@ -94,12 +94,13 @@
             <button class="button button--full" type="submit">Confirm Booking</button>
           </form>
             <p></p>
-            <a class="button button--full" href="/CustomerHomepage">Return Home</a>
+            <a  href="/CustomerHomepage" class="button button--full">Return Home</a>
         </div>
          
 
 
     </div>
+ 
 </body>
 </html>
 <style>
@@ -182,16 +183,17 @@ h1 {
 }
 
 h2 {
-  font-size: 1rem;
-  font-size: var(--font-size-h2);
+  font-size: 150%;
+  /*font-size: var(--font-size-h2);*/
   line-height: 1.2;
   margin-top: 0;
   margin-bottom: 0.5em;
-  color: whitesmoke;
+  color: rgb(255, 255, 255);
 }
 
 legend {
   font-weight: 600;
+  font-size: 150%;
   margin-bottom: 0.5em;
   padding: 0;
   color: whitesmoke;
@@ -367,16 +369,16 @@ font-weight: 600;
   background-repeat: no-repeat;
   padding: 30px;
    }
-
-  .login-box {
+   .rectangle {
   position: absolute;
   top: 50%;
   left: 50%;
+  height:800px;
   width: 700px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background-color: whitesmoke;
-  opacity: 0.7;
+  background-color: rgb(197, 197, 197);
+  opacity: 0.4;
   
   
   
@@ -385,6 +387,24 @@ font-weight: 600;
   border-radius: 10px;
   text-align: center;
   }
+
+  .login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+    background-color: transparent;
+  
+  
+  
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  text-align: center;
+  }
+  
   /*
   .login-box {
   position: absolute;
