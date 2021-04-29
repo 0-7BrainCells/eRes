@@ -22,7 +22,7 @@
     <li><a href="/DinnerMenu">Dinner Menu</a></li>
   </ul>
   <!---->
-  <% if (!booking) { %>
+  <% if (!booking || booking.isConfirmed) { %>
     <p style="color:red">Make a table reservation to order items. Oh, you already have a reservation? if you already confirmed an order you have to restart it from the checkout page to order again :)</p>
   <%}%>
   <div class="HSpace"></div> 
@@ -35,7 +35,7 @@
               <span class="spacer"></span>
               <p><%=items[i].description %></p>
               <span><%=items[i].price %></span>
-            <% if (booking) { %>
+            <% if (booking && !booking.isConfirmed) { %>
             <div class="quan_addBtn">
               <div class= "addToOrderBtn">
                 <button class="btn btn-info" type="submit" >Add To Order</button>

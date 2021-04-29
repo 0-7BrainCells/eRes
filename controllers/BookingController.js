@@ -87,6 +87,7 @@ exports.confirm_booking = function (req, res, next) {
         $set: {isConfirmed: true
         }
       })
+      req.session.booking.isConfirmed = true
       next()
     }
     client.close();
