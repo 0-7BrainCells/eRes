@@ -123,6 +123,7 @@ exports.add_booking = function(req, res) {
   var bookingID = mongo.ObjectId()
   var now = Date.parse(new Date())
   var bookdate = Date.parse(req.body.date)
+  req.session.orders = []
 
   //Error handling
   if (now > bookdate)                                   { return res.status(400).send("Please select future date (click back to return to previous page)"); }

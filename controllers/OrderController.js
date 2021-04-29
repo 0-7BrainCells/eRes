@@ -56,6 +56,7 @@ exports.add_order_lunch = function(req, res) {
                                quantity: req.body.quantity,
                                isConfirmed: false,
                                sessionID: req.sessionID})
+        req.session.orders.push(myData)
         myData.save()
           .then(item => {
             res.redirect('/LunchMenu');
@@ -80,6 +81,7 @@ exports.add_order_dinner = function(req, res) {
                                  quantity: req.body.quantity,
                                  isConfirmed: false,
                                  sessionID: req.sessionID})
+          req.session.orders.push(myData)
           myData.save()
             .then(item => {
               res.redirect('/DinnerMenu');

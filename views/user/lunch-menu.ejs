@@ -25,6 +25,13 @@
   <% if (!booking || booking.isConfirmed) { %>
     <p style="color:red">Make a table reservation to order items. Oh, you already have a reservation? if you already confirmed an order you have to restart it from the checkout page to order again :)</p>
   <%}%>
+
+  <div class="order_status">
+    <p>Current Order:</p>
+    <% if (orders) { for (i = 0; i < orders.length; i++) {%>
+    <p><%=orders[i].name%> <%=orders[i].menu%> <%=orders[i].price%>  x<%=orders[i].quantity%></p>
+    <%}}%>
+  </div>
   <div class="HSpace"></div> 
     <ul class="menu">
       <% for (var i = 0; i < items.length; i++) {%>  <!-- This is EJS, using the % to use js within HTML, it uses a variable "items" passed to it when the page is loaded via the route "/LunchMenu", look at the LunchMenuController to see that when this page is rendered, it also sends this "items" variable. -->
