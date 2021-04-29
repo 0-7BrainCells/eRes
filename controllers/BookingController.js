@@ -105,6 +105,18 @@ exports.delete_unconfirmed_booking = function (req, res, next) {
     })
 }
 
+exports.cancel_booking  = function (req, res, next) {
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("bookings");
+      collection.deleteOne( {email: req.user.email})
+      next()
+    }
+    client.close();
+    })
+}
+
 exports.add_booking = function(req, res) {
   var bookingID = mongo.ObjectId()
   var now = Date.parse(new Date())
@@ -174,7 +186,7 @@ exports.display_checkout = function(req, res) {
           items.forEach(function(item){
               ordersArray.push(item); //Add items to the array
           });
-          res.render('user/total-checkout', {user: req.user, orders: ordersArray, booking: bookingArray}) //Render the page and pass the results in the array as variable item
+          res.render('user/total-checkout', {req: req, user: req.user, orders: ordersArray, booking: bookingArray}) //Render the page and pass the results in the array as variable item
         }
       });
 
