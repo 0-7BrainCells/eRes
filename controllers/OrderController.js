@@ -36,7 +36,7 @@ exports.delete_unconfirmed_orders = function (req, res, next) {
     if (!err) {
       const db = client.db(dbname);
       var collection = db.collection("orders");
-      collection.deleteMany( {sessionID: req.sessionID, isConfirmed: false})
+      collection.deleteMany( {email: req.user.email, isConfirmed: false})
       next()
     }
     client.close();
