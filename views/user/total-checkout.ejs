@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <div class="rectangle"> </div>
     <div class="login-box">
         <div class = "image">
             <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
@@ -11,7 +12,7 @@
         <h1>Total Checkout</h1>
         <div class="row">
             <div class="column">
-                <h2>Booking</h2>
+                <h2>Booking:</h2>
           
                 <div class="card">
                   <address>
@@ -28,18 +29,19 @@
                 <p></p>
                 <% if(req.session.booking) {%>
                 <div>
-                <a class="card" style="text-decoration:none" href='/edit-booking'>Edit Booking</a><a class="card" style="text-decoration:none" href='/cancel-booking'>Cancel Booking</a>
+                <!--<a class="card" style="text-decoration:none" href='/edit-booking'>Edit Booking</a> -->
+                <a  href='/edit-booking'class="button button--full">Edit Booking here:</a>
                 </div>
                 <%}%>
                 <p></p>
               <!-- </div> -->
               <!-- <div class="col-md-6""> -->
               <fieldset>
-                <legend>Apply Discount</legend>
+                <legend>Apply Discount:</legend>
         
                 <div class="form__radios">
                   <div class="form__radio">
-                    <label for="visa">Add discount code input here</label>
+                    <label for="visa">Enter Discount Code:</label>
                     <input id="myform" checked id="visa" name="payment-method" type="text">
                   </div>
               </fieldset>
@@ -48,15 +50,25 @@
 
             <div class="column">
               <div>
-                <h2>Order</h2>
+                <h2>Order:</h2>
                 <div class= "card">
                 <table>
+                  <thead>
+                  <tr>
+                    
+                    <td align="left">Item:</td><td align="left">Qty:</td><td align="left"></td><td align="left">Price:</td>
+                 
+                   </tr> 
+                  </thead>
                   <tbody>
+                    
+                    <tr></tr>
                     <% var totalPrice = 0 %>
                     <% for (i = 0; i < orders.length; i++) { %>
                     <% totalPrice += (Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%>
-                        <tr>
-                          <td align="left"><%=orders[i].name%></td><td align="left"><%=orders[i].quantity%></td><td align ="left">$</td><td align="left"><%=(Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%></td>
+                       
+                      <tr>
+                       <td align="left"><%=orders[i].name%></td><td align="left"><%=orders[i].quantity%></td><td align ="left">$</td><td align="left"><%=(Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%></td>
                         </tr> 
                     <% } %>                 
                   </tbody>
@@ -93,12 +105,13 @@
           </form>
         <% } %>
             <p></p>
-            <a class="button button--full" href="/CustomerHomepage" style="text-decoration:none">Back to homepage</a>
+            <a  href="/CustomerHomepage" class="button button--full">Return Home</a>
         </div>
          
 
 
     </div>
+ 
 </body>
 </html>
 <style>
@@ -108,6 +121,8 @@
 .column {
     float: left;
     width: 50%;
+    padding: 5% 1%;
+    
     }
 
 .row:after {
@@ -179,17 +194,20 @@ h1 {
 }
 
 h2 {
-  font-size: 1rem;
-  font-size: var(--font-size-h2);
+  font-size: 150%;
+  /*font-size: var(--font-size-h2);*/
   line-height: 1.2;
   margin-top: 0;
   margin-bottom: 0.5em;
+  color: rgb(255, 255, 255);
 }
 
 legend {
   font-weight: 600;
+  font-size: 150%;
   margin-bottom: 0.5em;
   padding: 0;
+  color: whitesmoke;
 }
 
 input {
@@ -217,8 +235,12 @@ td {
   padding-bottom: 0.125em;
 }
 
+thead {
+  font-weight: 600;
+}
+
 tfoot {
-  border-top: 1px solid #b4b4b4;
+  border-top: 2px solid #b4b4b4;
   font-weight: 600;
 }
 
@@ -235,7 +257,7 @@ tfoot {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #01442156;
+  background-color: #0144219d;
   /* background-color: var(--color-primary); */
   border-radius: 999em;
   color: #fff;
@@ -267,10 +289,15 @@ tfoot {
 
 .card {
   border-radius: 1em;
-  background-color: #01442156;
+  background-color: #0144219d;
   /* background-color: var(--color-primary); */
   color: #fff;
-  padding: 1em;
+  padding: 5% 0%;
+  column-gap: 10px;
+}
+.card-headings{
+font-weight: 600;
+
 }
 
 .form {
@@ -289,7 +316,7 @@ tfoot {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color:#01442156;
+  background-color:#0144219d;
   border-radius: 1em;
   -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
           box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
@@ -311,6 +338,7 @@ tfoot {
           flex: 1;
   grid-gap: 1em;
   gap: 1em;
+  color: whitesmoke;
 }
 
 .header {
@@ -352,6 +380,24 @@ tfoot {
   background-repeat: no-repeat;
   padding: 30px;
    }
+   .rectangle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height:800px;
+  width: 700px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background-color: rgb(197, 197, 197);
+  opacity: 0.4;
+  
+  
+  
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  text-align: center;
+  }
 
   .login-box {
   position: absolute;
@@ -360,13 +406,49 @@ tfoot {
   width: 700px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background:rgba(0,0,0, 0.9);
-  color: whitesmoke;
+    background-color: transparent;
+  
+  
+  
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
   text-align: center;
   }
+  
+  /*
+  .login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  background: rgba(212, 212, 212, 0.705);
+  color: whitesmoke;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  text-align: center;
+  }*/
+  /*
+  .rectangle {
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  background: whitesmoke;
+ 
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  text-align: center;
+
+}*/
   
   .login-box h1 {
   margin: 0 0 30px;
@@ -374,6 +456,7 @@ tfoot {
   color:  	whitesmoke;
   text-align: center; 
   border-radius: 10px;  
+  font-size: 300%;
   } 
   
 </style>
