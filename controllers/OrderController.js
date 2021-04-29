@@ -43,21 +43,46 @@ exports.delete_unconfirmed_orders = function (req, res, next) {
     })
 }
 
-exports.add_order = function(req, res) {
+exports.add_order_lunch = function(req, res) {
+  Order.findOne({
+      email: req.user.email
+    }, function (err, item) {
+      if (err) { return res.status(500).send(err); }
+        var myData = new Order({bookingID: req.session.booking.bookingID,
+                               email: req.user.email, 
+                               name: req.body.name,
+                               menu: "lunch",  
+                               price: req.body.price,
+                               quantity: req.body.quantity,
+                               isConfirmed: false,
+                               sessionID: req.sessionID})
+        myData.save()
+          .then(item => {
+            res.redirect('/LunchMenu');
+          })
+          .catch(err => {
+            res.status(400).send("Unable to save to database");
+          });
+    }
+    ) 
+}
+
+exports.add_order_dinner = function(req, res) {
     Order.findOne({
         email: req.user.email
       }, function (err, item) {
         if (err) { return res.status(500).send(err); }
           var myData = new Order({bookingID: req.session.booking.bookingID,
                                  email: req.user.email, 
-                                 name: req.body.name, 
+                                 name: req.body.name,
+                                 menu: "dinner", 
                                  price: req.body.price,
                                  quantity: req.body.quantity,
                                  isConfirmed: false,
                                  sessionID: req.sessionID})
           myData.save()
             .then(item => {
-              res.send("Item added to order, please return to a menu.");
+              res.redirect('/DinnerMenu');
             })
             .catch(err => {
               res.status(400).send("Unable to save to database");

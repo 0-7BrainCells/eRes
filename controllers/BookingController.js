@@ -105,6 +105,7 @@ exports.delete_unconfirmed_booking = function (req, res, next) {
     })
 }
 
+
 exports.cancel_booking  = function (req, res, next) {
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {

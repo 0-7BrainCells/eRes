@@ -30,7 +30,7 @@
       <% for (var i = 0; i < items.length; i++) { %> <!-- Check my lunch menu item version of this for description of the ejs -->
         <li class="menu-item">
           <section>
-            <form action="/add-order" method="POST">
+            <form action="/add-order-dinner" method="POST">
               <h1><%=items[i].name %></h1>
               <span class="spacer"></span>
               <p><%=items[i].description %></p>

@@ -15,6 +15,10 @@ const orderSchema = new Schema({
       type: String,
       required: true
     },
+    menu: {
+      type: String,
+      required: true
+    },
     price: {
       type: String,
       required: true
