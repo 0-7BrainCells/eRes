@@ -30,7 +30,8 @@
                 <% if(req.session.booking) {%>
                 <div>
                 <!--<a class="card" style="text-decoration:none" href='/edit-booking'>Edit Booking</a> -->
-                <a  href='/edit-booking'class="button button--full">Edit Booking here:</a>
+                <!--<a  href='/edit-booking'class="button button--full">Edit Booking here:</a>
+                 <a class="card" style="text-decoration:none" href='/cancel-booking'>Cancel Booking</a>-->
                 </div>
                 <%}%>
                 <p></p>
@@ -85,7 +86,12 @@
               <p></p>
               <% if (orders.length > 1) { %>
               <div>
-                <a href="/BookTable" class="button button--full" style="text-decoration:none">Restart Order Here: </a>
+                <!--RESTART ORDER
+                   <a href="/BookTable" class="button button--full" style="text-decoration:none">Restart Order Here: </a>--> 
+                   <a  href='/edit-booking'class="button button--full" style="text-decoration:none">Edit Booking</a>
+                   <p></p>
+                   <p></p>
+                 <a href='/cancel-booking' class="button button--full" style="text-decoration:none " >Cancel Booking</a>
                 <p></p>
                 <p></p>
               </div>
@@ -103,11 +109,11 @@
         <div>
          <% if (booking.length > 0) { %>
           <form id ="myform" action='/confirm-booking' method="POST">
-            <button class="button button--full" type="submit">Confirm Booking</button>
+            <button class="button button--full" style="text-decoration:none" type="submit">Confirm Booking</button>
           </form>
         <% } %>
             <p></p>
-            <a  href="/CustomerHomepage" class="button button--full">Return Home</a>
+            <a  href="/CustomerHomepage" class="button button--full" style="text-decoration:none">Return Home</a>
         </div>
          
 
@@ -386,11 +392,11 @@ font-weight: 600;
   position: absolute;
   top: 50%;
   left: 50%;
-  height:735px;
+  height:700px;
   width: 700px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background-color: rgb(197, 197, 197);
+  background-color: rgb(160, 160, 160);
   opacity: 0.4;
   
   
