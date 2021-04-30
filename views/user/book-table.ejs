@@ -13,30 +13,15 @@
 <body>
   
   <div class= "container">
-    
-     
-
-    <div class="rectangle">  </div>
     <div class="form-wrap">
-      
-     
       <form action="/booking-received" method = "POST">
-        
-        <!--<div class="First Name">
-         
-          <label for="First Name">First Name:</label>
-          <input required type="text" name="fname" placeholder="Enter name"/><br/>
-        </div>
 
-        <div class="Last Name">
-          <label for="Last Name">Last Name:</label>
-          <input required type="text" name="lname" placeholder="Enter name"/><br/>
-        </div> -->
-        
+        <div class="login-box">
         <div class = "image">
-          <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
-      </div>
-      <h1>Book a Table</h1>
+          <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "100" height = "100"/>
+        </div>
+      <!-- start book a table cont -->
+        <h1 style="color: black;">Book a Table</h1>
         <div class="Time">
           <label for="Time">Select a Time:</label>
           <input required type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
@@ -45,9 +30,7 @@
           <label for="Date">Select a Date:</label>
           <input required type="Date" id="date" name="date" onfocus="(this.type='date')" placeholder="DD/MM/YYYY" onblur="(this.type='text')" 
           class="disablePastDate">
-          
         </div>
-        
         <div class="TableNo">
           <label for="tableno">Enter a Table No:</label>
           <input required type="number" min="1" max="37" id="table" name="table" placeholder="Enter a Number:">
@@ -58,18 +41,20 @@
           <input  id="guestNo" name="numGuests" type="number" min="1" max="6" value="1"/>
           <button class="counter-btn" type="button" onclick="increment()" id="cnt-up">+</button>
         </div>
-        
+      
         <!-- <button class = "btn btn-light" type ="submit" >Submit Booking</button> -->
-        <button class = "btn btn-light" type ="submit" >Submit Booking</button>
+        <button class = "btn" type ="submit" >Submit Booking</button>
       </form>
-
-      <a href= "/CustomerHomePage" class="btn btn-light">Go Back</a>
-         
-         
+      <a href= "/CustomerHomePage" class="btn">Back</a>
+      </div> 
+      <!-- end book a table cont -->
+      </div> <!-- end of login box class-->
+      <!-- start seating plan cont-->
       </div>
       <div class="seatingplan">
-      <img src="/images/seatingplan.png" style="width:100%">
+      <img src="/images/seatingplan.png" style="width:400px; height: 300px;">
     </div>
+<!-- end seating plan cont -->
   
   </div>
 
@@ -156,12 +141,6 @@ $("#table").attr({
 }
 
 body {
-  /*background: #e5a88b;
-  color: rgb(47, 47, 47);
-  font: "Open Sans";
-  font-size: 100%;
-  overflow: hidden;*/
-
   margin-top: 10px;
   padding:0;
   font-family: sans-serif;
@@ -172,35 +151,7 @@ body {
   background-position: center top;
   background-repeat: no-repeat;
   padding: 30px;
-
 }
-.logo {
-  position: absolute;
-  right:5%;
-  top: 10%;
-
-}
-
-
-
-.rectangle {
-  margin-top: 10px;
-  position: absolute;
-  max-width: 90%;
-  
-  top: 50%;
-  left: 20%;
-  transform: translate(-50%, -50%)
-             rotate(0deg);
-  height: 800px;
-  width: 550px;
-  opacity: 0.7;
-  background: whitesmoke;
-  border-radius: 8px;
-  box-shadow: 0 15px 25px rgba(0,0,0,.4);
-
-}
-    
 
 .mob {
   display: none;
@@ -208,20 +159,24 @@ body {
     display: inline-block;
   }
 }
-  .form-wrap {
-    margin-top: 10px;
+
+/* handles the look of inputs */
+  .form-wrap {   
+  /* margin: 0%;
   position: absolute;
-  max-width: 90%;
+  max-width: 50%;
   text-align: center;
-  top: 50%;
-  left: 20%;
+  max-height: 10%;
+  padding: 20px; 
+  top: 30%;
+  left: 20%; 
   transform: translate(-50%, -50%);
   font-size: 1em;
-  width: 350px;
-}
-.form-wrap h1{
-  color: whitesmoke;
-   
+  width: 350px; */
+  right: 0px;
+  width: 300px;
+  border: 3px solid #73AD21;
+  padding: 10px;
 }
 
 .form-wrap form {
@@ -276,14 +231,12 @@ label {
   float: right;
 }
 .counter-btn:hover {
-  background: #f3c19f;;
+  background: #014421;;
 }
 .guests {
   margin: 10px;
 }
 .btn {
-  border: none;
-  padding: 10px;
   margin: 20px auto;
   width: 100%;
   height: 45px;
@@ -291,29 +244,42 @@ label {
   background: #797979;
   color: whitesmoke;
   font-size: 1.3em;
-  letter-spacing: 0.1em;
-  box-shadow: 1px 3px 20px rgba(17, 17, 17, 0.1);
-  border-radius: 3px;
-  outline: none;
+
 }
 .btn:hover {
   background: whitesmoke;
 }
 
-div.seatingplan{
- 
- max-width: 100%;
-  height: auto;
-  width: 800px;
+ div.seatingplan{
   position: absolute;
-  right: 4%;
-  top: 20%;
-  border: 80px solid rgba(224, 224, 224, 0.7);
-  
-  border-radius: 8px;
+  right: 0;
+  width: 300px;
+  border: 3px solid #73AD21;
+  padding: 10px;
+} 
 
-  
-  
+.login-box {
+position: absolute;
+top: 50%;
+left: 50%;
+padding: 30px;
+transform: translate(-50%, -50%);
+background:rgba(255, 255, 255, 0.801);
+color: black;
+box-sizing: border-box;
+box-shadow: 0 15px 25px rgba(0,0,0,.6);
+text-align: center;
+}
+
+.btn {
+background-color: #014421; /* Green */
+border: none;
+color: white;
+padding: 0;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
 }
 </style>
 </html>

@@ -15,7 +15,6 @@ SES Online Restaurant Web Application
 
 **Current functionality:**
 
-(THINKING ABOUT ORDERS, use session, store an order as an item, price and userID. to view orders, get all items matching a userID for a list of all items ordered by a user. this only works for one booking isntance per user atm. find a way to link a specific booking maybe???)
 
   Navigate a home page
 
@@ -36,6 +35,10 @@ SES Online Restaurant Web Application
   Login authentication with passport
   
   Express sessions to track user details while logged in
+  
+  Add items to a current order
+  
+  Show menu items based on category
   
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
