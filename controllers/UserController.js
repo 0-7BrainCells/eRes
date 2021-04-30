@@ -29,14 +29,16 @@ exports.customer_register_post = async function (req, res) {
       email: req.body.email
     }, function (err, user) {
       if (err) { return res.status(500).send(err); }
-  
+
       if (!user) {
-        var myData = new User({email: req.body.email,
-                               password: hashedPassword,
-                               fname: req.body.fname,
-                               lname: req.body.lname,
-                               city: req.body.city,
-                               zip: req.body.zip});
+        var myData = new User({
+          email: req.body.email,
+          password: hashedPassword,
+          fname: req.body.fname,
+          lname: req.body.lname,
+          city: req.body.city,
+          zip: req.body.zip
+        });
         myData.save()
           .then(item => {
             res.send("User saved to database (TODO: direct to login page");
@@ -134,3 +136,23 @@ exports.customer_remove_account = function (req, res) {
     }
   })
 }
+
+exports.customer_update_account = function (req, res) {
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("users");
+      collection.findOneAndUpdate( {email: req.user.email}, {
+        $set: { email: req.body.email,
+                password: hashedPassword,
+                fname: req.body.fname,
+                lname: req.body.lname,
+                city: req.body.city,
+                zip: req.body.zip
+        }
+      }).then(res.render('user/customer-settings'));
+    }
+    client.close();
+    })
+}
+
