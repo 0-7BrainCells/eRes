@@ -40,18 +40,18 @@
 
   <form action="/customer-register-received" method = "POST" >
     <div class="row g-3 mb-2">
-      <div class="col-md-6">
+      <div class="btnGroup">
         <label for="validationDefault01" class="form-label">First name</label>
         <input type="text" class="form-control" name = "fname" id="validationDefault01"  required>
         
       </div>
 
-      <div class="col-md-6">
+      <div class="btnGroup">
         <label for="validationDefault02" class="form-label">Last name</label>
         <input type="text" class="form-control" name = "lname" id="validationDefault02"  required>
       </div>
 
-      <div class="col-md-12">
+      <div class="btnGroup">
         <label for="validationDefaultUsername" class="form-label">Email</label>
         <div class="input-group">
           <span class="input-group-text" id="inputGroupPrepend2">@</span>
@@ -60,12 +60,12 @@
       </div>
 
               
-      <div class="col-md-6">
+      <div class="btnGroup">
         <label for="validationDefault03" class="form-label">City</label>
         <input type="text" class="form-control" name = "city" id="validationDefault03" required>
       </div>
 
-      <div class="col-md-3">
+      <div class="btnGroup">
         <label for="validationDefault04" class="form-label">State</label>
         <select class="form-select" id="validationDefault04" required>
           <option selected disabled value="">Choose...</option>
@@ -75,23 +75,71 @@
         </select>
       </div>
 
-      <div class="col-md-3">
+      <div class="btnGroup">
         <label for="validationDefault05" class="form-label">Zip</label>
         <input type="text" class="form-control" name = "zip" id="validationDefault05" required>
       </div>
 
-      <div class="col-md-12">
+      <div class="btnGroup">
         <label for="validationDefaultPass" class="form-label">Password</label>
         <input type="text" class="form-control" name = "password" id="validationDefaultPass"  required>
       </div>
 
-      <div class="col-12">
+      <div class="btnGroup">
         <button class="btn btn-primary" type="submit">Add Account</button>
         <a href="/StaffManagement" class= "btn btn-light">Back</a>
       </div>
   </div>
-
     </form>
 
 
 </body>
+
+<style>
+  .login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background:rgba(255,255,255, 0.6);
+  color: whitesmoke;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  text-align: center;
+  }
+
+  body {
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background-color:  #C4A484;
+    background-size: cover;
+    background-position: absolute;
+    background-repeat: no-repeat;
+    padding: 30px;
+    }
+
+  .btnGroup {
+    display: flex; 
+    flex-direction: column;
+    align-content: center;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+  }
+
+  .btn {
+  background-color: #014421; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+</style>
