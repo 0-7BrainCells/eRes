@@ -1,6 +1,9 @@
 const User = require('../model/User');
 const Staff = require('../model/Staff');
 const bcrypt = require('bcrypt')
+var MongoClient = require('mongodb').MongoClient;
+const dburl = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority';
+const dbname = 'eRes';
 
 //This page contains all the business logic functions for user page routes. (login, register etc)
 
@@ -137,14 +140,15 @@ exports.customer_remove_account = function (req, res) {
   })
 }
 
-exports.customer_update_account = function (req, res) {
+exports.customer_update_account = async function (req, res) {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
       const db = client.db(dbname);
       var collection = db.collection("users");
       collection.findOneAndUpdate( {email: req.user.email}, {
-        $set: { email: req.body.email,
-                password: hashedPassword,
+        $set: { password: hashedPassword,
                 fname: req.body.fname,
                 lname: req.body.lname,
                 city: req.body.city,
@@ -154,5 +158,8 @@ exports.customer_update_account = function (req, res) {
     }
     client.close();
     })
+  } catch (err) {
+    res.redirect('/UpdateCustomer')
+  }
 }
 
