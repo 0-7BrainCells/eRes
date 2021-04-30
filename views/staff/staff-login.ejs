@@ -21,9 +21,335 @@
 
     </div>
 
+    <% if (messages.error) { %>
+        <body-1>
+        <!-- <div id="container" class= "center"> -->
+            <div id="error-box" class= container center">
+              <div class="face2">
+                <div class="eye"></div>
+                <div class="eye right"></div>
+                <div class="mouth sad"></div>
+              </div>
+              <div class="shadow move"></div>
+              <div class="message center"><h1_1 class="alert">ERROR: User Not Found!</h1_1><p>      </p><p><%= messages.error %></p></div>
+              <a href="/CustomerLogin" class="button-box-1 center"><h1_1 class="red"><b-1>try again</b-1></h1_1></a>
+            </div>
+          <!-- </div> -->
+        </body-1>
+  
+    <% } %> 
+
+
+
 </body>
 
 <style>
+
+.center {
+  text-align: center;
+}
+
+a-1 {
+  width: 160px;
+  height: 30px;
+  background: #fff;
+  display: block;
+  border-radius: 90px;
+  text-align: center;
+  align-items: center;
+  color:black; 
+  /* padding-top: 0px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 25px; */
+  text-decoration: none;
+  font-size: large;
+}
+    b-1 {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #d16644;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  /* margin-top: -10px; */
+  /* margin-bottom: -50px; */
+  letter-spacing: 4px
+  }
+    /* b-1:hover {
+  background:  #d16644;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #d16644
+            0 0 25px #d16644,
+            0 0 50px #d16644,
+            0 0 100px #d16644;
+  } */
+  
+    b-1 span {
+  position: absolute;
+  display: block;
+  }
+
+
+    @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+    html {
+      display: grid;
+      min-height: 100%;
+    }
+    
+    /* body-1 {
+      display: grid;
+      overflow: hidden;
+      font-family: "Lato", sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+      background: linear-gradient( to bottom right, #eedac2,#e5a88b);
+    } */
+    
+    #container {
+      /* position: relative; */
+      position: absolute;
+      align-items: center;
+      /* margin: auto; */
+
+      margin:0%; 
+      overflow: hidden;
+      /* width: 2000px; */
+      /* width: 980px;  */
+      /* width: 20%;
+      height: 10%; */
+      /* height: 500px; */
+      /* height: 320px; */
+    }
+    
+    h1_1 {
+      font-size: 0.9em;
+      font-weight: 100;
+      letter-spacing: 3px;
+      padding-top: 5px;
+      color: #fcfcfc;
+      padding-bottom: 100%;
+      margin-bottom: 100%;
+      text-transform: uppercase;
+    }
+    
+    .green {
+      color: #4ec07d;
+    }
+    
+    .red {
+      color: #e96075;
+    }
+    
+    .alert {
+      font-weight: 700;
+      letter-spacing: 5px;
+    }
+    
+    p {
+      margin-top: 15px;
+      font-size: 1em;
+      font-weight: 300;
+      color: #5e5e5e;
+      letter-spacing: 5px;
+    }
+    
+    button,
+    .dot {
+      cursor: pointer;
+    }
+    
+    #error-box {
+      position: absolute;
+      /* position: relative;  */
+      width: 45%;
+      height: 75%; 
+      /* width: 35%;35%; */
+      /* height: 100%;100%; */
+      /* right: 40%; */
+      /* padding-top: 5%; */
+      margin-top: 5%;
+      right: 28%;
+      align-items: center;
+      background: linear-gradient(to bottom left,#eedac2,#e5a88b);
+      border-radius: 20px;
+      box-shadow: 5px 5px 20px rgba(203, 205, 211, 0.1);
+    }
+    
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #fcfcfc;
+      border-radius: 50%;
+      position: absolute;
+      top: 4%;
+      right: 6%;
+    }
+    .dot:hover {
+      background: #c9c9c9;
+    }
+    
+    .two {
+      right: 12%;
+      opacity: 0.5;
+    }
+    
+    .face2 {
+      position: absolute;
+      width: 22%;
+      height: 22%;
+      background: #fcfcfc;
+      border-radius: 50%;
+      border: 1px solid #777777;
+      top: 21%;
+      left: 37.5%;
+      z-index: 2;
+      animation: roll 3s ease-in-out infinite;
+    }
+    
+    .eye {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #777777;
+      border-radius: 50%;
+      top: 40%;
+      left: 20%;
+    }
+    
+    .right {
+      left: 68%;
+    }
+    
+    .mouth {
+      position: absolute;
+      top: 43%;
+      left: 41%;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    .sad {
+      top: 49%;
+      border: 2px solid;
+      border-color: #777777 transparent transparent #777777;
+      transform: rotate(45deg);
+    }
+    
+    .shadow {
+      position: absolute;
+      width: 21%;
+      height: 3%;
+      opacity: 0.5;
+      background: #777777;
+      left: 40%;
+      top: 43%;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .scale {
+      animation: scale 1s ease-in infinite;
+    }
+    
+    .move {
+      animation: move 3s ease-in-out infinite;
+    }
+    
+    .message {
+      position: relative;
+      /* position: absolute; */
+      width: 100%;
+      text-align: center;
+      height: 40%;
+      top: 47%;
+    }
+    
+    .button-box-1 {
+      position: absolute;
+      background: #fcfcfc;
+      width: 50%;
+      height: 10%;
+      border-radius: 20px;
+      top: 73%;
+      left: 25%;
+      outline: 0;
+      border: none;
+      box-shadow: 2px 2px 10px rgba(119, 119, 119, 0.5);
+      transition: all 0.5s ease-in-out;
+    }
+    .button-box-1:hover {
+      background: #efefef;
+      transform: scale(1.05);
+      transition: all 0.3s ease-in-out;
+    }
+    
+    @keyframes bounce {
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    @keyframes scale {
+      50% {
+        transform: scale(0.9);
+      }
+    }
+    @keyframes roll {
+      0% {
+        transform: rotate(0deg);
+        left: 25%;
+      }
+      50% {
+        left: 60%;
+        transform: rotate(168deg);
+      }
+      100% {
+        transform: rotate(0deg);
+        left: 25%;
+      }
+    }
+    @keyframes move {
+      0% {
+        left: 25%;
+      }
+      50% {
+        left: 60%;
+      }
+      100% {
+        left: 25%;
+      }
+    }
+    footer {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      text-align: center;
+      font-size: 1em;
+      text-transform: uppercase;
+      padding: 10px;
+      font-family: "Lato", sans-serif;
+    }
+    footer p {
+      color: #ef8d9c;
+      letter-spacing: 2px;
+    }
+    footer a {
+      color: #b0db7d;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #ffc39e;
+    } 
+
+
+
+
+
+
   body {
   margin:0;
   padding:0;
