@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const orderSchema = new Schema({   
+const orderSchema = new Schema({
+    bookingID: {
+      type: String,
+      required: true
+    },   
     email: {
         type: String,
         required: true
@@ -11,14 +15,27 @@ const orderSchema = new Schema({
       type: String,
       required: true
     },
+    menu: {
+      type: String,
+      required: true
+    },
     price: {
       type: String,
       required: true
     },
     quantity: {
-        type: String,
+        type: Number,
         required: true
       },
+    isConfirmed: {
+      type: Boolean,
+      value: false,
+      required: true
+    },
+    sessionID: {
+      type: String,
+      required: true
+    }
   });
   
 module.exports = mongoose.model('Order', orderSchema);

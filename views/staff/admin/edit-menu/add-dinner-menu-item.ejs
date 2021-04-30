@@ -13,7 +13,7 @@
   <div class= "login-box">
     <h1 style="color: black;"> Add Dinner Menu Item </h1>
     <div class = btnGroup>
-      <form action="/add-dinner-menu-item" method = "POST" >
+      <form id="myform" action="/add-dinner-menu-item" method = "POST" >
         
       <div class = "textClass" >
         <label for="validationDefaultUsername" class="form-label">Name</label>
@@ -25,8 +25,9 @@
         <label for="validationDefaultPass" class="form-label">Category (V/GF)</label>
         <input type="text" class="form-control" name = "category">
       </div>
+      </form>
             <p>    </p>
-            <button class="btn " type="submit">Add Dinner Menu Item</button>
+            <button form="myform" class="btn " type="submit">Add Dinner Menu Item</button>
             <p>  </p>
             <a href="/StaffLayout" class= "btn ">Back</a>
     </div>

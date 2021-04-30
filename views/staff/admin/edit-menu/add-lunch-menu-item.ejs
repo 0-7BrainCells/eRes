@@ -13,11 +13,11 @@
   <div class= "login-box">
     <h1 style="color: black;"> Add Lunch Menu Item </h1>
     <div class = btnGroup>
-      <form action="/add-lunch-menu-item" method = "POST" >
+      <form id="myform" action="/add-lunch-menu-item" method = "POST" >
         
         <div class = "textClass" >
 
-          <form action="/add-lunch-menu-item" method = "POST" >
+          <form id="myform" action="/add-lunch-menu-item" method = "POST" >
             <label for="validationDefaultUsername" class="form-label">Name</label>
               <input type="text" class="form-control" name = "name" aria-describedby="inputGroupPrepend2" required>
             <label for="validationDefaultPass" class="form-label">Price</label>
@@ -29,7 +29,7 @@
       </form>
           </div>
                 <p>    </p>
-                <button class="btn btn-primary" type="submit">Add Lunch Menu Item</button>
+                <button form="myform" class="btn btn-primary" type="submit">Add Lunch Menu Item</button>
                 <p>  </p>
                 <a href="/StaffLayout" class= "btn ">Back</a>
         </div>

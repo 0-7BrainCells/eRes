@@ -1,5 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const BookingController = require('../controllers/BookingController')
+const OrderController = require('../controllers/OrderController')
+const Booking = require('../model/Booking')
+const Order = require('../model/Order')
+
 
 //Page redirect action handlers:
 
@@ -22,6 +27,9 @@ router.get('/CustomerHomePage', checkAuthenticated, (req, res) => {
 
 router.get('/BookTable', checkAuthenticated, (req, res) => {
   res.render('user/book-table', {user: req.user})
+}), 
+router.get('/BookingRecord', (req, res) => {
+  res.render('user/booking-record')
 }), 
 router.get('/SelectTable', (req, res) => {
   res.render('user/select-table')
@@ -74,11 +82,11 @@ router.get('/RemoveDinnerMenuItem', (req, res) => {
   res.render('staff/admin/edit-menu/remove-dinner-menu-item')
 }),
 
-router.get('/', checkNotAuthenticated, (req, res) =>{
+router.get('/', checkNotAuthenticated, (req, res) => {
   res.render('index')
 })
 
-router.delete('/customer-logout', (req, res) => {
+router.delete('/customer-logout', OrderController.delete_unconfirmed_orders, BookingController.delete_unconfirmed_booking, (req, res) => {
   req.logOut()
   res.redirect('/')
 })

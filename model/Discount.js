@@ -8,7 +8,7 @@ const discountSchema = new Schema({
       required: true
     },
     percent: {
-      type: String,
+      type: Number,
       required: true
     }
   });

@@ -20,7 +20,7 @@
     <div class="form-wrap">
       
      
-      <form action="/booking-received" method = "POST">
+      <form action="/update-booking" method = "POST">
         
         <!--<div class="First Name">
          
@@ -36,7 +36,7 @@
         <div class = "image">
           <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
       </div>
-      <h1>Book a Table</h1>
+      <h1>Update your booking</h1>
         <div class="Time">
           <label for="Time">Select a Time:</label>
           <input required type="text" id="time" name="time" placeholder="HH:MM(AM/PM)">
@@ -63,7 +63,7 @@
         <button class = "btn btn-light" type ="submit" >Submit Booking</button>
       </form>
 
-      <a href= "/CustomerHomePage" class="btn btn-light">Go Back</a>
+      <a href= "/CustomerCheckout" class="btn btn-light">Go Back</a>
          
          
       </div>
@@ -221,7 +221,6 @@ body {
 }
 .form-wrap h1{
   color: whitesmoke;
-   
 }
 
 .form-wrap form {
@@ -317,6 +316,4 @@ div.seatingplan{
 }
 </style>
 </html>
-
-
 

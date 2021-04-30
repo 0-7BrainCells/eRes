@@ -25,7 +25,7 @@ const userSchema = new Schema({
     required: true
   },
   zip: {
-    type: String,
+    type: Number,
     required: true
   }
 });

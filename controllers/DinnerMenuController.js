@@ -5,6 +5,8 @@ const dbname = 'eRes';
 const collname = 'dinnermenus';
 
 exports.display_dinner_menu = function (req, res) {
+  var category;
+  if (req.body.category) {category = req.body.category;} else {category = "default"}
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
 
@@ -23,7 +25,7 @@ exports.display_dinner_menu = function (req, res) {
           items.forEach(function(item){
               resultArray.push(item);
           });
-          res.render('user/dinner-menu', {items: resultArray});
+          res.render('user/dinner-menu', {category: category, items: resultArray, booking: req.session.booking, orders : req.session.orders});
         }
       });
 
