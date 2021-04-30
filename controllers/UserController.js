@@ -154,7 +154,7 @@ exports.customer_update_account = async function (req, res) {
                 city: req.body.city,
                 zip: req.body.zip
         }
-      }).then(res.render('user/customer-settings'));
+      }).then(res.redirect('/CustomerHomepage'));
     }
     client.close();
     })
