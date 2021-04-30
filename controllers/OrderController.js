@@ -51,6 +51,27 @@ exports.delete_unconfirmed_orders = function (req, res, next) {
     })
 }
 
+exports.initialize_orders = function (req, res, next) {
+  var resultArray = [];
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      const collection = db.collection("orders");
+      collection.find({bookingID: req.session.booking.bookingID}).toArray(function(err, items) {
+        if (!err) {
+          items.forEach(function(item) {
+              resultArray.push(item); 
+          })
+          req.session.orders = resultArray;
+          next();
+        }
+      });
+
+    }
+    client.close();
+  });
+}
+
 // Adds an order to db linking it to the booking made during that session, and user details. 
 
 exports.add_order_lunch = function(req, res) {

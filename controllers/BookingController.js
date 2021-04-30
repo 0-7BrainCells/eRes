@@ -94,6 +94,23 @@ exports.confirm_booking = function (req, res, next) {
     })
 }
 
+
+exports.initialize_booking = function (req, res, next) {
+  Booking.findOne({   
+    email: req.user.email
+  }, function(err, booking) {
+    if (!booking) {
+      req.session.booking = "null";
+      req.session.booking.bookingID = "null"
+    }
+    else {
+      req.session.booking = booking;
+      console.log(req.session.booking)
+    }
+    next()
+  })
+}
+
 exports.delete_unconfirmed_booking = function (req, res, next) {
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
@@ -190,7 +207,7 @@ exports.display_checkout = function(req, res) {
       collection = db.collection("orders");
 
       // Find all documents in the collection
-      collection.find({email: req.user.email}).toArray(function(err, items) {
+      collection.find({bookingID : req.session.booking.bookingID}).toArray(function(err, items) {
         if (!err) { //Declare the array which we will populate then return
           items.forEach(function(item){
               ordersArray.push(item); //Add items to the array

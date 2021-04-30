@@ -21,7 +21,7 @@ router.get('/CustomerRegistration', checkNotAuthenticated, (req, res) => {
 router.get('/LoginUnsuccessful', (req, res) => {
   res.render('user/customer-login-unsuccessful')
 }), 
-router.get('/CustomerHomePage', checkAuthenticated, (req, res) => {
+router.get('/CustomerHomePage', BookingController.initialize_booking, OrderController.initialize_orders, checkAuthenticated, (req, res) => {
   res.render('user/customer-successful', {user: req.user})
 }),
 
@@ -95,6 +95,7 @@ router.get('/', checkNotAuthenticated, (req, res) => {
 })
 
 router.delete('/customer-logout', OrderController.delete_unconfirmed_orders, BookingController.delete_unconfirmed_booking, (req, res) => {
+  req.session.destroy()
   req.logOut()
   res.redirect('/')
 })
