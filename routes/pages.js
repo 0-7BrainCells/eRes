@@ -32,7 +32,11 @@ router.get('/BookingRecord', (req, res) => {
   res.render('user/booking-record')
 }), 
 router.get('/SelectTable', (req, res) => {
-  res.render('user/select-table')
+  res.render('user/select-table');
+}),
+
+router.get('/CustomerSettings', (req, res) => {
+  res.render('user/customer-settings');
 }),
 
 router.get('/UpdateCustomer', (req, res) => {
