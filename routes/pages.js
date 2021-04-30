@@ -32,8 +32,16 @@ router.get('/BookingRecord', (req, res) => {
   res.render('user/booking-record')
 }), 
 router.get('/SelectTable', (req, res) => {
-  res.render('user/select-table')
-}), 
+  res.render('user/select-table');
+}),
+
+router.get('/CustomerSettings', (req, res) => {
+  res.render('user/customer-settings');
+}),
+
+router.get('/UpdateCustomer', (req, res) => {
+  res.render('user/update-customer');
+}),
 
 router.get('/StaffRegistration', (req, res) => {
   res.render('staff/admin/manage-staff-customers/staff-rego');
