@@ -8,7 +8,7 @@ exports.cancel_orders = function (req, res, next) {
     if (!err) {
       const db = client.db(dbname);
       var collection = db.collection("orders");
-      collection.deleteMany( {bookingID: req.session.booking.bookingID})
+      collection.deleteMany( {email: req.user.email, isConfirmed: false})
       req.session.booking = null
       req.session.orders = null
       next()

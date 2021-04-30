@@ -38,13 +38,15 @@
               <!-- </div> -->
               <!-- <div class="col-md-6""> -->
               <fieldset>
+                <form action='/CustomerCheckout' method="POST">
                 <legend>Apply Discount:</legend>
-        
                 <div class="form__radios">
                   <div class="form__radio">
                     <label for="visa">Enter Discount Code:</label>
-                    <input id="myform" checked id="visa" name="payment-method" type="text">
+                    <input name="discount" type="text">
                   </div>
+                  <button type="submit" class="button button--full" style="text-decoration:none">Apply Discount</button>
+                </form>
               </fieldset>
             </div>
             
@@ -74,7 +76,14 @@
                     <% } %>                 
                   </tbody>
                   <tfoot>
-                    
+
+                  <% if (discount) { %>
+                   <% var saving = totalPrice * discount; totalPrice = totalPrice - saving%>
+                    <tr>
+                      <td align="left">Discount applied: - $<%=saving%></td>
+                    </tr>
+                  <% } %>
+
                     <tr>
                       <td align ="left">Total</td><td></td>
                       <td align ="left">$</td><td align="left"><%=totalPrice%></td>
