@@ -8,32 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eRestaurant</title>
 </head>
-<body>
-  
-
-    <% if (messages.error) { %>
-        <%= messages.error %>
-        <body-1>
-        <div id="container" class= "center">
-            <div id="error-box">
-              <div class="face2">
-                <div class="eye"></div>
-                <div class="eye right"></div>
-                <div class="mouth sad"></div>
-              </div>
-              <div class="shadow move"></div>
-              <div class="message"><h1_1 class="alert">ERROR: User Not Found!</h1_1><p><%= messages.error %></div>
-              <!-- <button class="button-box"><h1 class="red">try again</h1></button> -->
-              <a-1 href="/CustomerLogin" class="button-box-1"><h1_1 class="red"><b-1>try again</b-1></h1_1></a-1>
-            </div>
-          </div>
-        </body-1>
-
-    <% } %> 
-
-    
+<body>    
     <div class="login-box">
-        <h2>Customer Login</h2>
+        <!-- <h2>Customer Login</h2> -->
         <div class = "image">
             <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
         </div>
@@ -44,9 +21,30 @@
         </form>
     </div>
 
+    <% if (messages.error) { %>
+      <body-1>
+      <!-- <div id="container" class= "center"> -->
+          <div id="error-box" class= container center">
+            <div class="face2">
+              <div class="eye"></div>
+              <div class="eye right"></div>
+              <div class="mouth sad"></div>
+            </div>
+            <div class="shadow move"></div>
+            <div class="message center"><h1_1 class="alert">ERROR: User Not Found!</h1_1><p>      </p><p><%= messages.error %></p></div>
+            <a href="/CustomerLogin" class="button-box-1 center"><h1_1 class="red"><b-1>try again</b-1></h1_1></a>
+          </div>
+        <!-- </div> -->
+      </body-1>
+
+  <% } %> 
     
   </body>
   <style>
+
+    .center {
+  text-align: center;
+}
 
 a-1 {
   width: 160px;
@@ -54,8 +52,6 @@ a-1 {
   background: #fff;
   display: block;
   border-radius: 90px;
-
-
   text-align: center;
   align-items: center;
   color:black; 
@@ -76,10 +72,11 @@ a-1 {
   text-transform: uppercase;
   overflow: hidden;
   transition: .5s;
-  margin-top: -10px;
+  /* margin-top: -10px; */
+  /* margin-bottom: -50px; */
   letter-spacing: 4px
   }
-    b-1:hover {
+    /* b-1:hover {
   background:  #d16644;
   color: #fff;
   border-radius: 5px;
@@ -87,7 +84,7 @@ a-1 {
             0 0 25px #d16644,
             0 0 50px #d16644,
             0 0 100px #d16644;
-  }
+  } */
   
     b-1 span {
   position: absolute;
@@ -111,12 +108,18 @@ a-1 {
     } */
     
     #container {
-      position: relative;
+      /* position: relative; */
+      position: absolute;
       align-items: center;
-      margin: auto;
+      /* margin: auto; */
+
+      margin:0%; 
       overflow: hidden;
-      width: 2000px;
-      height: 500px;
+      /* width: 2000px; */
+      /* width: 980px;  */
+      /* width: 20%;
+      height: 10%; */
+      /* height: 500px; */
       /* height: 320px; */
     }
     
@@ -126,7 +129,8 @@ a-1 {
       letter-spacing: 3px;
       padding-top: 5px;
       color: #fcfcfc;
-      padding-bottom: 5px;
+      padding-bottom: 100%;
+      margin-bottom: 100%;
       text-transform: uppercase;
     }
     
@@ -144,7 +148,7 @@ a-1 {
     }
     
     p {
-      /* margin-top: 15px; */
+      margin-top: 15px;
       font-size: 1em;
       font-weight: 300;
       color: #5e5e5e;
@@ -158,9 +162,15 @@ a-1 {
     
     #error-box {
       position: absolute;
-      width: 35%;/*35%; */
-      height: 100%;/*100%;*/
-      right: 50%;
+      /* position: relative;  */
+      width: 45%;
+      height: 75%; 
+      /* width: 35%;35%; */
+      /* height: 100%;100%; */
+      /* right: 40%; */
+      /* padding-top: 5%; */
+      margin-top: 5%;
+      right: 28%;
       align-items: center;
       background: linear-gradient(to bottom left,#eedac2,#e5a88b);
       border-radius: 20px;
@@ -248,7 +258,8 @@ a-1 {
     }
     
     .message {
-      position: absolute;
+      position: relative;
+      /* position: absolute; */
       width: 100%;
       text-align: center;
       height: 40%;
@@ -330,12 +341,6 @@ a-1 {
     footer a:hover {
       color: #ffc39e;
     } 
-
-
-
-
-
-
 
   body {
   margin:0;

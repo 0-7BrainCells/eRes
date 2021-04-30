@@ -94,6 +94,24 @@ exports.confirm_booking = function (req, res, next) {
     })
 }
 
+
+exports.initialize_booking = function (req, res, next) {
+  if (req.user) {
+  Booking.findOne({   
+    email: req.user.email
+  }, function(err, booking) {
+    if (!booking) {
+      req.session.booking = null;
+    }
+    else {
+      req.session.booking = booking;
+    }
+    next()
+  })
+  }
+  next()
+}
+
 exports.delete_unconfirmed_booking = function (req, res, next) {
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
@@ -163,6 +181,12 @@ exports.add_booking = function(req, res) {
 exports.display_checkout = function(req, res) {
   var bookingArray = [];
   var ordersArray = [];
+  var discount;
+  if (req.body.discount) {
+    discount = req.body.discount
+    req.session.discount = discount;
+  }
+
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
 
@@ -184,12 +208,18 @@ exports.display_checkout = function(req, res) {
       collection = db.collection("orders");
 
       // Find all documents in the collection
-      collection.find({email: req.user.email}).toArray(function(err, items) {
+      var linkedBooking;
+      if (req.session.booking) {
+        linkedBooking = req.session.booking.bookingID;
+      } else {
+        linkedBooking = ""
+      }
+      collection.find({bookingID: linkedBooking}).toArray(function(err, items) {
         if (!err) { //Declare the array which we will populate then return
           items.forEach(function(item){
               ordersArray.push(item); //Add items to the array
           });
-          res.render('user/total-checkout', {req: req, user: req.user, orders: ordersArray, booking: bookingArray}) //Render the page and pass the results in the array as variable item
+          res.render('user/total-checkout', {discount: discount, req: req, user: req.user, orders: ordersArray, booking: bookingArray}) //Render the page and pass the results in the array as variable item
         }
       });
 
