@@ -8,6 +8,8 @@ const collname = 'lunchmenus';
 //This function gets called when the Lunch Menu page loads, it gets all lunch menu items and stores them in an array for the EJS page to use. 
 //This array is sent to the ejs page that it renders (user/lunchmenu) using the variable items, and can be referred to as such within the ejs file. 
 exports.display_lunch_menu = function(req, res) {
+  var category;
+  if (req.body.category) {category = req.body.category;} else {category = "default"}
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
 
@@ -24,7 +26,7 @@ exports.display_lunch_menu = function(req, res) {
           items.forEach(function(item){
               resultArray.push(item); //Add items to the array
           });
-          res.render('user/lunch-menu', {items: resultArray}); //Render the page and pass the results in the array as variable item
+          res.render('user/lunch-menu', {category: category, items: resultArray, booking: req.session.booking, orders : req.session.orders}); //Render the page and pass the results in the array as variable item
         }
       });
 

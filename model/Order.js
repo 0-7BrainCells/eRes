@@ -2,12 +2,20 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const orderSchema = new Schema({   
+const orderSchema = new Schema({
+    bookingID: {
+      type: String,
+      required: true
+    },   
     email: {
         type: String,
         required: true
       },
     name: {
+      type: String,
+      required: true
+    },
+    menu: {
       type: String,
       required: true
     },
