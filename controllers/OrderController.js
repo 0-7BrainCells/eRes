@@ -57,7 +57,13 @@ exports.initialize_orders = function (req, res, next) {
     if (!err) {
       const db = client.db(dbname);
       const collection = db.collection("orders");
-      collection.find({bookingID: req.session.booking.bookingID}).toArray(function(err, items) {
+      var linkedBooking;
+      if (req.session.booking) {
+        linkedBooking = req.session.booking.bookingID;
+      } else {
+        linkedBooking = null;
+      }
+      collection.find({bookingID: linkedBooking}).toArray(function(err, items) {
         if (!err) {
           items.forEach(function(item) {
               resultArray.push(item); 

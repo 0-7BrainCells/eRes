@@ -96,19 +96,20 @@ exports.confirm_booking = function (req, res, next) {
 
 
 exports.initialize_booking = function (req, res, next) {
+  if (req.user) {
   Booking.findOne({   
     email: req.user.email
   }, function(err, booking) {
     if (!booking) {
-      req.session.booking = "null";
-      req.session.booking.bookingID = "null"
+      req.session.booking = null;
     }
     else {
       req.session.booking = booking;
-      console.log(req.session.booking)
     }
     next()
   })
+  }
+  next()
 }
 
 exports.delete_unconfirmed_booking = function (req, res, next) {
@@ -207,7 +208,13 @@ exports.display_checkout = function(req, res) {
       collection = db.collection("orders");
 
       // Find all documents in the collection
-      collection.find({bookingID : req.session.booking.bookingID}).toArray(function(err, items) {
+      var linkedBooking;
+      if (req.session.booking) {
+        linkedBooking = req.session.booking.bookingID;
+      } else {
+        linkedBooking = ""
+      }
+      collection.find({bookingID: linkedBooking}).toArray(function(err, items) {
         if (!err) { //Declare the array which we will populate then return
           items.forEach(function(item){
               ordersArray.push(item); //Add items to the array
