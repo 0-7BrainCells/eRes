@@ -9,42 +9,35 @@
     <title>eRestaurant</title>
     
 </head>
-<body class="body">
-    <div class="container">
-      <div class="rectangle"></div>
-      
-    <div class="form-wrap">
-      <div class = "image">
-        <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "90" height = "90"/>
-    </div>
-      
-    <h1>My Booking Record</h1>
-     
-      <div class="table">
-      <table style="width: 150%">
-      <!--
-      <tr>
-          <th>Time: </th>
-          <th>Date: </th>
-          <th>Number of Guests: </th>
-      </tr> 
-      <tr>
-        <td>Hard coded</td>
-        <td>Hard coded</td>
-        <td>Hard coded</td>
-      </tr>
-      -->
-      </table>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-    </div>
-      <a href= "/CustomerHomePage" class="btn btn-info" style="padding: 15px ;">Return Home</a> <!--Returns to customer home page-->
-       <!--Returns to website homepage,( index.ejs)-->
-    </div>
-  </body>
+<body>
+      <div class="rectangle">
+            <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "90" height = "90"/>
+        <h1 style= "color: black;">My Booking Record</h1>
+          <div class="table">
+          <table style="width: 150%">
+          <!--
+          <tr>
+              <th>Time: </th>
+              <th>Date: </th>
+              <th>Number of Guests: </th>
+          </tr> 
+          <tr>
+            <td>Hard coded</td>
+            <td>Hard coded</td>
+            <td>Hard coded</td>
+          </tr>
+          -->
+          </table>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+          <a href= "/CustomerHomePage" class="btn" style="padding: 15px ;">Return Home</a> <!--Returns to customer home page-->
+           <!--Returns to website homepage,( index.ejs)-->
+        </div>
+      </body>
 </html>
 
 <style>
@@ -55,18 +48,11 @@
     box-sizing: border-box;
   }
   body {
-  /*background: #e5a88b;
-  color: rgb(47, 47, 47);
-  font: "Open Sans";
-  font-size: 100%;
-  overflow: hidden;*/
-
   margin-top: 10px;
   padding:0;
   font-family: sans-serif;
   background-image:   url("images/tablebackground.jpg");
   background-position: top 20px;
-  
   background-size:100%;
   background-position: center top;
   background-repeat: no-repeat;
@@ -90,38 +76,24 @@
     padding: 15px;
   }
   */
-  
-  @media (max-width: 450px) {
-    body {
-      background: #f5f5f5;
-      overflow: scroll;
-    }
-  }
+
   .rectangle {
-    margin-top: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
-               rotate(0deg);
-    height: 700px;
-    width: 650px;
-    background: whitesmoke;
-    opacity: 0.7;
-    border-radius: 8px;
-    box-shadow: 0px 0px 20px 3px rgba(#111, .2);
-    transition: all .5s ease-in-out;
-    @media(max-width: 450px) {
-      display: none;
+    width: 400px;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    background:rgba(255, 255, 255, 0.801);
+    color: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
     }
-  }
-  .mob {
-    display: none;
-    @media(max-width: 450px) {
-      display: inline-block;
-    }
-  }
-    .form-wrap {
+
+    /* .form-wrap {
       margin-top: 10px;
     position: absolute;
     text-align: center;
@@ -135,85 +107,20 @@
     .form-wrap {
       width: 80%;
     }
-  }
-
-  .form-wrap h1{
-  color: #ffff;
-   
-}
-  .form-wrap form {
-    margin-bottom: 10px;
-  }
-  input {
-    padding: 15px 10px;
-    border: none;
-    margin-bottom: 20px;
-    border-radius: 3px;
-    box-shadow: 1px 3px 20px rgba(17, 17, 17, 0.1);
-    width: 100%;
-    height: 45px;
-    outline: #8DFEE1;
-  }
-  input[type=date]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    display: none;
-  }
-  #guestNo {
-    width: 80px;
-    margin: 0 20px;
-    text-align: center;
-  }
-  input[type=date]:webkit-inner-spin-button {
-    display: none;
-  }
-  label {
-    padding-bottom: 10px;
-    display: inline;
-    float: left;
-  }
-  .counter-btn {
-    position: relative;
-    display: inline-block;
-    height: 40px;
-    text-align: top;
-    vertical-align: top;
-    font-size: 1.5em;
-    font-weight: 300;
-    width: 40px;
-    background: #fff;
-    border: none;
-    margin-bottom: 20px;
-    border-radius: 50%;
-    box-shadow: 1px 3px 20px rgba(17, 17, 17, 0.1);
-    cursor: pointer;
-    outline: none;
-  }
-  .counter-btn:nth-child(2) {
-    float: right;
-  }
-  .counter-btn:hover {
-    background: #f3c19f;;
-  }
-  .guests {
-    margin: 10px;
-  }
+  } */
+  
   .btn {
-    border: none;
-    padding: 10px;
-    margin: 20px auto;
-    width: 100%;
-    height: 45px;
-    display: block;
-    background: #797979;
-    color: #fff;
-    font-size: 1.3em;
-    letter-spacing: 0.1em;
-    box-shadow: 1px 3px 20px rgba(17, 17, 17, 0.1);
-    border-radius: 3px;
-    outline: none;
-  }
+  background-color: #014421; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
   .btn:hover {
-    background: #e9e9e9;
+    background: #014421;
   }
  
   

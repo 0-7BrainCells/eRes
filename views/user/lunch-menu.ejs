@@ -14,64 +14,61 @@
 
 
 <body>
-  <!--THIS IS THE NAV PAN-->
-  <ul>
-    <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "75" height = "75"/>
-    <li><a href="/CustomerHomePage">Home</a></li>
-    <li><a href="/LunchMenu">Lunch Menu</a></li>
-    <li><a href="/DinnerMenu">Dinner Menu</a></li>
-  </ul>
-  <!---->
-  <% if (!booking || booking.isConfirmed) { %>
-    <p style="color:red">Make a table reservation to order items. Oh, you already have a reservation? if you already confirmed an order you have to restart it from the checkout page to order again :)</p>
-  <%}%>
-
-  <div class="order_status">
-    <p>Current Order:</p>
-    <% if (orders) { for (i = 0; i < orders.length; i++) {%>
-    <p><%=orders[i].name%> <%=orders[i].menu%> <%=orders[i].price%>  x<%=orders[i].quantity%></p>
-    <%}}%>
-  </div>
   <div class="HSpace"></div> 
-
-  <form action="/categorise-lunch-menu" method="POST">
-    <select onchange="this.form.submit()" name="category">
-      <option value="default">Select Category</option>
-      <option value="all">All</option>
-      <option value="V">Vegan</option>
-      <option value="GF">Gluten Free</option>
-    </select>
-  </form>
-
-    <ul class="menu">
-      <% for (var i = 0; i < items.length; i++) {%>
-        <%if(items[i].category == category || category == "all" || category == "default") { %>  
-        <li class="menu-item">                       
-          <section>
-            <form action="/add-order-lunch" method="POST">
-              <h1><%=items[i].name %></h1>
-              <span class="spacer"></span>
-              <p><%=items[i].description %></p>
-              <span><%=items[i].price %></span>
-            <% if (booking && !booking.isConfirmed) { %>
-            <div class="quan_addBtn">
-              <div class= "addToOrderBtn">
-                <button class="btn btn-info" type="submit" >Add To Order</button>
-              </div>
-              <div class="quantity">
-                <input type="number" name="quantity" class="form-control input-number" min="1" max="10">
-              </div>
+  <div class="row">
+      <div class="column1" style="background-color:#FFB695;">
+          <!-- <h2>Column 1</h2> -->
+          <div class="row">
+            <div class="column">
+              <ul class="menu">
+                <% for (var i = 0; i < items.length; i++) {%>
+                  <%if(items[i].category == category || category == "all" || category == "default") { %>  
+                  <li class="menu-item">                       
+                    <section>
+                      <form action="/add-order-lunch" method="POST">
+                        <h1><%=items[i].name %></h1>
+                        <span class="spacer"></span>
+                        <p><%=items[i].description %></p>
+                        <span><%=items[i].price %></span>
+                      <% if (booking && !booking.isConfirmed) { %>
+                      <div class="quan_addBtn">
+                        <div class= "addToOrderBtn">
+                          <button class="btn btn-info" type="submit" >Add To Order</button>
+                        </div>
+                        <div class="quantity">
+                          <input type="number" name="quantity" class="form-control input-number" min="1" max="10">
+                        </div>
+                      </div>
+                      <%}%>
+                      </section> 
+                  </li>
+                <input type ="hidden" name="name" value="<%=items[i].name %>">
+                <input type ="hidden" name="price" value="<%=items[i].price %>">
+                </form>
+                 <%}}%>
+              <ul>
             </div>
+            </div>
+      </div>
+      <div class="column2" style="background-color:#96D1CD;">
+          <!-- <h2>Column 2</h2> -->
+          <div class= "login-box1">
+            <% if (!booking || booking.isConfirmed) { %>
+              <p style="color:red">Make a table reservation to order items. Oh, you already have a reservation? if you already confirmed an order you have to restart it from the checkout page to order again :)</p>
             <%}%>
-            </section> 
-        </li>
-      <input type ="hidden" name="name" value="<%=items[i].name %>">
-      <input type ="hidden" name="price" value="<%=items[i].price %>">
-      </form>
-       <%}}%>
-    <ul>
+          </div>
+          <div class="box">
+          <div class= "login-box2">
+          <div class="order_status">
+            <p>Current Order:</p>
+            <% if (orders) { for (i = 0; i < orders.length; i++) {%>
+            <p><%=orders[i].name%> <%=orders[i].menu%> <%=orders[i].price%>  x<%=orders[i].quantity%></p>
+            <%}}%>
+          </div>
+          </div>
+        </div>
+      </div>
   </div>
-
 </body>
 
 <style>
@@ -91,48 +88,7 @@
   float: left;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
-  overflow: hidden;
-}
-a {
-  display: block;
-  padding: 20px;
-  
-}
-li {
-  float: right;
-  display: inline
-}
-li a {
-  color:black; 
-  display: block;
-  text-align: center;
-  padding-top: 20px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  text-decoration: none;
-  font-size: large;
-
-}
-
-a {
-  color:black; 
-  display: block;
-  text-align: center;
-  padding-top: 20px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  text-decoration: none;
-  font-size: large;
-
-}
-
-  .HSpace {
+.HSpace {
     background-image: url("images/lunchmenubg.jpg");
     min-height: 600px;
     background-attachment: fixed;
@@ -140,60 +96,78 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
   }
-  
-  body {
-     background-color: whitesmoke;
-  } 
-  
+
   * {
     box-sizing: border-box;
   }
-  
-  .menu {
-    display: flex;
-    list-style-type: none;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 960px;
-    height: 100%;
-  }
-  
-  .menu .menu-item {
-      display: flex;
-      width: 50%;
-      list-style-type: none;
-      padding: 0 1rem;
-      margin: 0 0 1rem;
-      height: 75%px;
+
+  body {
+    font-family: sans-serif;
+    background-size: cover;
+    background-color: #C4A484;
+    background-position: absolute;
+    background-repeat: no-repeat;
+  } 
+
+    /* Set additional styling options for the columns*/
+    .column1 {
+    float: left;
+    width: 60%;
     }
-  
-  .menu .menu-item section {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
-  
-  .menu .menu-item section header {
-          display: flex;
-          width: 100%;
-          justify-content: center;
-          align-items: center;
-          height: 75px;
-        }
-  
-  .menu .menu-item section header .spacer {
-            content: '';
-            width: 100%;
-            height: 3px;
-            margin: 0 rem;
-            border-bottom: 1px dashed black;
-            flex: 1;
-          }
-  
-  .menu .menu-item section header h1 {
-            margin: 1;
-            font-size: 1rem;
-          }
-  
+
+    .column2 {
+    float: left;
+    width: 40%;
+    }
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+
+    .login-box1 {
+    float: right;
+    position: absolute;
+    width: 600px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background:rgba(255,255,255, 0.6);
+    color: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    text-align: center;
+    }
+
+    .login-box2 {
+    float: right;
+    position: absolute;
+    width: 600px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background:rgba(255,255,255, 0.6);
+    color: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    text-align: center;
+    }
+
+    .box {
+  display: grid;
+  width: 540px;
+  grid-template-columns: 120px 120px 120px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.box :first-child {
+    align-self: center;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
 </style>
