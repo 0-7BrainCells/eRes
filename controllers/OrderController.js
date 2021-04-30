@@ -3,12 +3,15 @@ var MongoClient = require('mongodb').MongoClient;
 const dburl = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority';
 const dbname = 'eRes';
 
+
+// Deletes all orders associated with a users email. 
+
 exports.cancel_orders = function (req, res, next) {
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
       const db = client.db(dbname);
       var collection = db.collection("orders");
-      collection.deleteMany( {email: req.user.email, isConfirmed: false})
+      collection.deleteMany( {email: req.user.email})
       req.session.booking = null
       req.session.orders = null
       next()
@@ -16,6 +19,9 @@ exports.cancel_orders = function (req, res, next) {
     client.close();
     })
 }
+
+// Will set all orders made within a session to isConfirmed true
+
 exports.confirm_orders = function (req, res, next) {
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
@@ -31,6 +37,8 @@ exports.confirm_orders = function (req, res, next) {
     })
 }
 
+// Will delete all orders for a certain user only if they are not confirmed, called upon logout  
+
 exports.delete_unconfirmed_orders = function (req, res, next) {
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
@@ -42,6 +50,8 @@ exports.delete_unconfirmed_orders = function (req, res, next) {
     client.close();
     })
 }
+
+// Adds an order to db linking it to the booking made during that session, and user details. 
 
 exports.add_order_lunch = function(req, res) {
   Order.findOne({
