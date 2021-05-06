@@ -44,7 +44,7 @@
                 <div class="form__radios">
                   <div class="form__radio">
                     <label for="visa">Enter Discount Code:</label>
-                    <input name="discount" type="text">
+                    <input name="ID" type="text" style="color: #000000" required="true">
                   </div>
                   <button type="submit" class="button button--full" style="text-decoration:none">Apply Discount</button>
                 </form>
@@ -79,7 +79,7 @@
                   <tfoot>
 
                   <% if (discount) { %>
-                   <% var saving = totalPrice * discount; totalPrice = totalPrice - saving%>
+                   <% var saving = totalPrice * (discount.percent)/100; totalPrice = totalPrice - saving%>
                     <tr>
                       <td align="left">Discount applied: - $<%=saving%></td>
                     </tr>
@@ -96,8 +96,6 @@
               <p></p>
               <% if (booking.length > 0) { %>
               <div>
-                <!--RESTART ORDER
-                   <a href="/BookTable" class="button button--full" style="text-decoration:none">Restart Order Here: </a>--> 
                    <a  href='/edit-booking'class="button button--full" style="text-decoration:none">Edit Booking</a>
                    <p></p>
                    <p></p>
@@ -117,11 +115,17 @@
         </div> 
         
         <div>
-         <% if (booking.length > 0) { %>
+         <% if (booking.length > 0 && !booking[0].isConfirmed) { %>
+
           <form id ="myform" action='/confirm-booking' method="POST">
             <button class="button button--full" style="text-decoration:none" type="submit">Confirm Booking</button>
             <input type="hidden" name="totalPrice" value=<%=totalPrice%>>
           </form>
+
+        <% } else if (booking[0] && booking[0].isConfirmed) {%>
+
+          <button class="button button--full" style="text-decoration:none">Booking confirmed! Cancel/Edit to make changes</button>
+        
         <% } %>
             <p></p>
             <a  href="/CustomerHomepage" class="button button--full" style="text-decoration:none">Return Home</a>

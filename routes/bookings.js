@@ -16,7 +16,7 @@ router.get('/cancel-booking', BookingController.cancel_booking, OrderController.
 
 router.get('/CustomerCheckout', checkAuthenticated, BookingController.display_checkout)
 
-router.post('/CustomerCheckout', checkAuthenticated, BookingController.display_checkout)
+router.post('/CustomerCheckout', checkAuthenticated, DiscountController.get_discount, BookingController.display_checkout)
 
 router.get('/edit-booking', (req, res) => {
     res.render('user/booking/update-booking')

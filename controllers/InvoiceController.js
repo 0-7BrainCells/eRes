@@ -3,8 +3,12 @@ const Invoice = require('../model/Invoice');
 //Function is called when a booking is confirmed. It aggregates the booking information, the orders and the total (discounted) price
 
 exports.add_invoice = function (req, res, next) {
-    console.log(req.session.booking.bookingID)
-    console.log(req.body.totalPrice)
+    Invoice.findOne({
+        bookingID: req.session.booking.bookingID
+      }, function (err, invoice) {
+        if (err) { return res.status(500).send(err); }
+    
+        if (!invoice) {
         var myData = new Invoice({bookingID: req.session.booking.bookingID, 
                                   totalPrice: req.body.totalPrice});
         myData.save()
@@ -13,7 +17,12 @@ exports.add_invoice = function (req, res, next) {
           })
           .catch(err => {
             res.status(400).send("Unable to save invoice to database");
-          });
+          })
+        }
+        else {
+          res.redirect("/CustomerCheckout")
+        }
+        })
 } 
 
 
