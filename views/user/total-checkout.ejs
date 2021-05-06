@@ -120,6 +120,7 @@
          <% if (booking.length > 0) { %>
           <form id ="myform" action='/confirm-booking' method="POST">
             <button class="button button--full" style="text-decoration:none" type="submit">Confirm Booking</button>
+            <input type="hidden" name="totalPrice" value=<%=totalPrice%>>
           </form>
         <% } %>
             <p></p>

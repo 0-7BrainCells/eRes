@@ -22,9 +22,6 @@ exports.add_discount = function (req, res) {
     ) 
 }
 
-exports.apply_discount = function(req, res) {
-  res.send("Confirmed. put logic here to apply discount to total price and show the final details. ");
-}
 
 exports.remove_discount = function (req, res) {
   Discount.deleteOne({
