@@ -51,6 +51,26 @@ getSeatsLeft = function(date) {
   return (maxSeats - count);
 }
 
+exports.list_all_bookings = function (req, res) {
+  var bookingArray = []
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("bookings");
+      collection.find({hasExpired: false}).toArray(function(err, items) {
+        if (!err) { 
+          items.forEach(function(item){
+              bookingArray.push(item); 
+          });
+          bookingArray = bookingArray.sort((a, b)=> a.date - b.date)
+          res.render("staff/view-bookings", {bookings: bookingArray})
+        }
+      });
+    }
+    client.close()
+  })
+}
+
 //This updates booking form will just update details same way as making a new booking. 
 exports.update_booking = function (req, res) {
   
