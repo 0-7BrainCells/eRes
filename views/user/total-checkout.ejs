@@ -17,10 +17,10 @@
           
                 <div class="card">
                   <address>
-                    <% if (booking[0]) { %>
+                    <% if (booking) { %>
                       <%=user.fname%> <%=user.lname%><br />
-                      <%=booking[0].date.toString().split(" ")[0]%> <%=booking[0].date.toString().split(" ")[1]%> <%=booking[0].date.toString().split(" ")[2]%>, <%=booking[0].date.toString().split(" ")[3]%> at <%=booking[0].time%><br />
-                      Seating <%=booking[0].numGuests%> guests at Table <%=booking[0].table%>
+                      <%=booking.date.toString().split(" ")[0]%> <%=booking.date.toString().split(" ")[1]%> <%=booking.date.toString().split(" ")[2]%>, <%=booking.date.toString().split(" ")[3]%> at <%=booking.time%><br />
+                      Seating <%=booking.numGuests%> guests at Table <%=booking.table%>
                       <%} else { %>
                       <p>No current booking</p> 
                       <%} %>
@@ -94,7 +94,7 @@
               </div>
               <p></p>
               <p></p>
-              <% if (booking.length > 0) { %>
+              <% if (booking) { %>
               <div>
                    <a  href='/edit-booking'class="button button--full" style="text-decoration:none">Edit Booking</a>
                    <p></p>
@@ -115,14 +115,14 @@
         </div> 
         
         <div>
-         <% if (booking.length > 0 && !booking[0].isConfirmed) { %>
+         <% if (booking && !booking.isConfirmed) { %>
 
           <form id ="myform" action='/confirm-booking' method="POST">
             <button class="button button--full" style="text-decoration:none" type="submit">Confirm Booking</button>
             <input type="hidden" name="totalPrice" value=<%=totalPrice%>>
           </form>
 
-        <% } else if (booking[0] && booking[0].isConfirmed) {%>
+        <% } else if (booking && booking.isConfirmed) {%>
 
           <button class="button button--full" style="text-decoration:none">Booking confirmed! Cancel/Edit to make changes</button>
         

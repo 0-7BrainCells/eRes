@@ -119,9 +119,25 @@ exports.confirm_booking = function (req, res, next) {
 exports.initialize_booking = function (req, res, next) {
   if (req.user) {
   Booking.findOne({   
-    email: req.user.email
+    email: req.user.email,
+    hasExpired: false
   }, function(err, booking) {
-    if (!booking) {
+
+    var now = new Date()
+    if (booking && booking.date < now) {
+      MongoClient.connect(dburl, function(err, client) {
+      if (!err) {
+        const db = client.db(dbname);
+        var collection = db.collection("bookings");
+        collection.updateMany( {email: req.user.email}, {
+          $set: {hasExpired: true}
+        })
+      }
+      client.close();
+      })
+    }
+
+    if (!booking || booking.hasExpired) {
       req.session.booking = null;
     }
     else {
@@ -170,7 +186,8 @@ exports.add_booking = function(req, res) {
   if (getSeatsLeft(req.body.date) < req.body.numGuests) { return res.status(400).send("We only have " + getSeatsLeft(req.body.date) + " seats left on this day.");}
     
   Booking.findOne({   
-        email: req.user.email
+        email: req.user.email,
+        hasExpired: false
       }, function(err, booking) {
         if (err) { return res.status(500).send("Error. Go back."); }
   
@@ -200,28 +217,13 @@ exports.add_booking = function(req, res) {
 }
 
 exports.display_checkout = function(req, res) {
-  var bookingArray = [];
   var ordersArray = [];
-  var discount;
 
   MongoClient.connect(dburl, function(err, client) {
     if (!err) {
 
       // Get db
       const db = client.db(dbname);
-
-      // Get collection
-      var collection = db.collection("bookings");
-
-      // Find all documents in the collection
-      collection.find({email: req.user.email}).toArray(function(err, items) {
-        if (!err) { //Declare the array which we will populate then return
-          items.forEach(function(item){
-              bookingArray.push(item); //Add items to the array
-          });
-        }
-      });
-      // Get collection
       collection = db.collection("orders");
 
       // Find all documents in the collection
@@ -236,7 +238,7 @@ exports.display_checkout = function(req, res) {
           items.forEach(function(item){
               ordersArray.push(item); //Add items to the array
           });
-          res.render('user/total-checkout', {discount: req.session.discount, req: req, user: req.user, orders: ordersArray, booking: bookingArray}) //Render the page and pass the results in the array as variable item
+          res.render('user/total-checkout', {discount: req.session.discount, req: req, user: req.user, orders: ordersArray, booking: req.session.booking}) //Render the page and pass the results in the array as variable item
         }
       });
 
