@@ -11,30 +11,32 @@
 
 <body>
   <div class= "login-box">
-    <h1 style="color: black;"> Add Dinner Menu Item </h1>
-    <div class = btnGroup>
-      <form id="myform" action="/add-dinner-menu-item" method = "POST" >
+    <h1 style="color: black;"> View Orders </h1>
+    <div class="booking">
+    <% if (orders) { %> 
+        <% for (i = 0; i < orders.length; i++) { %>
+        <p>Name: <%=orders[i].name%><br/>
+        Date: <%=orders[i].date.toString().split(" ")[0]%> <%=orders[i].date.toString().split(" ")[1]%> <%=orders[i].date.toString().split(" ")[2]%>, <%=orders[i].date.toString().split(" ")[3]%> <br/>
+        Time <%=orders[i].time%><br/>
+        Table: <%=orders[i].table%><br/>
+        Guests: <%=orders[i].numGuests%></p>
         
-      <div class = "textClass" >
-        <label for="validationDefaultUsername" class="form-label">Name</label>
-        <input type="text" class="form-control" name = "name" aria-describedby="inputGroupPrepend2" required>
-        <label for="validationDefaultPass" class="form-label">Price</label>
-        <input type="text" class="form-control" name = "price" required>
-        <label for="validationDefaultPass" class="form-label">Description</label>
-        <input type="text" class="form-control" name = "description" required>
-        <label for="validationDefaultPass" class="form-label">Category (V/GF)</label>
-        <input type="text" class="form-control" name = "category">
-      </div>
-      </form>
-            <p>    </p>
-            <button form="myform" class="btn " type="submit">Add Dinner Menu Item</button>
-            <p>  </p>
+    <% }} %>
+    </div>
+    <div class = btnGroup>
             <a href="/StaffLayout" class= "btn ">Back</a>
     </div>
 </div>
 </body>
 
   <style>
+
+    .booking {
+    color: black;
+    padding: 10px;
+    text-align: justify;
+    }
+
     body {
     margin:0;
     padding:0;

@@ -21,7 +21,8 @@ router.get('/CustomerRegistration', checkNotAuthenticated, (req, res) => {
 router.get('/LoginUnsuccessful', (req, res) => {
   res.render('user/customer-login-unsuccessful')
 }), 
-router.get('/CustomerHomePage', BookingController.initialize_booking, OrderController.initialize_orders, checkAuthenticated, (req, res) => {
+
+router.get('/CustomerHomePage', BookingController.initialize_booking, OrderController.initialize_orders, BookingController.expire_bookings, checkAuthenticated, (req, res) => {
   res.render('user/customer-successful', {user: req.user})
 }),
 

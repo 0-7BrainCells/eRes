@@ -15,13 +15,14 @@
     <div class="booking">
     <% if (bookings) { %> 
         <% for (i = 0; i < bookings.length; i++) { %>
-        <p>Email: <%=bookings[i].email%><br/>
-        Date: <%=bookings[i].date.toString().split(" ")[0]%> <%=bookings[i].date.toString().split(" ")[1]%> <%=bookings[i].date.toString().split(" ")[2]%>, <%=bookings[i].date.toString().split(" ")[3]%> <br/>
-        Time <%=bookings[i].time%><br/>
-        Table: <%=bookings[i].table%><br/>
-        Guests: <%=bookings[i].numGuests%></p>
+          <% if (!bookings[i].hasExpired) { %>
+            <p>Email: <%=bookings[i].email%><br/>
+            Date: <%=bookings[i].date.toString().split(" ")[0]%> <%=bookings[i].date.toString().split(" ")[1]%> <%=bookings[i].date.toString().split(" ")[2]%>, <%=bookings[i].date.toString().split(" ")[3]%> <br/>
+            Time <%=bookings[i].time%><br/>
+            Table: <%=bookings[i].table%><br/>
+            Guests: <%=bookings[i].numGuests%></p>   
         
-    <% }} %>
+    <% }}} %>
     </div>
     <div class = btnGroup>
             <a href="/StaffLayout" class= "btn ">Back</a>

@@ -115,6 +115,21 @@ exports.confirm_booking = function (req, res, next) {
     })
 }
 
+exports.expire_bookings = function (req, res, next) {
+    var now = new Date()
+      MongoClient.connect(dburl, function(err, client) {
+      if (!err) {
+        const db = client.db(dbname);
+        var collection = db.collection("bookings");
+        collection.updateMany( {date: {$lt: now}}, {
+          $set: {hasExpired: true}
+        })
+      }
+      next()
+      client.close();
+      })
+    next()
+}
 
 exports.initialize_booking = function (req, res, next) {
   if (req.user) {
@@ -202,6 +217,7 @@ exports.add_booking = function(req, res) {
                                       hasExpired: false,
                                       sessionID: req.sessionID});
              req.session.booking = myData;
+             console.log(typeof req.body.date)
              myData.save()
                 .then(item => {
                   return res.status(200).render('user/booking/booking-confirmation');
