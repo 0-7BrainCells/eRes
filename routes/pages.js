@@ -21,7 +21,8 @@ router.get('/CustomerRegistration', checkNotAuthenticated, (req, res) => {
 router.get('/LoginUnsuccessful', (req, res) => {
   res.render('user/customer-login-unsuccessful')
 }), 
-router.get('/CustomerHomePage', BookingController.initialize_booking, OrderController.initialize_orders, checkAuthenticated, (req, res) => {
+
+router.get('/CustomerHomePage', BookingController.initialize_booking, OrderController.initialize_orders, BookingController.expire_bookings, checkAuthenticated, (req, res) => {
   res.render('user/customer-successful', {user: req.user})
 }),
 
@@ -76,6 +77,12 @@ router.get('/EditMenu', (req, res) => {
 
 router.get('/AddLunchMenuItem', (req, res) => {
   res.render('staff/admin/edit-menu/add-lunch-menu-item')
+}),
+
+router.get('/ViewBookingStaff', BookingController.list_all_bookings)
+
+router.get('/ViewOrderStaff', (req, res) => {
+  res.render('staff/view-orders')
 }),
 
 router.get('/RemoveLunchMenuItem', (req, res) => {
