@@ -5,7 +5,6 @@ exports.add_discount = function (req, res) {
       ID: req.body.ID
     }, function (err, item) {
       if (err) { return res.status(500).send(err); }
-  
       if (!item) {
         var myData = new Discount(req.body);
         myData.save()

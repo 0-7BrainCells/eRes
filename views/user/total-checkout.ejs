@@ -57,37 +57,52 @@
                 <h2>Order:</h2>
                 <div class= "card">
                 <table>
+                  <!-- <div class= "card"> -->
                   <thead>
                   <tr>
                     
-                    <td align="left">Item:</td><td align="left">Qty:</td><td align="left"></td><td align="left">Price:</td>
+                    <td align="center">Item:</td>
+                    <td align="center">Qty:</td>
+                    <!-- <td align="center"></td> -->
+                    <!-- <td align="center"></td> -->
+                    <td align="center">Price:</td>
                  
                    </tr> 
                   </thead>
                   <tbody>
-                    
+                    <!-- <div class= "card"> -->
                     <tr></tr>
                     <% var totalPrice = 0 %>
                     <% for (i = 0; i < orders.length; i++) { %>
                     <% totalPrice += (Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%>
                        
                       <tr>
-                       <td align="left"><%=orders[i].name%></td><td align="left"><%=orders[i].quantity%></td><td align ="left">$</td><td align="left"><%=(Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%></td>
-                        </tr> 
-                    <% } %>                 
+                       <!-- <td align="center"></td> -->
+                       <td align="center"><%=orders[i].name%></td>
+                       <td align="center"><%=orders[i].quantity%></td>
+                       <!-- <td align="center"></td> -->
+                       <!-- <td align="right">$</td> -->
+                       <td align="center">$<%=(Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%></td>
+                      </tr> 
+                    <% } %>        
+                    <!-- </div>          -->
                   </tbody>
+                  <!-- </div> -->
                   <tfoot>
 
                   <% if (discount) { %>
                    <% var saving = totalPrice * discount; totalPrice = totalPrice - saving%>
                     <tr>
-                      <td align="left">Discount applied: - $<%=saving%></td>
+                      <td align ="center">$</td>
+                      <td align="left">Amount saved: $<%=saving%></td>
+                      <!-- <td align ="center">$</td> -->
                     </tr>
                   <% } %>
 
                     <tr>
-                      <td align ="left">Total</td><td></td>
-                      <td align ="left">$</td><td align="left"><%=totalPrice%></td>
+                      <td align ="center">Total</td><td></td>
+                      <!-- <td align ="center">$</td> -->
+                      <td align="center"><%=totalPrice%></td>
                     </tr>
                   </tfoot>
                 </table>
