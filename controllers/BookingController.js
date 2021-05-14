@@ -217,7 +217,6 @@ exports.add_booking = function(req, res) {
                                       hasExpired: false,
                                       sessionID: req.sessionID});
              req.session.booking = myData;
-             console.log(typeof req.body.date)
              myData.save()
                 .then(item => {
                   return res.status(200).render('user/booking/booking-confirmation');
