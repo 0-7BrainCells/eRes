@@ -6,392 +6,161 @@
 <body>
   <!-- <div class="rectangle"> </div> -->
   <!-- <div class= login-box"></div> -->
-    <div class="login-box">
+  <div class="login-box">
         <div class = "image">
             <img src="images/Le Bistrot d'Andre.png" style="vertical-align:middle;margin:0px 30px" alt="logo" width = "115" height = "115"/>
         </div>
-        <h1>Total Checkout</h1>
-        <div class="row">
-            <div class="column">
-                <h2>Booking:</h2>
-          
-                <div class="card">
-                  <address>
-                    <% if (booking) { %>
-                      <%=user.fname%> <%=user.lname%><br />
-                      <%=booking.date.toString().split(" ")[0]%> <%=booking.date.toString().split(" ")[1]%> <%=booking.date.toString().split(" ")[2]%>, <%=booking.date.toString().split(" ")[3]%> at <%=booking.time%><br />
-                      Seating <%=booking.numGuests%> guests at Table <%=booking.table%>
-                      <%} else { %>
-                      <p>No current booking</p> 
-                      <%} %>
-                  </address>
-                </div>
-                <p></p>
-                <p></p>
-                <% if(req.session.booking) {%>
-                <div>
-                <!--<a class="card" style="text-decoration:none" href='/edit-booking'>Edit Booking</a> -->
-                <!--<a  href='/edit-booking'class="button button--full">Edit Booking here:</a>
-                 <a class="card" style="text-decoration:none" href='/cancel-booking'>Cancel Booking</a>-->
-                </div>
-                <%}%>
-                <p></p>
-              <!-- </div> -->
-              <!-- <div class="col-md-6""> -->
-              <fieldset>
-                <form action='/CustomerCheckout' method="POST">
-                <legend>Apply Discount:</legend>
-                <div class="form__radios">
-                  <div class="form__radio">
-                    <label for="visa">Enter Discount Code:</label>
-                    <input name="ID" type="text" style="color: #000000" required="true">
-                  </div>
-                  <button type="submit" class="button button--full" style="text-decoration:none">Apply Discount</button>
-                </form>
-              </fieldset>
-            </div>
-            
 
-            <div class="column">
-              <div>
-                <h2>Order:</h2>
-                <div class= "card">
-                <table>
-                  <thead>
-                  <tr>
-                    
-                    <td align="left">Item:</td><td align="left">Qty:</td><td align="left"></td><td align="left">Price:</td>
-                 
-                   </tr> 
-                  </thead>
-                  <tbody>
-                    
-                    <tr></tr>
-                    <% var totalPrice = 0 %>
-                    <% for (i = 0; i < orders.length; i++) { %>
-                    <% totalPrice += (Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%>
-                       
-                      <tr>
-                       <td align="left"><%=orders[i].name%></td><td align="left"><%=orders[i].quantity%></td><td align ="left">$</td><td align="left"><%=(Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%></td>
-                        </tr> 
-                    <% } %>                 
-                  </tbody>
-                  <tfoot>
-
-                  <% if (discount) { %>
-                   <% var saving = totalPrice * (discount.percent)/100; totalPrice = totalPrice - saving%>
-                    <tr>
-                      <td align="left">Discount applied: - $<%=saving%></td>
-                    </tr>
-                  <% } %>
-
-                    <tr>
-                      <td align ="left">Total</td><td></td>
-                      <td align ="left">$</td><td align="left"><%=totalPrice%></td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <p></p>
-              <p></p>
-              <% if (booking) { %>
-              <div>
-                   <a  href='/edit-booking'class="button button--full" style="text-decoration:none">Edit Booking</a>
-                   <p></p>
-                   <p></p>
-                 <a href='/cancel-booking' class="button button--full" style="text-decoration:none " >Cancel Booking</a>
-                <p></p>
-                <p></p>
-              </div>
-              <% } %>
-
-            </div>
-        </div>          
-               
-        </div>
-
-        <div>
-            <p>   </p>
-        </div> 
+          <h1 style="color: black;">Total Checkout</h1>
         
-        <div>
-         <% if (booking && !booking.isConfirmed) { %>
+        <h2 style="color: black;">Booking:</h2>
+          <address style="color: black;">
+            <% if (booking) { %>
+              <%=user.fname%> <%=user.lname%><br />
+              <%=booking.date.toString().split(" ")[0]%> <%=booking.date.toString().split(" ")[1]%> <%=booking.date.toString().split(" ")[2]%>, <%=booking.date.toString().split(" ")[3]%> at <%=booking.time%><br />
+              Seating <%=booking.numGuests%> guests at Table <%=booking.table%>
+              <%} else { %>
+              <p>No current booking</p> 
+              <%} %>
+          </address> 
+
+        <% if(req.session.booking) {%>
+          <h2 style="color: #000000;">Invoice</h2>
+              <table>
+                <thead>
+                <tr>
+                  <td >Item:</td><td >Qty:</td><td ></td><td >Price:</td>
+                 </tr> 
+                </thead>
+                <tbody>
+                  
+                  <tr></tr>
+                  <% var totalPrice = 0 %>
+                  <% for (i = 0; i < orders.length; i++) { %>
+                  <% totalPrice += (Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%>
+                     
+                    <tr>
+                     <td ><%=orders[i].name%></td><td ><%=orders[i].quantity%></td><td >$</td><td ><%=(Number(orders[i].quantity) * Number(orders[i].price.split("$")[1]))%></td>
+                    </tr> 
+                  <% } %>                 
+                </tbody>
+                <tfoot>
+                </table>
+
+                  <fieldset>
+                    <form action='/CustomerCheckout' method="POST">
+                      <p></p>
+                      <p></p>
+                    <h3 style="color: #000000;">Apply Discount:<h3>
+                    <p></p>
+                    <p></p>
+                    <div class="form__radios">
+                      <div class="form__radio">
+                        <p></p>
+                        <p for="visa" style="color: #000000;">Enter Discount Code:</p>
+                        <input name="ID" type="text" style="color: #000000" required="true">
+                      </div>
+                      <p></p>
+                      <button type="submit" class="btn" >Apply Discount</button>
+                      <p></p>
+                      <p></p>
+                      <p></p>
+                    </form>
+                  </fieldset>
+        <%}%>
+
+        <% if (discount) { %>
+          <% var saving = totalPrice * (discount.percent)/100; totalPrice = totalPrice - saving%>
+           <tr>
+             <td align="left">Discount applied: - $<%=saving%></td>
+           </tr>
+           <tr>
+            <td align ="left">Total</td><td></td>
+            <td align ="left">$</td><td align="left"><%=totalPrice%></td>
+          </tr>
+          </tfoot>
+         <% } %> 
+
+        <% if (booking) { %>
+            <a  href='/edit-booking'class="btn" style="text-decoration:none">Edit Booking</a>
+             <a href='/cancel-booking' class="btn" style="text-decoration:none " >Cancel Booking</a>
+        <% } %>   
+
+        <% if (booking && !booking.isConfirmed) { %>
 
           <form id ="myform" action='/confirm-booking' method="POST">
-            <button class="button button--full" style="text-decoration:none" type="submit">Confirm Booking</button>
+            <p></p>
+            <div btnGroup>
+              <a  href="/CustomerHomepage" class="btn" style="text-decoration:none">Return Home</a>
+              <button class="btn" style="text-decoration:none" type="submit">Confirm Booking</button>
+            </div>
             <input type="hidden" name="totalPrice" value=<%=totalPrice%>>
           </form>
 
         <% } else if (booking && booking.isConfirmed) {%>
-
-          <button class="button button--full" style="text-decoration:none">Booking confirmed! Cancel/Edit to make changes</button>
-        
+          <button class="btn" style="text-decoration:none">Booking confirmed! Cancel/Edit to make changes</button>
         <% } %>
-            <p></p>
-            <a  href="/CustomerHomepage" class="button button--full" style="text-decoration:none">Return Home</a>
-        </div>
-         
+  </div class = "login box">
 
-
-    </div>
- 
 </body>
 </html>
 <style>
 
-
-
-.column {
-    float: left;
-    width: 50%;
-    padding: 5% 1%;
-    
-    }
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-
-:root {
-  --color-background: #fae3ea;
-  --color-primary: #fc8080;
-  --font-family-base: Poppin, sans-serif;
-  --font-size-h1: 1.25rem;
-  --font-size-h2: 1rem;
-}
-
-
-* {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
-}
-
-html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-/* body {
-  background-color: #fae3ea;
-  background-color: var(--color-background);
-  display: grid;
-  font-family: Poppin, sans-serif;
-  font-family: var(--font-family-base);
-  line-height: 1.5;
-  margin: 0;
-  min-height: 100vh;
-  padding: 5vmin;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  justify-items: center;
-  place-items: center;
-} */
-
-address {
-  font-style: normal;
-}
-
-button {
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-}
-
+/* this is the discount box */
 fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
 
-h1 {
-  font-size: 1.25rem;
-  font-size: var(--font-size-h1);
-  line-height: 1.2;
-  margin-top: 0;
-  margin-bottom: 1.5em;
-}
-
-h2 {
-  font-size: 150%;
-  /*font-size: var(--font-size-h2);*/
-  line-height: 1.2;
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  color: rgb(255, 255, 255);
-}
-
-legend {
-  font-weight: 600;
-  font-size: 150%;
-  margin-bottom: 0.5em;
-  padding: 0;
-  color: whitesmoke;
-}
-
-input {
+/* i kinda hate below because it shows a textbox */
+input { 
   border: 0;
   color: inherit;
   font: inherit;
 }
 
-/* input[type="radio"] {
-  accent-color: #fc8080;
-  accent-color: var(--color-primary);
-} */
-
 table {
   border-collapse: collapse;
   width: 100%;
+  text-align: center;
+  align-content: center;
+  padding: 0.125em;
 }
 
 tbody {
   color: #fff;
-}
 
+  padding: 0.125em;
+}
 td {
-  padding-top: 0.125em;
-  padding-bottom: 0.125em;
-}
+  padding: 0.125em;
+  text-align: center;
+  color: #000000;
 
+}
 thead {
   font-weight: 600;
+  text-align: center;
+  align-content: center;
+  padding: 0.125em;
 }
-
 tfoot {
   border-top: 2px solid #b4b4b4;
   font-weight: 600;
+  text-align: center;
+  align-content: center;
+  padding: 0.125em;
 }
 
-.align {
-  display: grid;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  justify-items: center;
-  place-items: center;
-}
 
-.button {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #0144219d;
-  /* background-color: var(--color-primary); */
-  border-radius: 999em;
-  color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  grid-gap: 0.5em;
-  gap: 0.5em;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding-top: 0.75em;
-  padding-bottom: 0.75em;
-  padding-left: 1em;
-  padding-right: 1em;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-}
 
-.button:focus,
-.button:hover {
-  background-color: #014421;
-}
 
-.button--full {
-  width: 100%;
-}
-
-.card {
-  border-radius: 1em;
-  background-color: #0144219d;
-  /* background-color: var(--color-primary); */
-  color: #fff;
-  padding: 5% 0%;
-  column-gap: 10px;
-}
-.card-headings{
-font-weight: 600;
-
-}
-
-.form {
-  display: grid;
-  grid-gap: 2em;
-  gap: 2em;
-}
-
-.form__radios {
+/* .form__radios {
   display: grid;
   grid-gap: 1em;
   gap: 1em;
-}
-
-.form__radio {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color:#0144219d;
-  border-radius: 1em;
-  -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
-          box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 1em;
-}
-
-.form__radio label {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  grid-gap: 1em;
-  gap: 1em;
-  color: whitesmoke;
-}
-
-.header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-.icon {
-  height: 1em;
-  display: inline-block;
-  fill: currentColor;
-  width: 1em;
-  vertical-align: middle;
-}
-
-
-
-
-
-
-
-
+} */
 
     body {
   margin:0;
@@ -403,82 +172,36 @@ font-weight: 600;
   background-repeat: no-repeat;
   padding: 30px;
    }
-   .rectangle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height:700px;
-  width: 700px;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-  background-color: rgb(160, 160, 160);
-  opacity: 0.4;
-  
-  
-  
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
-  border-radius: 10px;
-  text-align: center;
-  }
+
 
   .login-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 700px;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-    /* background-color: transparent; */
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.7);
-  background:rgb(255, 255, 255, 0.3);
-  color: whitesmoke;
-  border-radius: 10px;
-  text-align: center;
-  }
-  
-  /*
-  .login-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 700px;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-  opacity: 0.7;
-  background: rgba(212, 212, 212, 0.705);
-  color: whitesmoke;
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
-  border-radius: 10px;
-  text-align: center;
-  }*/
-  /*
-  .rectangle {
     position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 700px;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-  opacity: 0.7;
-  background: whitesmoke;
- 
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
-  border-radius: 10px;
-  text-align: center;
+    width: 800px;
+    height: 1000px;
+    padding: 40px;
+    transform: translate(37%, 0%);
+    background:rgba(255,255,255, 0.6);
+    color: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    text-align: center;
+  }
 
-}*/
-  
-  .login-box h1 {
-  margin: 0 0 30px;
-  padding: 0;
-  color:  	whitesmoke;
-  text-align: center; 
-  border-radius: 10px;  
-  font-size: 300%;
-  } 
+  .btn {
+background-color: #014421; /* Green */
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
+
+.btnGroup {
+  padding: 10px 24px;
+  display: flex;
+}
   
 </style>
