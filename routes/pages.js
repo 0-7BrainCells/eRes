@@ -51,7 +51,7 @@ router.get('/StaffLayout', checkStaffAuthenticated, (req, res) => {
 }),
 
 router.get('/EditDiscount', checkStaffAuthenticated, (req, res) => {
-  res.render('staff/admin/edit-menu/edit-discount');
+  res.render('staff/admin/edit-discount');
 }),
 
 router.get('/EditCustomer', checkStaffAuthenticated, (req, res) => {
