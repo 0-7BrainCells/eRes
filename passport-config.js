@@ -36,7 +36,6 @@ const authenticateUser = async (email, password, done) => {
                 });
         })
         .catch(err => {
-            console.log(err.error);
             return done(null, false, { message: "Wrong email or password." });
         });
 }
