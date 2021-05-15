@@ -27,6 +27,11 @@ const userSchema = new Schema({
   zip: {
     type: Number,
     required: true
+  },
+  type: {
+    type: String,
+    required: true,
+    value: 'user'
   }
 });
 

@@ -128,7 +128,6 @@ exports.list_all_orders = function (req, res) {
                 ordersArray.push(item); 
             });
             res.render("staff/view-orders", {orders : ordersArray, bookings: bookingsArray})
-            console.log(ordersArray)
           }
         });
     }

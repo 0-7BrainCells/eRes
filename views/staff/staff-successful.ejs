@@ -14,26 +14,38 @@
       <div class="login-box">
         <img src="images/Le Bistrot d'Andre.png" alt="logo here" width="30%" height="30%"><!--h1>Le Bistrot d'Andre</h1>-->
         <h1 font-size= "20%" style="color: black;">
-          Admin Menu
+          Staff Portal <br/>
         </h1>
-    
+        <p style="color: black" >ID: <%=user.ID%>  (Role: <%=user.role%>)</p>
         <div class= "btnGroup">
+          <% if (user.role == "Admin" || user.role == "Chef") {%>
           <a href = "/EditMenu" class="btn btn-secondary btn-lg">Edit Menu Item</a>
           <p>            </p>
           <p>            </p>
+          <%}%>
+          <% if (user.role == "Admin") {%>
           <a href="/EditDiscount" class="btn btn-secondary btn-lg">Edit Discounts</a>
           <p>            </p>
           <p>            </p>
+          <%}%>
+          <% if (user.role == "Admin") {%>
           <a href= "/StaffManagement" class="btn btn-secondary btn-lg">Manage Staff and Customers</a>
           <p>            </p>
           <p>            </p>
+          <%}%>
+          <% if (user.role == "Admin" || user.role == "Waiting") {%>
           <a href= "/ViewBookingStaff" class="btn btn-secondary btn-lg">View Upcoming Bookings</a>
           <p>            </p>
           <p>            </p>
+          <%}%>
+          <% if (user.role == "Admin" || user.role == "Chef") {%>
           <a href= "/ViewOrderStaff" class="btn btn-secondary btn-lg">View Upcoming Orders</a>
           <p>            </p>
           <p>            </p>
-          <a href= "/" class="btn btn-secondary btn-lg">Log Out</a>
+          <%}%>
+          <form action="/staff-logout?_method=DELETE" method="POST">
+            <a><button class="btn" style="padding: 15px ;" type = "submit">Log Out</button></a> <!-- LOGOUT BUTTON -->
+          </form>
     </div>
   </section>
   </body>

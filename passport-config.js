@@ -1,57 +1,64 @@
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
 const User = require('./model/User');
+const Staff = require('./model/Staff');
 const passport = require("passport");
 
 passport.serializeUser((user, done) => {
-    done(null, user.id);
+    let type = user.type;
+    done(null, { id: user.id, type: type});
 });
 
-passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-        done(err, user);
-    });
+passport.deserializeUser((data, done) => {
+    if(data.type === 'user') {
+        User.findById(data.id, function(err, user) {
+          done(err, user);
+        });
+      } else if (data.type === 'staff') {
+        Staff.findById(data.id, function(err, user) {
+          done(err, user);
+        });
+      }
 });
 
 const authenticateUser = async (email, password, done) => { 
     // Match User
     User.findOne({ email: email })
         .then(user => {
-            // Create new User
-            if (!user) {
-                const newUser = new User({ email, password });
-                // Hash password before saving in database
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if (err) throw err;
-                        newUser.password = hash;
-                        newUser
-                            .save()
-                            .then(user => {
-                                return done(null, user);
-                            })
-                            .catch(err => {
-                                return done(null, false, { message: "Email does not exist" });
-                            });
-                    });
-                });
-                // Return other user
-            } else {
-                // Match password
                 bcrypt.compare(password, user.password, (err, isMatch) => {
                     if (err) throw err;
 
                     if (isMatch) {
                         return done(null, user);
                     } else {
-                        return done(null, false, { message: "Wrong password" });
+                        return done(null, false, { message: "Wrong email or password." });
                     }
                 });
-            }
         })
         .catch(err => {
-            return done(null, false, { message: err });
+            console.log(err.error);
+            return done(null, false, { message: "Wrong email or password." });
+        });
+}
+
+const authenticateStaff = async (ID, password, done) => { 
+    // Match User
+    Staff.findOne({ ID: ID })
+        .then(user => {
+                bcrypt.compare(password, user.password, (err, isMatch) => {
+                    if (err) throw err;
+
+                    if (isMatch) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false, { message: "Wrong email or password." });
+                    }
+                });
+        })
+        .catch(err => {
+            return done(null, false, { message: "Wrong email or password." });
         });
 }
     
-passport.use(new LocalStrategy({ usernameField: 'email'}, authenticateUser))
+passport.use('user-local', new LocalStrategy({ usernameField: 'email'}, authenticateUser))
+passport.use('staff-local', new LocalStrategy({ usernameField: 'ID'}, authenticateStaff))

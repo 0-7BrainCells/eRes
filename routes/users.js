@@ -2,18 +2,22 @@ const express = require('express')
 const router = express.Router()
 const UserController = require('../controllers/UserController')
 const passport = require('passport')
-const BookingController = require('../controllers/BookingController')
-const OrderController = require('../controllers/OrderController')
 
-router.post('/customer-login-received', passport.authenticate('local', {
+router.post('/customer-login-received', passport.authenticate('user-local', {
     successRedirect: '/CustomerHomePage',
     failureRedirect: '/CustomerLogin',
     failureFlash: true
 }))
 
+router.post('/staff-login-received', passport.authenticate('staff-local', {
+    successRedirect: '/StaffLayout',
+    failureRedirect: '/StaffLogin',
+    failureFlash: true
+}))
+
 router.post('/customer-register-received', UserController.customer_register_post)
 
-router.post('/staff-login-received', UserController.staff_login_post)
+//router.post('/staff-login-received', UserController.staff_login_post)
 
 router.post('/staff-register-received', UserController.staff_register_post)
 

@@ -8,94 +8,88 @@ const Order = require('../model/Order')
 
 //Page redirect action handlers:
 
-router.get('/StaffLogin', (req, res) => {
+router.get('/StaffLogin', checkStaffNotAuthenticated, checkUserNotAuthenticated, (req, res) => {
     res.render('staff/staff-login')
 }), 
-router.get('/CustomerLogin', checkNotAuthenticated, (req, res) => {
+router.get('/CustomerLogin', checkUserNotAuthenticated, checkStaffNotAuthenticated, (req, res) => {
     res.render('index/customer-login')
 }), 
 
-router.get('/CustomerRegistration', checkNotAuthenticated, (req, res) => {
+router.get('/CustomerRegistration', checkUserNotAuthenticated, checkStaffNotAuthenticated, (req, res) => {
     res.render('index/customer-rego')
 }),  
-router.get('/LoginUnsuccessful', (req, res) => {
-  res.render('user/customer-login-unsuccessful')
-}), 
 
-router.get('/CustomerHomePage', BookingController.initialize_booking, OrderController.initialize_orders, BookingController.expire_bookings, checkAuthenticated, (req, res) => {
+router.get('/CustomerHomePage', checkUserAuthenticated, BookingController.initialize_booking, OrderController.initialize_orders, BookingController.expire_bookings, (req, res) => {
   res.render('user/customer-successful', {user: req.user})
 }),
 
-router.get('/BookTable', checkAuthenticated, (req, res) => {
+router.get('/BookTable', checkUserAuthenticated, (req, res) => {
   res.render('user/book-table', {user: req.user})
 }), 
-router.get('/BookingRecord', (req, res) => {
+router.get('/BookingRecord', checkUserAuthenticated, (req, res) => {
   res.render('user/booking-record')
 }), 
-router.get('/SelectTable', (req, res) => {
-  res.render('user/select-table');
-}),
 
-router.get('/CustomerSettings', (req, res) => {
+router.get('/CustomerSettings', checkUserAuthenticated, (req, res) => {
   res.render('user/customer-settings');
 }),
 
-router.get('/UpdateCustomer', (req, res) => {
+router.get('/UpdateCustomer', checkUserAuthenticated, (req, res) => {
   res.render('user/update-customer');
 }),
 
-router.get('/StaffRegistration', (req, res) => {
+router.get('/StaffRegistration', checkStaffNotAuthenticated, checkUserNotAuthenticated, (req, res) => {
   res.render('staff/admin/manage-staff-customers/staff-rego');
 }),
 
-router.get('/StaffManagement', (req, res) => {
+router.get('/StaffManagement', checkStaffAuthenticated, (req, res) => {
   res.render('staff/admin/staff-management');
 }),
 
-router.get('/StaffLayout', (req, res) => {
-  res.render('staff/staff-successful');
+router.get('/StaffLayout', checkStaffAuthenticated, (req, res) => {
+  res.render('staff/staff-successful', {user : req.user});
 }),
 
-router.get('/EditDiscount', (req, res) => {
+router.get('/EditDiscount', checkStaffAuthenticated, (req, res) => {
   res.render('staff/admin/edit-menu/edit-discount');
 }),
 
-router.get('/EditCustomer', (req, res) => {
+router.get('/EditCustomer', checkStaffAuthenticated, (req, res) => {
   res.render('staff/admin/manage-staff-customers/edit-customer');
 }),
 
-router.get('/RemoveStaff', (req, res) => {
+router.get('/RemoveStaff', checkStaffAuthenticated, (req, res) => {
   res.render('staff/admin/manage-staff-customers/remove-staff')
 }),
-router.get('/DisplayCustomer', (req, res) => {
+router.get('/DisplayCustomer', checkUserAuthenticated, (req, res) => {
   res.render('staff/admin/manage-staff-customers/display-customer')
 }),
 
-router.get('/EditMenu', (req, res) => {
+router.get('/EditMenu', checkStaffAuthenticated, (req, res) => {
   res.render('staff/admin/edit-menu')
 }),
 
-router.get('/AddLunchMenuItem', (req, res) => {
+router.get('/AddLunchMenuItem', checkStaffAuthenticated, (req, res) => {
   res.render('staff/admin/edit-menu/add-lunch-menu-item')
 }),
 
-router.get('/ViewBookingStaff', BookingController.list_all_bookings)
+router.get('/ViewBookingStaff', checkStaffAuthenticated, BookingController.list_all_bookings)
 
-router.get('/ViewOrderStaff', OrderController.list_all_orders)
+router.get('/ViewOrderStaff', checkStaffAuthenticated, OrderController.list_all_orders)
 
-router.get('/RemoveLunchMenuItem', (req, res) => {
+router.get('/RemoveLunchMenuItem', checkStaffAuthenticated, (req, res) => {
   res.render('staff/admin/edit-menu/remove-lunch-menu-item')
 }),
 
-router.get('/AddDinnerMenuItem', (req, res) => {
+router.get('/AddDinnerMenuItem', checkStaffAuthenticated, (req, res) => {
   res.render('staff/admin/edit-menu/add-dinner-menu-item')
 }),
 
-router.get('/RemoveDinnerMenuItem', (req, res) => {
+router.get('/RemoveDinnerMenuItem', checkStaffAuthenticated, (req, res) => {
   res.render('staff/admin/edit-menu/remove-dinner-menu-item')
 }),
 
-router.get('/', checkNotAuthenticated, (req, res) => {
+router.get('/', checkUserNotAuthenticated, checkStaffNotAuthenticated, (req, res) => {
   res.render('index')
 })
 
@@ -105,16 +99,36 @@ router.delete('/customer-logout', OrderController.delete_unconfirmed_orders, Boo
   res.redirect('/')
 })
 
-function checkAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
+router.delete('/staff-logout', OrderController.delete_unconfirmed_orders, BookingController.delete_unconfirmed_booking, (req, res) => {
+  req.session.destroy()
+  req.logOut()
+  res.redirect('/')
+})
+
+function checkUserAuthenticated(req, res, next) {
+  if (req.isAuthenticated() && req.user.type == 'user') {
     return next()
   }
   res.redirect('/CustomerLogin')
 }
 
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
+function checkUserNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated() && req.user.type == 'user') {
     return res.redirect('/CustomerHomePage')
+  }
+  next()
+}
+
+function checkStaffAuthenticated(req, res, next) {
+  if (req.isAuthenticated() && req.user.type == 'staff') {
+    return next()
+  }
+  res.redirect('/StaffLogin')
+}
+
+function checkStaffNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated() && req.user.type == 'staff') {
+    return res.redirect('/StaffLayout')
   }
   next()
 }

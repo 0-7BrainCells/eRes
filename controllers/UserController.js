@@ -40,7 +40,8 @@ exports.customer_register_post = async function (req, res) {
           fname: req.body.fname,
           lname: req.body.lname,
           city: req.body.city,
-          zip: req.body.zip
+          zip: req.body.zip,
+          type: 'user'
         });
         myData.save()
           .then(item => {
@@ -70,32 +71,39 @@ exports.staff_login_post = function (req, res) {
 
     if (!user) { return res.status(200).send("User not found, check username and password are correct"); } //The email or password dont exist in the DB
 
-    // return res.status(200).send("You are logged in succesfully. (TODO: actually make some sort of session thing with profiles");
-    return res.status(200).render('staff/staff-successful');
+    return res.status(200).render('staff/staff-successful', {staffUser : user});
   }
   )
 }
 //not coded properly yet ;)
-exports.staff_register_post = function (req, res) {
-  Staff.findOne({
-    ID: req.body.ID
-  }, function (err, user) {
-    if (err) { return res.status(500).send(err); }
+exports.staff_register_post = async function (req, res) {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    Staff.findOne({
+      ID: req.body.ID
+    }, function (err, user) {
+      if (err) { return res.status(500).send(err); }
 
-    if (!user) {
-      var myData = new Staff(req.body);
-      myData.save()
-        .then(item => {
-          res.send("Staff saved to database (TODO: direct to login page");
-        })
-        .catch(err => {
-          res.status(400).send("Unable to save to database");
-        });
-    } else {
-      return res.status(200).send("ID already exists (TODO: redirect this page to the registration again");
+      if (!user) {
+        var myData = new Staff({ID : req.body.ID, 
+                                password : hashedPassword, 
+                                role : req.body.role,
+                                type: 'staff'});
+        myData.save()
+          .then(item => {
+            res.send("Staff saved to database (TODO: direct to login page");
+          })
+          .catch(err => {
+            res.status(400).send("Unable to save to database");
+          });
+      } else {
+        return res.status(200).send("ID already exists (TODO: redirect this page to the registration again");
+      }
     }
+    )
+  } catch (error) {
+    res.redirect('/StaffRegistration')
   }
-  )
 }
 
 exports.staff_remove_account = function (req, res) {
