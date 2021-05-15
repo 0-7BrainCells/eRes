@@ -76,7 +76,7 @@
         <div class= "login-box1">
           <% if (!booking || booking.isConfirmed) { %>
             <h3 style="color;black">Make a table reservation to order items. Already have a reservation? Ensure that you have confirmed your order then restart from the checkout page to order again</h3>
-          <%}%>
+          <%} else {%>
         </div>
         <div class="box">
         <div class= "login-box2">
@@ -84,7 +84,7 @@
           <h2>Current Order:</h2>
           <% if (orders) { for (i = 0; i < orders.length; i++) {%>
           <p><%=orders[i].name%> <%=orders[i].menu%> <%=orders[i].price%>  x<%=orders[i].quantity%></p>
-          <%}}%>
+          <%}}}%>
         </div>
         </div>
       </div>
