@@ -105,6 +105,37 @@ exports.add_order_lunch = function(req, res) {
     ) 
 }
 
+//Send all confirmed bookings and all confirmed orders. Use EJS to match orders with bookings to extract date/table number. 
+exports.list_all_orders = function (req, res) {
+  var ordersArray = []
+  var bookingsArray = []
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("bookings");
+      collection.find({hasExpired: false, isConfirmed: true}).toArray(function(err, items) {
+        if (!err) { 
+          items.forEach(function(item){
+              bookingsArray.push(item);
+              bookingArray = bookingArray.sort((a, b)=> a.date - b.date)
+          });
+        }
+      });
+      collection = db.collection("orders");
+        collection.find({isConfirmed: true}).toArray(function(err, items) {
+          if (!err) { 
+            items.forEach(function(item){
+                ordersArray.push(item); 
+            });
+            res.render("staff/view-orders", {orders : ordersArray, bookings: bookingsArray})
+            console.log(ordersArray)
+          }
+        });
+    }
+    client.close()
+  })
+}
+
 exports.add_order_dinner = function(req, res) {
     Order.findOne({
         email: req.user.email

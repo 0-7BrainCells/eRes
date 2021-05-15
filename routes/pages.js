@@ -81,9 +81,7 @@ router.get('/AddLunchMenuItem', (req, res) => {
 
 router.get('/ViewBookingStaff', BookingController.list_all_bookings)
 
-router.get('/ViewOrderStaff', (req, res) => {
-  res.render('staff/view-orders')
-}),
+router.get('/ViewOrderStaff', OrderController.list_all_orders)
 
 router.get('/RemoveLunchMenuItem', (req, res) => {
   res.render('staff/admin/edit-menu/remove-lunch-menu-item')

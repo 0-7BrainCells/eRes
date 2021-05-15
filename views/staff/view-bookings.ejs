@@ -13,16 +13,17 @@
   <div class= "login-box">
     <h1 style="color: black;"> View Bookings </h1>
     <div class="booking">
-    <% if (bookings) { %> 
+    <% if (bookings.length > 0) { %> 
         <% for (i = 0; i < bookings.length; i++) { %>
-          <% if (!bookings[i].hasExpired) { %>
             <p>Email: <%=bookings[i].email%><br/>
             Date: <%=bookings[i].date.toString().split(" ")[0]%> <%=bookings[i].date.toString().split(" ")[1]%> <%=bookings[i].date.toString().split(" ")[2]%>, <%=bookings[i].date.toString().split(" ")[3]%> <br/>
             Time <%=bookings[i].time%><br/>
             Table: <%=bookings[i].table%><br/>
             Guests: <%=bookings[i].numGuests%></p>   
         
-    <% }}} %>
+    <% }} else { %>
+      <p align="CENTER" >No confirmed upcoming bookings. </p>
+    <% } %>
     </div>
     <div class = btnGroup>
             <a href="/StaffLayout" class= "btn ">Back</a>

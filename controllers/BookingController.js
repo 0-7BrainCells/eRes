@@ -57,7 +57,7 @@ exports.list_all_bookings = function (req, res) {
     if (!err) {
       const db = client.db(dbname);
       var collection = db.collection("bookings");
-      collection.find({hasExpired: false}).toArray(function(err, items) {
+      collection.find({hasExpired: false, isConfirmed: true}).toArray(function(err, items) {
         if (!err) { 
           items.forEach(function(item){
               bookingArray.push(item); 
