@@ -51,12 +51,12 @@ const authenticateStaff = async (ID, password, done) => {
                     if (isMatch) {
                         return done(null, user);
                     } else {
-                        return done(null, false, { message: "Wrong email or password." });
+                        return done(null, false, { message: "Wrong ID or password." });
                     }
                 });
         })
         .catch(err => {
-            return done(null, false, { message: "Wrong email or password." });
+            return done(null, false, { message: "Wrong ID or password." });
         });
 }
     
