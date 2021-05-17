@@ -26,9 +26,7 @@ router.get('/CustomerHomePage', checkUserAuthenticated, BookingController.initia
 router.get('/BookTable', checkUserAuthenticated, (req, res) => {
   res.render('user/book-table', {user: req.user})
 }), 
-router.get('/BookingRecord', checkUserAuthenticated, (req, res) => {
-  res.render('user/booking-record')
-}), 
+router.get('/BookingRecord', checkUserAuthenticated, BookingController.list_all_bookings_user);
 
 router.get('/CustomerSettings', checkUserAuthenticated, (req, res) => {
   res.render('user/customer-settings');

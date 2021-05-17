@@ -15,7 +15,7 @@ const flash = require('express-flash')
 const session = require('express-session')
 
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority'
+const url = process.env.MONGO_URL;
 mongoose.Promise = global.Promise;
 mongoose.connect(url, () => {
     console.log('Connected to MongoDB Successfully!')
@@ -24,10 +24,13 @@ mongoose.connect(url, () => {
 app.set('view engine', 'ejs') 
 
 app.use(flash())
+
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false, 
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie:{_expires : 36000}
 }))
 
 app.use(passport.initialize())

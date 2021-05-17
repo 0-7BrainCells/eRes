@@ -16,18 +16,23 @@
         <h1 style= "color: black;">My Booking Record</h1>
           <div class="table">
           <table style="width: 150%">
-          <!--
-          <tr>
-              <th>Time: </th>
-              <th>Date: </th>
-              <th>Number of Guests: </th>
-          </tr> 
-          <tr>
-            <td>Hard coded</td>
-            <td>Hard coded</td>
-            <td>Hard coded</td>
-          </tr>
-          -->
+          <% if (bookings.length > 0) { %>
+
+            <% var flag = false; for (i = 0; i < bookings.length; i++) { %>
+              <% var now = new Date(); if (bookings[i].date > now) { %>
+              <p>Upcoming Booking: <br/>
+              <% } else if (flag) { %>
+              <p>Past Bookings: <br/> <%flag = true; %>
+              <% } %>
+              <p>Email: <%=bookings[i].email%><br/>
+              Date: <%=bookings[i].date.toString().split(" ")[0]%> <%=bookings[i].date.toString().split(" ")[1]%> <%=bookings[i].date.toString().split(" ")[2]%>, <%=bookings[i].date.toString().split(" ")[3]%> <br/>
+              Time <%=bookings[i].time%><br/>
+              Table: <%=bookings[i].table%><br/>
+              Guests: <%=bookings[i].numGuests%></p>   
+
+            <% }} else { %>
+            <p align="CENTER" >No bookings.</p>
+          <% } %>
           </table>
           <br>
           <br>
