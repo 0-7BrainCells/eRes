@@ -38,7 +38,7 @@ router.get('/UpdateCustomer', checkUserAuthenticated, (req, res) => {
   res.render('user/update-customer');
 }),
 
-router.get('/StaffRegistration', checkStaffNotAuthenticated, checkUserNotAuthenticated, (req, res) => {
+router.get('/StaffRegistration', checkStaffAuthenticated, checkUserNotAuthenticated, (req, res) => {
   res.render('staff/admin/manage-staff-customers/staff-rego');
 }),
 
