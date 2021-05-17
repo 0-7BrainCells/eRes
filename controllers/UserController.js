@@ -171,3 +171,26 @@ exports.customer_update_account = async function (req, res) {
   }
 }
 
+exports.customer_update_account = async function (req, res) {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("users");
+      collection.findOneAndUpdate( {email: req.body.email}, {
+        $set: { password: hashedPassword,
+                fname: req.body.fname,
+                lname: req.body.lname,
+                city: req.body.city,
+                zip: req.body.zip
+        }
+      }).then(res.redirect('/StaffLayout'));
+    }
+    client.close();
+    })
+  } catch (err) {
+    res.redirect('/EditCustomer')
+  }
+}
+
