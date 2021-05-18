@@ -15,7 +15,7 @@ const flash = require('express-flash')
 const session = require('express-session')
 
 const MongoClient = require('mongodb').MongoClient;
-const url = process.env.MONGO_URL;
+const url = 'mongodb+srv://admin:admin@eres.k9zxh.mongodb.net/eRes?retryWrites=true&w=majority';
 mongoose.Promise = global.Promise;
 mongoose.connect(url, () => {
     console.log('Connected to MongoDB Successfully!')
