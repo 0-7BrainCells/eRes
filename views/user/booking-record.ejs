@@ -16,12 +16,12 @@
         <h1 style= "color: black;">My Booking Record</h1>
           <div class="table">
           <table style="width: 150%">
-          <% if (bookings.length > 0) { %>
+          <% if (bookings.length > 0) { console.log(bookings); %>
 
             <% var flag = false; for (i = 0; i < bookings.length; i++) { %>
               <% var now = new Date(); if (bookings[i].date > now) { %>
               <p>Upcoming Booking: <br/>
-              <% } else if (flag) { %>
+              <% } if (!flag) { %>
               <p>Past Bookings: <br/> <%flag = true; %>
               <% } %>
               <p>Email: <%=bookings[i].email%><br/>

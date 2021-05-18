@@ -30,7 +30,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false, 
     saveUninitialized: false,
-    cookie:{_expires : 36000}
+    cookie:{_expires : 3600000}
 }))
 
 app.use(passport.initialize())

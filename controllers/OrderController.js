@@ -117,7 +117,7 @@ exports.list_all_orders = function (req, res) {
         if (!err) { 
           items.forEach(function(item){
               bookingsArray.push(item);
-              bookingArray = bookingArray.sort((a, b)=> a.date - b.date)
+              bookingsArray = bookingsArray.sort((a, b)=> a.date - b.date)
           });
         }
       });
