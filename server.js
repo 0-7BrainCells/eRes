@@ -60,8 +60,5 @@ app.get('/', (req, res) => {
     res.render('index') 
 })
 
-app.use(function (req, res, next) {
-    res.status(404).send("Error 404: Sorry can't find that!")
-  });
 
 app.listen(process.env.PORT || 5000)

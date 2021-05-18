@@ -25,7 +25,7 @@ router.post('/staff-account-removed', UserController.staff_remove_account)
 
 router.post('/customer-account-updated', UserController.customer_update_account)
 
-router.post('/staff-customer-account-updated', UserController.customer_update_account)
+router.post('/staff-customer-account-updated', UserController.staff_customer_update_account)
 
 router.post('/customer-account-removed', UserController.customer_remove_account)
 
