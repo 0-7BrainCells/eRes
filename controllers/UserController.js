@@ -149,7 +149,6 @@ exports.customer_remove_account = function (req, res) {
 }
 
 exports.customer_update_account = async function (req, res) {
-  console.log("HI");
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
   MongoClient.connect(dburl, function(err, client) {
