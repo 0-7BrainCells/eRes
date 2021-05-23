@@ -149,6 +149,7 @@ exports.customer_remove_account = function (req, res) {
 }
 
 exports.customer_update_account = async function (req, res) {
+  console.log("HI");
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
   MongoClient.connect(dburl, function(err, client) {
@@ -160,7 +161,7 @@ exports.customer_update_account = async function (req, res) {
                 fname: req.body.fname,
                 lname: req.body.lname,
                 city: req.body.city,
-                zip: req.body.zip
+                zip: req.body.zip,
         }
       }).then(res.redirect('/CustomerHomepage'));
     }
@@ -168,6 +169,30 @@ exports.customer_update_account = async function (req, res) {
     })
   } catch (err) {
     res.redirect('/UpdateCustomer')
+  }
+}
+
+exports.staff_customer_update_account = async function (req, res) {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+  MongoClient.connect(dburl, function(err, client) {
+    if (!err) {
+      const db = client.db(dbname);
+      var collection = db.collection("users");
+      collection.findOneAndUpdate( {email: req.body.email}, {
+        $set: { password: hashedPassword,
+                fname: req.body.fname,
+                lname: req.body.lname,
+                city: req.body.city,
+                state: req.body.state,
+                zip: req.body.zip
+        }
+      }).then(res.redirect('/StaffLayout'));
+    }
+    client.close();
+    })
+  } catch (err) {
+    res.redirect('/EditCustomer')
   }
 }
 
